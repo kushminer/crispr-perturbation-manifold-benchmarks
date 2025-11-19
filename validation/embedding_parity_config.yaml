@@ -1,0 +1,52 @@
+output_dir: validation/embedding_parity
+entries:
+  - name: gears_go_subset
+    legacy:
+      output_path: validation/legacy_runs/gears_go_subset.tsv
+      orientation: rows_are_dims
+      sep: "\t"
+      drop_first_column: false
+      # command can be provided once R environment is ready.
+    loader:
+      name: gears_go
+      args:
+        source_csv: validation/embedding_subsets/go_subset.csv
+        n_components: 2
+
+  - name: pca_replogle_subset
+    legacy:
+      output_path: validation/legacy_runs/pca_replogle_subset.tsv
+      orientation: rows_are_dims
+      sep: "\t"
+      drop_first_column: false
+    loader:
+      name: pca_perturbation
+      args:
+        adata_path: validation/embedding_subsets/replogle_subset.h5ad
+        n_components: 10
+
+  - name: scgpt_subset
+    legacy:
+      output_path: validation/legacy_runs/scgpt_subset.tsv
+      orientation: rows_are_dims
+      sep: "\t"
+      drop_first_column: false
+    loader:
+      name: scgpt_gene
+      args:
+        checkpoint_dir: data/models/scgpt/scGPT_human
+        subset_genes_path: validation/legacy_runs/data/scgpt_subset_genes.txt
+
+  - name: scfoundation_subset
+    legacy:
+      output_path: validation/legacy_runs/scfoundation_subset.tsv
+      orientation: rows_are_dims
+      sep: "\t"
+      drop_first_column: false
+    loader:
+      name: scfoundation_gene
+      args:
+        checkpoint_path: data/models/scfoundation/models.ckpt
+        demo_h5ad: data/models/scfoundation/demo.h5ad
+        subset_genes_path: validation/legacy_runs/data/scfoundation_subset_genes.txt
+

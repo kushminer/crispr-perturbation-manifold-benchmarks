@@ -1,0 +1,25 @@
+{
+  "go_subset.csv": {
+    "source": "/Users/samuelminer/Documents/classes/nih_research/linear_perturbation_prediction-Paper/paper/benchmark/data/gears_pert_data/go_essential_all/go_essential_all.csv",
+    "sha256": "7d0e0bc332bb47b5ca5ba7016f65c07e6bd0bf887d7ef37580746f35359ffa92",
+    "stats": {
+      "total_nodes": 9853,
+      "selected_nodes": 150,
+      "total_edges": 12107865,
+      "selected_edges": 2612
+    }
+  },
+  "replogle_subset.h5ad": {
+    "source": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
+    "sha256": "d1a4ee6d302764ccb28f33438cc353ed500d79ef39c90a1408c6d825c9a0167a",
+    "stats": {
+      "total_cells": 162751,
+      "selected_cells": 16268,
+      "total_genes": 5000,
+      "selected_genes": 512,
+      "total_perturbations": 1093,
+      "selected_perturbations": 120,
+      "condition_column": "condition"
+    }
+  }
+}

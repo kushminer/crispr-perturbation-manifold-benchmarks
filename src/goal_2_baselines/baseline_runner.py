@@ -340,6 +340,8 @@ def construct_pert_embeddings(
         # Load GEARS embeddings
         from embeddings.registry import load
         
+        LOGGER.info("Loading GEARS embeddings...")
+        
         if embedding_args is None:
             raise ValueError("gears requires embedding_args with source_csv")
         
@@ -352,22 +354,51 @@ def construct_pert_embeddings(
                 eval_framework_root = Path(__file__).parent.parent.parent
                 source_csv = eval_framework_root / source_csv
             embedding_args["source_csv"] = str(source_csv.resolve())
+            LOGGER.info(f"GEARS CSV path (resolved): {source_csv}")
+            if not source_csv.exists():
+                raise FileNotFoundError(f"GEARS CSV file not found: {source_csv}")
+        else:
+            raise ValueError("gears requires 'source_csv' in embedding_args")
         
-        result = load("gears_go", **embedding_args)
+        LOGGER.info(f"Loading GEARS embeddings from {source_csv}...")
+        try:
+            result = load("gears_go", **embedding_args)
+            LOGGER.info(f"GEARS embeddings loaded: shape={result.values.shape}, {len(result.item_labels)} perturbations")
+        except Exception as e:
+            LOGGER.error(f"Failed to load GEARS embeddings: {e}")
+            raise ValueError(f"Failed to load GEARS embeddings from {source_csv}: {e}") from e
+        
         # Align with pert_names
         # GEARS embeddings use gene symbols, pert_names may have "+ctrl" suffix
         # Clean pert_names to match GEARS gene symbols
         gears_pert_names = result.item_labels  # Gene symbols from GEARS
         cleaned_pert_names = [p.replace("+ctrl", "") for p in pert_names]
         
+        LOGGER.info(f"GEARS has {len(gears_pert_names)} perturbations")
+        LOGGER.info(f"Target dataset has {len(pert_names)} perturbations (cleaned: {len(set(cleaned_pert_names))} unique)")
+        
         # Find common perturbations
         common_perts = sorted(set(cleaned_pert_names) & set(gears_pert_names))
+        LOGGER.info(f"Found {len(common_perts)} common perturbations between GEARS and target dataset")
+        
         if len(common_perts) == 0:
-            raise ValueError("No common perturbations between GEARS embeddings and target dataset")
+            error_msg = (
+                f"No common perturbations between GEARS embeddings and target dataset.\n"
+                f"GEARS perturbations (first 10): {gears_pert_names[:10]}\n"
+                f"Target perturbations (first 10): {cleaned_pert_names[:10]}"
+            )
+            LOGGER.error(error_msg)
+            raise ValueError(error_msg)
+        
+        if len(common_perts) < len(pert_names) * 0.5:
+            LOGGER.warning(f"Only {len(common_perts)}/{len(pert_names)} perturbations have GEARS embeddings ({100*len(common_perts)/len(pert_names):.1f}%)")
         
         # Align GEARS embeddings to common perturbations
         gears_pert_idx = [gears_pert_names.index(p) for p in common_perts]
         aligned_gears_emb = result.values[:, gears_pert_idx]  # dims × common_perts
+        
+        LOGGER.info(f"Aligned GEARS embeddings shape: {aligned_gears_emb.shape}")
+        LOGGER.info(f"GEARS embedding stats: mean={aligned_gears_emb.mean():.4f}, std={aligned_gears_emb.std():.4f}, min={aligned_gears_emb.min():.4f}, max={aligned_gears_emb.max():.4f}")
         
         # Align target perturbations to common perturbations
         target_pert_idx = [i for i, p in enumerate(cleaned_pert_names) if p in common_perts]
@@ -382,11 +413,19 @@ def construct_pert_embeddings(
             gears_idx = common_perts.index(p_sym)
             B_full[:, target_idx] = aligned_gears_emb[:, gears_idx]  # (dims,) -> (dims × 1)
         
+        # Log how many perturbations got GEARS embeddings vs zeros
+        n_with_gears = np.sum(np.any(B_full != 0, axis=0))
+        n_with_zeros = len(pert_names) - n_with_gears
+        LOGGER.info(f"Perturbations with GEARS embeddings: {n_with_gears}/{len(pert_names)}")
+        if n_with_zeros > 0:
+            LOGGER.warning(f"{n_with_zeros} perturbations will have zero embeddings (not in GEARS)")
+        
         # For test data, do the same alignment
         B_test = None
         if test_pert_names is not None:
             cleaned_test_pert_names = [p.replace("+ctrl", "") for p in test_pert_names]
             common_test_perts = sorted(set(cleaned_test_pert_names) & set(gears_pert_names))
+            LOGGER.info(f"Test perturbations: {len(test_pert_names)} total, {len(common_test_perts)} in GEARS")
             if len(common_test_perts) > 0:
                 gears_test_idx = [gears_pert_names.index(p) for p in common_test_perts]
                 aligned_gears_test_emb = result.values[:, gears_test_idx]  # dims × common_test_perts
@@ -398,6 +437,7 @@ def construct_pert_embeddings(
                     gears_idx = common_test_perts.index(p_sym)
                     B_test[:, target_idx] = aligned_gears_test_emb[:, gears_idx]
         
+        LOGGER.info("GEARS embeddings successfully constructed and aligned")
         return B_full, pert_names, None, B_test, test_pert_names
     
     elif source in ["k562_pca", "rpe1_pca"]:

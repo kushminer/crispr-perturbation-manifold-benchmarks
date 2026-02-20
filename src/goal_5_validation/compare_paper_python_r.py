@@ -74,10 +74,10 @@ def run_paper_python_script(
     if pert_embedding.endswith(".tsv"):
         pert_embedding_path = working_dir / pert_embedding
         if not pert_embedding_path.exists():
-            # Try evaluation_framework results
-            eval_framework_results = Path(__file__).parent.parent.parent.parent / "evaluation_framework" / "results" / pert_embedding.split("/")[-1]
-            if eval_framework_results.exists():
-                pert_embedding = str(eval_framework_results.resolve())
+            repo_root = Path(__file__).resolve().parents[2]
+            local_results = repo_root / "results" / pert_embedding.split("/")[-1]
+            if local_results.exists():
+                pert_embedding = str(local_results.resolve())
             else:
                 LOGGER.warning(f"Embedding file not found: {pert_embedding_path}")
                 return False
@@ -130,10 +130,10 @@ def run_r_script(
     if pert_embedding.endswith(".tsv"):
         pert_embedding_path = working_dir / pert_embedding
         if not pert_embedding_path.exists():
-            # Try evaluation_framework results
-            eval_framework_results = Path(__file__).parent.parent.parent.parent / "evaluation_framework" / "results" / pert_embedding.split("/")[-1]
-            if eval_framework_results.exists():
-                pert_embedding = str(eval_framework_results.resolve())
+            repo_root = Path(__file__).resolve().parents[2]
+            local_results = repo_root / "results" / pert_embedding.split("/")[-1]
+            if local_results.exists():
+                pert_embedding = str(local_results.resolve())
             else:
                 LOGGER.warning(f"Embedding file not found: {pert_embedding_path}")
                 return False
@@ -466,4 +466,3 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-

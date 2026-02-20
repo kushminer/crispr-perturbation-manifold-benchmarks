@@ -65,5 +65,5 @@ def main() -> None:
     print("Python reference baseline exported to", OUTPUT_ROOT)
 
 
-+if __name__ == "__main__":
-+    main()
+if __name__ == "__main__":
+    main()

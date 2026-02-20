@@ -31,7 +31,7 @@ plt.rcParams['font.family'] = 'DejaVu Sans'
 
 def load_data():
     """Load actual data with confidence intervals."""
-    lsft = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    lsft = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
     return {'lsft': lsft, 'logo': logo}
 
@@ -168,10 +168,10 @@ def create_statistical_poster(data):
             fontsize=11, ha='center', va='center', family='monospace',
             bbox=dict(boxstyle='round', facecolor='white', edgecolor='black', linewidth=1))
     
-    plt.savefig(OUTPUT_DIR / "POSTER_accurate_statistical.png", dpi=200, 
+    plt.savefig(OUTPUT_DIR / "poster_accurate_statistical.png", dpi=200, 
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ POSTER_accurate_statistical.png")
+    print("✅ poster_accurate_statistical.png")
 
 
 # =============================================================================
@@ -294,10 +294,10 @@ def create_convergence_poster(data):
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.95, edgecolor='black'))
     
     plt.tight_layout(rect=[0, 0.05, 1, 0.92])
-    plt.savefig(OUTPUT_DIR / "POSTER_accurate_convergence.png", dpi=200, 
+    plt.savefig(OUTPUT_DIR / "poster_accurate_convergence.png", dpi=200, 
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ POSTER_accurate_convergence.png")
+    print("✅ poster_accurate_convergence.png")
 
 
 # =============================================================================
@@ -311,7 +311,7 @@ def create_three_regime_poster(data):
     logo = data['logo']
     
     # Also need baseline (before LSFT) - extract from raw data
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     
     methods = [
         ('lpm_selftrained', 'PCA', GREEN),
@@ -451,10 +451,10 @@ def create_three_regime_poster(data):
             bbox=dict(boxstyle='round', facecolor='white', alpha=0.95, edgecolor='black'))
     
     plt.tight_layout(rect=[0, 0.05, 1, 0.92])
-    plt.savefig(OUTPUT_DIR / "POSTER_accurate_three_regime.png", dpi=200, 
+    plt.savefig(OUTPUT_DIR / "poster_accurate_three_regime.png", dpi=200, 
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ POSTER_accurate_three_regime.png")
+    print("✅ poster_accurate_three_regime.png")
 
 
 def main():

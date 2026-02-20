@@ -360,7 +360,7 @@ def create_comparison_summaries(
 
 def create_engineer_summary_report(output_dir: Path) -> None:
     """Write a compact guide for aggregated outputs."""
-    report_path = output_dir / "ENGINEER_ANALYSIS_GUIDE.md"
+    report_path = output_dir / "engineer_analysis_guide.md"
     report = f"""# Aggregated Research Results
 
 Generated: {pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")}
@@ -381,7 +381,7 @@ Generated: {pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S")}
 - For Adamson single-cell LOGO, `logo_fixed` is preferred when available.
 """
     report_path.write_text(report, encoding="utf-8")
-    logger.info("Wrote ENGINEER_ANALYSIS_GUIDE.md")
+    logger.info("Wrote engineer_analysis_guide.md")
 
 
 def main() -> None:

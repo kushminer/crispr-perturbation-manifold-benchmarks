@@ -43,7 +43,7 @@ echo "   Dataset: adamson"
 echo "   Class: ${CLASS_NAME}"
 echo ""
 
-ADAMSON_DATA_PATH="../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
+ADAMSON_DATA_PATH="data/gears_pert_data/adamson/perturb_processed.h5ad"
 ADAMSON_ANNOTATION_PATH="data/annotations/adamson_functional_classes_enriched.tsv"
 
 if [ ! -f "$ADAMSON_DATA_PATH" ]; then
@@ -81,7 +81,7 @@ echo "   Dataset: replogle_k562_essential"
 echo "   Class: ${CLASS_NAME}"
 echo ""
 
-K562_DATA_PATH="${K562_DATA_PATH:-/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad}"
+K562_DATA_PATH="${K562_DATA_PATH:-data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad}"
 K562_ANNOTATION_PATH="data/annotations/replogle_k562_functional_classes_go.tsv"
 
 if [ ! -f "$K562_DATA_PATH" ]; then
@@ -120,7 +120,7 @@ echo "   Dataset: replogle_rpe1_essential"
 echo "   Class: ${CLASS_NAME}"
 echo ""
 
-RPE1_DATA_PATH="${RPE1_DATA_PATH:-/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad}"
+RPE1_DATA_PATH="${RPE1_DATA_PATH:-data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad}"
 # Use K562 annotations for RPE1 if RPE1-specific not available
 RPE1_ANNOTATION_PATH="${RPE1_ANNOTATION_PATH:-data/annotations/replogle_k562_functional_classes_go.tsv}"
 

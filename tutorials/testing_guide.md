@@ -73,7 +73,7 @@ A test script (`test_notebooks.py`) is provided that:
 
 To run:
 ```bash
-cd evaluation_framework/tutorials
+cd tutorials
 python test_notebooks.py
 ```
 
@@ -153,4 +153,3 @@ All notebooks are now structured with:
 - ✓ Proper error handling
 
 Manual testing is recommended to verify full functionality, especially visualizations and interactive prompts.
-

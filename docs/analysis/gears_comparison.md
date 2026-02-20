@@ -18,7 +18,7 @@ This document summarizes:
 
 ### 1. Historical Issue
 
-From `deliverables/audits/single_cell_data_audit/GEARS_vs_PCA_FINDINGS.md`:
+From `deliverables/audits/single_cell_data_audit/gears_vs_pca_findings.md`:
 
 > Pre-fix, per-perturbation curves for `lpm_selftrained` and
 > `lpm_gearsPertEmb` were identical within floating-point noise,
@@ -36,7 +36,7 @@ Root causes:
 
 ### 2. Fix Summary
 
-Documented in `deliverables/archive/docs/legacy/status/fixes/FIX_SINGLE_CELL_METHODOLOGY.md`:
+Documented in `deliverables/archive/docs/legacy/status/fixes/fix_single_cell_methodology.md`:
 
 1. **Path fix**:
    - Updated GEARS CSV path to:

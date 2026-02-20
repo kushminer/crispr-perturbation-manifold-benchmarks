@@ -71,14 +71,14 @@ log("1. Generating PCA explained variance plot...")
 dataset_name = "adamson"
 # Try multiple possible paths
 possible_adata_paths = [
-    base_dir.parent / "paper" / "benchmark" / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad",
-    base_dir.parent.parent / "paper" / "benchmark" / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad",
-    Path("/Users/samuelminer/Documents/classes/nih_research/linear_perturbation_prediction-Paper/paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"),
+    base_dir / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad",
+    base_dir / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad",
+    base_dir / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad",
 ]
 
 possible_split_paths = [
     base_dir / "results" / "goal_2_baselines" / "splits" / "adamson_split_seed1.json",
-    Path("/Users/samuelminer/Documents/classes/nih_research/linear_perturbation_prediction-Paper/crispr-perturbation-manifold-benchmarks/results/goal_2_baselines/splits/adamson_split_seed1.json"),
+    base_dir / "results" / "goal_2_baselines" / "splits" / "adamson_split_seed1.json",
 ]
 
 adata_path = None
@@ -144,7 +144,7 @@ datasets = {}
 # Try to find split files
 possible_base_paths = [
     base_dir / "results" / "goal_2_baselines" / "splits",
-    Path("/Users/samuelminer/Documents/classes/nih_research/linear_perturbation_prediction-Paper/crispr-perturbation-manifold-benchmarks/results/goal_2_baselines/splits"),
+    base_dir / "results" / "goal_2_baselines" / "splits",
 ]
 
 split_dir = None
@@ -304,9 +304,9 @@ if split_path and split_path.exists():
             fontsize=9)
     
     plt.tight_layout()
-    plt.savefig(output_dir / "lsft_neighbor_counts_topK.png", dpi=300, bbox_inches='tight')
+    plt.savefig(output_dir / "lsft_neighbor_counts_topk.png", dpi=300, bbox_inches='tight')
     plt.close()
-    log(f"  ✓ Saved: lsft_neighbor_counts_topK.png")
+    log(f"  ✓ Saved: lsft_neighbor_counts_topk.png")
 else:
     log("  ⚠️  Skipped: split file not found")
 

@@ -213,8 +213,8 @@ This validation sprint is organized into 7 phases:
 2. **Phase 1:** Data Pipeline & Splits Check (`01_data_pipeline_check.md`)
 3. **Phase 2:** Embeddings & Features Check (`02_embedding_check.md`)
 4. **Phase 3:** Linear Baseline Reproduction Check (`03_baseline_reproduction_check.md`)
-5. **Phase 4:** LOGO Implementation Check (`04_LOGO_split_check.md`)
-6. **Phase 5:** LSFT Implementation Check (`05_LSFT_implementation_check.md`)
+5. **Phase 4:** LOGO Implementation Check (`04_logo_split_check.md`)
+6. **Phase 5:** LSFT Implementation Check (`05_lsft_implementation_check.md`)
 7. **Phase 6:** Metrics, Bootstrap & Permutations Check (`06_metrics_and_resampling_check.md`)
 8. **Phase 7:** Summary & Sign-Off (`07_summary_report.md`)
 
@@ -236,7 +236,7 @@ This generates 6 essential plots proving pipeline correctness:
 1. `pca_explained_variance_train_vs_all.png` - PCA fit correctness
 2. `split_overlap_check.png` - Train/test/val disjoint verification
 3. `baseline_toy_truth_vs_pred.png` - Baseline correctness
-4. `lsft_neighbor_counts_topK.png` - LSFT neighbor selection logic
+4. `lsft_neighbor_counts_topk.png` - LSFT neighbor selection logic
 5. `bootstrap_distribution_example.png` - Bootstrap CI correctness
 6. `permutation_null_distribution.png` - Permutation test correctness
 

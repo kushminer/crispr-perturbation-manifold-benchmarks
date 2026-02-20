@@ -162,7 +162,7 @@ def main():
     base_dir = Path(__file__).parent
     
     # Read resampling skeleton
-    resampling_file = base_dir / "RESAMPLING_FINDINGS_REPORT_SKELETON.md"
+    resampling_file = base_dir / "resampling_findings_report_skeleton.md"
     with open(resampling_file, 'r') as f:
         resampling_lines = f.readlines()
     
@@ -170,7 +170,7 @@ def main():
     lsft_resampling_results = parse_lsft_resampling_table(resampling_lines)
     
     # Write LSFT resampling CSV
-    lsft_resampling_csv = base_dir / "LSFT_resampling.csv"
+    lsft_resampling_csv = base_dir / "lsft_resampling.csv"
     with open(lsft_resampling_csv, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=[
             "dataset", "baseline", "top_k", "r_mean", "r_ci_low", "r_ci_high",
@@ -185,7 +185,7 @@ def main():
     logo_resampling_results = parse_logo_resampling_table(resampling_lines)
     
     # Write LOGO resampling CSV
-    logo_resampling_csv = base_dir / "LOGO_resampling.csv"
+    logo_resampling_csv = base_dir / "logo_resampling.csv"
     with open(logo_resampling_csv, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=[
             "dataset", "baseline", "r_mean", "r_ci_low", "r_ci_high",

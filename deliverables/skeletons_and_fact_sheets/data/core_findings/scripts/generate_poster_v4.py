@@ -27,7 +27,7 @@ plt.rcParams['font.family'] = 'DejaVu Sans'
 
 def load_data():
     """Load all data."""
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
     return {'raw': raw, 'logo': logo}
 
@@ -172,9 +172,9 @@ def create_poster_v4(data):
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.95, edgecolor='black', linewidth=1.5))
     
     plt.tight_layout(rect=[0, 0.07, 1, 0.91])
-    plt.savefig(OUTPUT_DIR / "POSTER_v4_vertical.png", dpi=200, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "poster_v4_vertical.png", dpi=200, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ POSTER_v4_vertical.png")
+    print("✅ poster_v4_vertical.png")
 
 
 def main():

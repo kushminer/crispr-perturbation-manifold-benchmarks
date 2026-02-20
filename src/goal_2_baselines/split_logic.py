@@ -155,29 +155,22 @@ def create_split_from_adata(
             from gears import PertData
             import gears.version
             
-            # Determine GEARS data folder path
-            # Paper's script uses relative path "data/gears_pert_data" from paper/benchmark/src/
-            # We need to find the paper/benchmark directory
+            # Determine GEARS data folder path.
+            # Prefer this repo's canonical data path, then fall back to the paper-style layout.
             if pert_data_folder is None:
-                # Try to find paper/benchmark/data/gears_pert_data relative to this file
-                current_file = Path(__file__).resolve()
-                # Navigate up from evaluation_framework/src/goal_2_baselines/split_logic.py
-                # to find paper/benchmark/data/gears_pert_data
-                framework_root = current_file.parent.parent.parent.parent  # evaluation_framework/
-                repo_root = framework_root.parent  # repository root
-                pert_data_folder = repo_root / "paper" / "benchmark" / "data" / "gears_pert_data"
-                
-                # Fallback: try relative to current working directory
-                if not pert_data_folder.exists():
-                    pert_data_folder = Path("paper/benchmark/data/gears_pert_data")
-                    if not pert_data_folder.exists():
-                        # Last fallback: try from evaluation_framework root
-                        pert_data_folder = framework_root.parent.parent / "paper" / "benchmark" / "data" / "gears_pert_data"
+                repo_root = Path(__file__).resolve().parents[2]
+                candidates = [
+                    repo_root / "data" / "gears_pert_data",
+                    repo_root / "paper" / "benchmark" / "data" / "gears_pert_data",
+                    Path("data/gears_pert_data"),
+                    Path("paper/benchmark/data/gears_pert_data"),
+                ]
+                pert_data_folder = next((path for path in candidates if path.exists()), candidates[0])
             
             if not pert_data_folder.exists():
                 raise FileNotFoundError(
                     f"GEARS perturbation data folder not found: {pert_data_folder}. "
-                    f"Expected structure: paper/benchmark/data/gears_pert_data/"
+                    f"Expected structure: data/gears_pert_data/"
                 )
             
             LOGGER.info(f"Using GEARS data folder: {pert_data_folder}")
@@ -262,4 +255,3 @@ def prepare_perturbation_splits(
     LOGGER.info(f"Val: {len(split_config['val'])} conditions")
     
     return split_config
-

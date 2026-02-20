@@ -11,7 +11,7 @@ Primary entry points:
 - `src/goal_2_baselines/baseline_runner_single_cell.py`
 
 This is the structured reference version of
-`deliverables/archive/docs/legacy/SINGLE_CELL_METHODOLOGY_REPORT.md`.
+`deliverables/archive/docs/legacy/single_cell_methodology_report.md`.
 
 ---
 

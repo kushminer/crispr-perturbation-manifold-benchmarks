@@ -27,9 +27,9 @@ plt.rcParams['font.size'] = 12
 
 def load_data():
     """Load all data."""
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
-    lsft = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    lsft = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     return {'raw': raw, 'logo': logo, 'lsft': lsft}
 
 
@@ -109,9 +109,9 @@ def plot_1_the_lift(data):
                 fontsize=16, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_1_the_lift.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_1_the_lift.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_1_the_lift.png")
+    print("✅ full_1_the_lift.png")
 
 
 # =============================================================================
@@ -172,9 +172,9 @@ def plot_2_convergence(data):
                 fontsize=16, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_2_convergence.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_2_convergence.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_2_convergence.png")
+    print("✅ full_2_convergence.png")
 
 
 # =============================================================================
@@ -227,9 +227,9 @@ def plot_3_generalization(data):
                 fontsize=14, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_3_generalization.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_3_generalization.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_3_generalization.png")
+    print("✅ full_3_generalization.png")
 
 
 # =============================================================================
@@ -279,9 +279,9 @@ def plot_4_headline(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_4_headline.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_4_headline.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_4_headline.png")
+    print("✅ full_4_headline.png")
 
 
 # =============================================================================
@@ -350,9 +350,9 @@ def plot_5_complete(data):
                 fontsize=18, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_5_complete.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_5_complete.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_5_complete.png")
+    print("✅ full_5_complete.png")
 
 
 def main():

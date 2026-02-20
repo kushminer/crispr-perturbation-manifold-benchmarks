@@ -89,10 +89,10 @@ def plot_1_curvature(df):
             bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "HONEST_1_curvature.png", dpi=150, 
+    plt.savefig(OUTPUT_DIR / "honest_1_curvature.png", dpi=150, 
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ HONEST_1_curvature.png")
+    print("✅ honest_1_curvature.png")
 
 
 # =============================================================================
@@ -159,10 +159,10 @@ def plot_2_deep_learning_adds_nothing(df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "HONEST_2_deep_learning_adds_nothing.png", 
+    plt.savefig(OUTPUT_DIR / "honest_2_deep_learning_adds_nothing.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ HONEST_2_deep_learning_adds_nothing.png")
+    print("✅ honest_2_deep_learning_adds_nothing.png")
 
 
 # =============================================================================
@@ -225,10 +225,10 @@ def plot_3_lsft_works_everywhere(df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "HONEST_3_lsft_lifts_all.png", 
+    plt.savefig(OUTPUT_DIR / "honest_3_lsft_lifts_all.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ HONEST_3_lsft_lifts_all.png")
+    print("✅ honest_3_lsft_lifts_all.png")
 
 
 # =============================================================================
@@ -294,10 +294,10 @@ def plot_combined(df):
                 fontsize=22, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "HONEST_combined.png", 
+    plt.savefig(OUTPUT_DIR / "honest_combined.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ HONEST_combined.png")
+    print("✅ honest_combined.png")
 
 
 def main():

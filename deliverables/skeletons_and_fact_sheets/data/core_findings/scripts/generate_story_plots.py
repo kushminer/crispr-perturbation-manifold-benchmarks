@@ -29,7 +29,7 @@ plt.rcParams['font.size'] = 14
 def load_data():
     """Load the CSV data."""
     return {
-        'lsft': pd.read_csv(DATA_DIR / "LSFT_resampling.csv"),
+        'lsft': pd.read_csv(DATA_DIR / "lsft_resampling.csv"),
         'logo': pd.read_csv(DATA_DIR / "LOGO_results.csv"),
     }
 
@@ -85,10 +85,10 @@ def plot_1_headline(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_1_headline.png", dpi=150, 
+    plt.savefig(OUTPUT_DIR / "story_1_headline.png", dpi=150, 
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_1_headline.png")
+    print("✅ story_1_headline.png")
 
 
 # =============================================================================
@@ -137,10 +137,10 @@ def plot_2_mechanism(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_2_mechanism.png", dpi=150,
+    plt.savefig(OUTPUT_DIR / "story_2_mechanism.png", dpi=150,
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_2_mechanism.png")
+    print("✅ story_2_mechanism.png")
 
 
 # =============================================================================
@@ -199,10 +199,10 @@ def plot_3_contrast(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_3_contrast.png", dpi=150,
+    plt.savefig(OUTPUT_DIR / "story_3_contrast.png", dpi=150,
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_3_contrast.png")
+    print("✅ story_3_contrast.png")
 
 
 # =============================================================================
@@ -254,10 +254,10 @@ def plot_4_generalization(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_4_generalization.png", dpi=150,
+    plt.savefig(OUTPUT_DIR / "story_4_generalization.png", dpi=150,
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_4_generalization.png")
+    print("✅ story_4_generalization.png")
 
 
 # =============================================================================
@@ -316,10 +316,10 @@ def plot_5_punchline(data):
                 fontsize=22, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_5_punchline.png", dpi=150,
+    plt.savefig(OUTPUT_DIR / "story_5_punchline.png", dpi=150,
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_5_punchline.png")
+    print("✅ story_5_punchline.png")
 
 
 # =============================================================================
@@ -372,10 +372,10 @@ def plot_6_single_slide(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_6_single_slide.png", dpi=150,
+    plt.savefig(OUTPUT_DIR / "story_6_single_slide.png", dpi=150,
                 bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_6_single_slide.png")
+    print("✅ story_6_single_slide.png")
 
 
 def main():

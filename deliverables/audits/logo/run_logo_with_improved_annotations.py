@@ -94,15 +94,15 @@ def main():
     
     datasets = {
         "adamson": {
-            "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_adamson/perturb_processed.h5ad",
+            "adata_path": "data/gears_pert_data/adamson/perturb_processed.h5ad",
             "improved_annotation": project_root / "audits" / "logo" / "annotation_improvement" / "improved_annotations" / "adamson_functional_classes_enriched_improved_combined.tsv",
         },
         "k562": {
-            "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
+            "adata_path": "data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad",
             "improved_annotation": project_root / "audits" / "logo" / "annotation_improvement" / "improved_annotations" / "replogle_k562_functional_classes_go_improved_combined.tsv",
         },
         "rpe1": {
-            "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad",
+            "adata_path": "data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad",
             "improved_annotation": project_root / "audits" / "logo" / "annotation_improvement" / "improved_annotations" / "replogle_rpe1_functional_classes_go_improved_combined.tsv",
         },
     }

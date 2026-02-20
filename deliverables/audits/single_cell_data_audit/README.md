@@ -12,7 +12,7 @@ embeddings.
 | `validate_embeddings.py` | Loads perturbation-level metrics for each dataset and quantifies the per-perturbation deltas between baseline pairs (PCA vs GEARS, PCA vs scGPT). |
 | `audit_visuals.py` | Consumes the CSVs produced by `validate_embeddings.py` and renders side-by-side scatter + delta plots for use in reports/posters. |
 | `output/` | All generated tables and PNGs. |
-| `GEARS_vs_PCA_FINDINGS.md` | Narrative summary of findings and hypotheses. |
+| `gears_vs_pca_findings.md` | Narrative summary of findings and hypotheses. |
 
 ### How to Run
 

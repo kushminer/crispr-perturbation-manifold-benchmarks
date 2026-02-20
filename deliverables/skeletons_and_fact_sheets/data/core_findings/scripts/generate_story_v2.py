@@ -27,9 +27,9 @@ plt.rcParams['font.size'] = 12
 
 def load_data():
     """Load all data."""
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
-    lsft = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    lsft = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     return {'raw': raw, 'logo': logo, 'lsft': lsft}
 
 
@@ -111,9 +111,9 @@ def plot_story_6_baseline(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_6_single_slide.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "story_6_single_slide.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_6_single_slide.png (updated with baseline values)")
+    print("✅ story_6_single_slide.png (updated with baseline values)")
 
 
 # =============================================================================
@@ -197,9 +197,9 @@ def plot_story_7_lsft_improvement(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "STORY_7_lsft_improvement.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "story_7_lsft_improvement.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ STORY_7_lsft_improvement.png (new: shows LSFT improvement)")
+    print("✅ story_7_lsft_improvement.png (new: shows LSFT improvement)")
 
 
 def main():

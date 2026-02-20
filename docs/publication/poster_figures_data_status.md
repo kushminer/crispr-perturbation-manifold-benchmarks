@@ -14,7 +14,7 @@
 - **Single-cell:** `results/single_cell_analysis/comparison/baseline_results_all.csv`
 
 **Status:** ✅ **CORRECT**
-- Pseudobulk values match `baseline_r` from `LSFT_raw_per_perturbation.csv`
+- Pseudobulk values match `baseline_r` from `lsft_raw_per_perturbation.csv`
 - K562 Self-trained PCA: 0.6638 ✓
 - K562 scGPT: 0.5127 ✓
 - RPE1 Self-trained PCA: 0.7678 ✓
@@ -60,7 +60,7 @@ The following scripts were updated to bypass the corrupted file:
    - Now computes from raw data
    
 2. ✅ `deliverables/audits/random_embedding_audit/06_resolution_comparison.py`
-   - Now uses `LSFT_resampling.csv`
+   - Now uses `lsft_resampling.csv`
 
 3. ✅ `deliverables/skeletons_and_fact_sheets/data/core_findings/scripts/why_linear_models_win.py`
    - Now computes from raw data

@@ -10,16 +10,16 @@
 ### ✅ Completed Components
 
 #### 1. Executive Documentation
-- ✅ `MANIFOLD_LAW_SUMMARY.md` - Executive summary integrating all epics
+- ✅ `manifold_law_summary.md` - Executive summary integrating all epics
 - ✅ `README.md` - Package usage guide and quick start
-- ✅ `COMPLETION_STATUS.md` - This file
+- ✅ `completion_status.md` - This file
 
 #### 2. Individual Epic Reports (Detailed)
-- ✅ `EPIC1_CURVATURE_SWEEP_REPORT.md` - Curvature analysis with r vs k plots
-- ✅ `EPIC2_MECHANISM_ABLATION_REPORT.md` - Functional alignment analysis
-- ✅ `EPIC3_NOISE_STABILITY_REPORT.md` - Noise injection & Lipschitz constants
-- ✅ `EPIC4_DIRECTION_FLIP_REPORT.md` - Adversarial neighbor analysis
-- ✅ `EPIC5_TANGENT_ALIGNMENT_REPORT.md` - Tangent space alignment metrics
+- ✅ `epic1_curvature_sweep_report.md` - Curvature analysis with r vs k plots
+- ✅ `epic2_mechanism_ablation_report.md` - Functional alignment analysis
+- ✅ `epic3_noise_stability_report.md` - Noise injection & Lipschitz constants
+- ✅ `epic4_direction_flip_report.md` - Adversarial neighbor analysis
+- ✅ `epic5_tangent_alignment_report.md` - Tangent space alignment metrics
 
 #### 3. Publication-Ready Figures
 - ✅ **37 PNG figures** across all epics

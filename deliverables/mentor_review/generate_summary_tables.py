@@ -197,7 +197,7 @@ def main():
     print(f"   Loaded {len(lsft_df)} baseline-dataset combinations")
     lsft_summary = create_lsft_summary_table(
         lsft_df, 
-        output_dir / "A_LSFT_Summary_Table.csv"
+        output_dir / "a_lsft_summary_table.csv"
     )
     
     print()
@@ -208,7 +208,7 @@ def main():
     print(f"   Loaded {len(logo_df)} baseline-dataset combinations")
     logo_summary = create_logo_summary_table(
         logo_df,
-        output_dir / "B_LOGO_Summary_Table.csv"
+        output_dir / "b_logo_summary_table.csv"
     )
     
     print()
@@ -219,7 +219,7 @@ def main():
     print(f"   Loaded {len(hardness_df)} regression results")
     hardness_summary = create_hardness_regression_table(
         hardness_df,
-        output_dir / "C_Hardness_Performance_Regression_Table.csv"
+        output_dir / "c_hardness_performance_regression_table.csv"
     )
     
     print()

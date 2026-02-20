@@ -33,7 +33,7 @@ print()
 
 # Use Adamson dataset for validation
 dataset_name = "adamson"
-adata_path = base_dir.parent / "paper" / "benchmark" / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad"
+adata_path = base_dir / "data" / "gears_pert_data" / "adamson" / "perturb_processed.h5ad"
 split_path = base_dir / "results" / "goal_2_baselines" / "splits" / "adamson_split_seed1.json"
 
 if not adata_path.exists():
@@ -273,9 +273,9 @@ print("-" * 70)
 
 # Check multiple possible locations for scGPT checkpoint (same logic as baseline_runner)
 scgpt_paths = [
-    base_dir / "data" / "models" / "scgpt" / "scGPT_human",
-    base_dir.parent / "evaluation_framework" / "data" / "models" / "scgpt" / "scGPT_human",
-    base_dir.parent / "data" / "models" / "scgpt" / "scGPT_human",
+    base_dir / "data" / "models" / "scgpt" / "scgpt_human",
+    base_dir / "data" / "models" / "scgpt" / "scgpt_human",
+    base_dir.parent / "data" / "models" / "scgpt" / "scgpt_human",
 ]
 
 scgpt_checkpoint_dir = None
@@ -288,7 +288,7 @@ for path in scgpt_paths:
 if scgpt_checkpoint_dir:
     try:
         # Use the same import path as baseline_runner
-        sys.path.insert(0, str(base_dir.parent / "evaluation_framework" / "src"))
+        sys.path.insert(0, str(base_dir / "src"))
         from embeddings.registry import load as load_embedding
         
         # First, load full vocab to find common genes
@@ -349,7 +349,7 @@ print("-" * 70)
 
 scfoundation_paths = [
     base_dir / "data" / "models" / "scfoundation",
-    base_dir.parent / "evaluation_framework" / "data" / "models" / "scfoundation",
+    base_dir / "data" / "models" / "scfoundation",
     base_dir.parent / "data" / "models" / "scfoundation",
 ]
 
@@ -368,8 +368,8 @@ for model_dir in scfoundation_paths:
 if scfoundation_checkpoint_path and scfoundation_demo_path:
     try:
         # Ensure embedding registry is on path
-        if str(base_dir.parent / "evaluation_framework" / "src") not in sys.path:
-            sys.path.insert(0, str(base_dir.parent / "evaluation_framework" / "src"))
+        if str(base_dir / "src") not in sys.path:
+            sys.path.insert(0, str(base_dir / "src"))
         from embeddings.registry import load as load_embedding
         
         # First, load full vocab to find common genes

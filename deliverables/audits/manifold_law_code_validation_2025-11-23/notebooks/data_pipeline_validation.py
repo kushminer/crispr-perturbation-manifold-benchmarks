@@ -36,11 +36,11 @@ DATASETS = {
         "split_path": base_dir / "results" / "goal_2_baselines" / "splits" / "adamson_split_seed1.json",
     },
     "k562": {
-        "adata_path": Path("/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"),
+        "adata_path": Path("data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"),
         "split_path": base_dir / "results" / "goal_2_baselines" / "splits" / "replogle_k562_essential_split_seed1.json",
     },
     "rpe1": {
-        "adata_path": Path("/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"),
+        "adata_path": Path("data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"),
         "split_path": base_dir / "results" / "goal_2_baselines" / "splits" / "replogle_rpe1_essential_split_seed1.json",
     },
 }

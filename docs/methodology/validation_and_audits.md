@@ -76,7 +76,7 @@ Outcome:
 ### 3. GEARS vs Self-Trained PCA Audit
 
 Location:
-- `deliverables/audits/single_cell_data_audit/GEARS_vs_PCA_FINDINGS.md`
+- `deliverables/audits/single_cell_data_audit/gears_vs_pca_findings.md`
 - `deliverables/audits/single_cell_data_audit/validate_embeddings.py`
 
 Goal:

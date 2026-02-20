@@ -519,10 +519,10 @@ add no predictive value over random embeddings.
 
 """
     
-    with open(OUTPUT_DIR / "MANIFOLD_LAW_SUMMARY.md", 'w') as f:
+    with open(OUTPUT_DIR / "manifold_law_summary.md", 'w') as f:
         f.write(report)
     
-    print("  ✅ MANIFOLD_LAW_SUMMARY.md")
+    print("  ✅ manifold_law_summary.md")
 
 
 # =============================================================================
@@ -549,7 +549,7 @@ def main():
     print()
     print(f"Figures saved to: {FIGURES_DIR}")
     print(f"Tables saved to: {TABLES_DIR}")
-    print(f"Summary report: {OUTPUT_DIR / 'MANIFOLD_LAW_SUMMARY.md'}")
+    print(f"Summary report: {OUTPUT_DIR / 'manifold_law_summary.md'}")
 
 
 if __name__ == "__main__":

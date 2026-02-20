@@ -19,8 +19,8 @@ The current LOGO implementation includes ALL non-holdout classes in training, in
 ```
 deliverables/audits/logo/
 ├── README.md                          # This file
-├── AUDIT_PLAN.md                      # Detailed audit plan
-├── STATUS.md                          # Current status
+├── audit_plan.md                      # Detailed audit plan
+├── status.md                          # Current status
 │
 ├── ablation_study/                    # Task 1: Quantify impact
 │   ├── run_logo_ablation.py          # Run LOGO excluding "Other"
@@ -45,7 +45,7 @@ deliverables/audits/logo/
 └── results/                           # Final audit results
     ├── AUDIT_SUMMARY.md
     ├── FINAL_AUDIT_REPORT.md
-    └── COMPLETION_STATUS.md
+    └── completion_status.md
 ```
 
 ## Key Results
@@ -111,4 +111,4 @@ python deliverables/audits/logo/annotation_improvement/validate_reassignments.py
 - ⏳ Task 2 (GO Term Assignments): In progress
 - ⏳ Re-run LOGO with improved annotations: Pending
 
-See `results/COMPLETION_STATUS.md` for detailed status.
+See `results/completion_status.md` for detailed status.

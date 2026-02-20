@@ -115,10 +115,10 @@ def plot_validated_comparison(df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "VALIDATED_comparison.png", 
+    plt.savefig(OUTPUT_DIR / "validated_comparison.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ VALIDATED_comparison.png")
+    print("✅ validated_comparison.png")
 
 
 def plot_effect_size_context(df):
@@ -177,10 +177,10 @@ def plot_effect_size_context(df):
             ha='center', bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.7))
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "VALIDATED_effect_size_context.png", 
+    plt.savefig(OUTPUT_DIR / "validated_effect_size_context.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ VALIDATED_effect_size_context.png")
+    print("✅ validated_effect_size_context.png")
 
 
 def plot_the_real_finding(df):
@@ -229,10 +229,10 @@ def plot_the_real_finding(df):
     ax.grid(True, alpha=0.3, axis='x')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "VALIDATED_real_finding.png", 
+    plt.savefig(OUTPUT_DIR / "validated_real_finding.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ VALIDATED_real_finding.png")
+    print("✅ validated_real_finding.png")
 
 
 def main():

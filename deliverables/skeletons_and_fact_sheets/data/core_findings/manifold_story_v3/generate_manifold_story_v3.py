@@ -40,9 +40,9 @@ plt.rcParams['font.size'] = 10
 
 def load_all_data():
     """Load all data sources."""
-    lsft = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    lsft = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     return {'lsft': lsft, 'logo': logo, 'raw': raw}
 
 

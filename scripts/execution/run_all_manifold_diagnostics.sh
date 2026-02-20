@@ -14,9 +14,9 @@ echo "============================================================"
 echo ""
 
 # Dataset paths
-ADAMSON_ADATA="../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
+ADAMSON_ADATA="data/gears_pert_data/adamson/perturb_processed.h5ad"
 ADAMSON_SPLIT="results/goal_2_baselines/splits/adamson_split_seed1.json"
-K562_ADATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
+K562_ADATA="data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"
 K562_SPLIT="results/goal_2_baselines/splits/replogle_k562_essential_split_seed1.json"
 K562_ANNOT="data/annotations/replogle_k562_functional_classes_go.tsv"
 

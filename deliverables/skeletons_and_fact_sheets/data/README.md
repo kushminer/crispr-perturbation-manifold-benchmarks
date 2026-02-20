@@ -8,7 +8,7 @@ This folder contains all machine-readable CSV files extracted from the evaluatio
 
 These files contain individual perturbation-level results, allowing for detailed analysis and custom aggregations.
 
-### 1. `LSFT_raw_per_perturbation.csv` (9,744 rows)
+### 1. `lsft_raw_per_perturbation.csv` (9,744 rows)
 
 **Purpose:** Complete per-perturbation LSFT (Local Similarity-Filtered Training) results across all datasets, baselines, and top-K percentages.
 
@@ -43,7 +43,7 @@ These files contain individual perturbation-level results, allowing for detailed
 **Usage Example:**
 ```python
 import pandas as pd
-df = pd.read_csv('LSFT_raw_per_perturbation.csv')
+df = pd.read_csv('lsft_raw_per_perturbation.csv')
 
 # Filter for specific baseline and top_k
 selftrained_5pct = df[(df['baseline'] == 'lpm_selftrained') & (df['top_pct'] == 0.05)]
@@ -54,7 +54,7 @@ improvement_by_dataset = df.groupby(['dataset', 'baseline', 'top_pct'])['improve
 
 ---
 
-### 2. `LOGO_raw_per_perturbation.csv` (19,305 rows)
+### 2. `logo_raw_per_perturbation.csv` (19,305 rows)
 
 **Purpose:** Complete per-perturbation LOGO (Functional Class Holdout) results across all datasets and baselines.
 
@@ -78,7 +78,7 @@ improvement_by_dataset = df.groupby(['dataset', 'baseline', 'top_pct'])['improve
 **Usage Example:**
 ```python
 import pandas as pd
-df = pd.read_csv('LOGO_raw_per_perturbation.csv')
+df = pd.read_csv('logo_raw_per_perturbation.csv')
 
 # Filter for specific baseline
 scgpt_results = df[df['baseline'] == 'lpm_scgptGeneEmb']
@@ -115,7 +115,7 @@ These files contain aggregated statistics (means, confidence intervals) suitable
 
 ---
 
-### 4. `LSFT_resampling.csv` (24 rows)
+### 4. `lsft_resampling.csv` (24 rows)
 
 **Purpose:** LSFT resampling results with bootstrap confidence intervals (top_pct=0.05 only).
 
@@ -134,7 +134,7 @@ These files contain aggregated statistics (means, confidence intervals) suitable
 - `l2_ci_low`: Lower bound of 95% bootstrap CI for L2
 - `l2_ci_high`: Upper bound of 95% bootstrap CI for L2
 
-**Source:** Extracted from `RESAMPLING_FINDINGS_REPORT_SKELETON.md` (LSFT Performance section with CIs)
+**Source:** Extracted from `resampling_findings_report_skeleton.md` (LSFT Performance section with CIs)
 
 ---
 
@@ -156,11 +156,11 @@ These files contain aggregated statistics (means, confidence intervals) suitable
 - `l2_ci_low`: Lower bound of 95% CI for L2
 - `l2_ci_high`: Upper bound of 95% CI for L2
 
-**Source:** Extracted from `RESAMPLING_FINDINGS_REPORT_SKELETON.md` (LOGO Performance section)
+**Source:** Extracted from `resampling_findings_report_skeleton.md` (LOGO Performance section)
 
 ---
 
-### 6. `LOGO_resampling.csv` (27 rows)
+### 6. `logo_resampling.csv` (27 rows)
 
 **Purpose:** LOGO resampling results with bootstrap confidence intervals.
 
@@ -178,7 +178,7 @@ These files contain aggregated statistics (means, confidence intervals) suitable
 - `l2_ci_low`: Lower bound of 95% bootstrap CI for L2
 - `l2_ci_high`: Upper bound of 95% bootstrap CI for L2
 
-**Source:** Extracted from `RESAMPLING_FINDINGS_REPORT_SKELETON.md` (LOGO Performance section with CIs)
+**Source:** Extracted from `resampling_findings_report_skeleton.md` (LOGO Performance section with CIs)
 
 ---
 
@@ -186,13 +186,13 @@ These files contain aggregated statistics (means, confidence intervals) suitable
 
 ```
 Raw Data (Per-Perturbation)
-├── LSFT_raw_per_perturbation.csv  → Aggregated to → LSFT_results.csv
+├── lsft_raw_per_perturbation.csv  → Aggregated to → LSFT_results.csv
 │                                         ↓
-│                                    LSFT_resampling.csv (with CIs)
+│                                    lsft_resampling.csv (with CIs)
 │
-└── LOGO_raw_per_perturbation.csv  → Aggregated to → LOGO_results.csv
+└── logo_raw_per_perturbation.csv  → Aggregated to → LOGO_results.csv
                                           ↓
-                                     LOGO_resampling.csv (with CIs)
+                                     logo_resampling.csv (with CIs)
 ```
 
 **Key Differences:**

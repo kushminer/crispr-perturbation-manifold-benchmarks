@@ -17,7 +17,7 @@ This may be inflating performance on Transcription prediction.
 ```
 deliverables/audits/logo/
 ├── README.md                          # Overview
-├── AUDIT_PLAN.md                      # This file
+├── audit_plan.md                      # This file
 ├── ablation_study/                    # Task 1: Quantify impact
 │   ├── run_logo_ablation.py          # Run LOGO excluding "Other"
 │   ├── compare_results.py             # Compare standard vs ablation

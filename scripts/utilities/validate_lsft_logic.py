@@ -28,7 +28,7 @@ def validate_curvature_sweep_logic():
     print()
     
     # Use Adamson as a test case
-    adata_path = Path("../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad")
+    adata_path = Path("data/gears_pert_data/adamson/perturb_processed.h5ad")
     split_path = Path("results/goal_2_baselines/splits/adamson_split_seed1.json")
     
     if not adata_path.exists() or not split_path.exists():

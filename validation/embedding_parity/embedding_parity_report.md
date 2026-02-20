@@ -100,7 +100,7 @@ As part of **Sprint 5 – Embedding Parity & Linear Baseline Integration**, we t
 ### 3. scGPT Gene Embeddings
 
 **Loader:** `scgpt_gene`  
-**Source:** scGPT "whole-human" checkpoint (`data/models/scgpt/scGPT_human/`)  
+**Source:** scGPT "whole-human" checkpoint (`data/models/scgpt/scgpt_human/`)  
 **Legacy Script:** `extract_gene_embedding_scgpt.py` (Python, using `scGPT` library)  
 **New Implementation:** `src/embeddings/scgpt_gene.py` (Python, direct PyTorch checkpoint loading)
 
@@ -196,7 +196,7 @@ Legacy TSV outputs are stored in `validation/legacy_runs/`:
 
 ### Checkpoint Sources
 
-- **scGPT:** `data/models/scgpt/scGPT_human/` (official "whole-human" checkpoint from [bowang-lab/scGPT](https://github.com/bowang-lab/scGPT))
+- **scGPT:** `data/models/scgpt/scgpt_human/` (official "whole-human" checkpoint from [bowang-lab/scGPT](https://github.com/bowang-lab/scGPT))
 - **scFoundation:** `data/models/scfoundation/` (`models.ckpt` from Biomap SharePoint, `demo.h5ad` from repo)
 
 See `docs/EMBEDDING_CHECKPOINT_SOURCES.md` for detailed provenance.
@@ -229,7 +229,7 @@ With validated embedding parity established, we can now:
 
 - **Report CSV:** `validation/embedding_parity/embedding_script_parity_report.csv`
 - **Parity Plots:** `validation/embedding_parity_plots/*_parity.png` (4 plots)
-- **This Report:** `validation/embedding_parity/EMBEDDING_PARITY_REPORT.md`
+- **This Report:** `validation/embedding_parity/embedding_parity_report.md`
 
 ---
 

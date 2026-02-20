@@ -33,7 +33,7 @@ plt.rcParams['axes.titlesize'] = 18
 
 def load_lsft_raw():
     """Load raw LSFT scores per perturbation."""
-    path = DATA_DIR / "LSFT_raw_per_perturbation.csv"
+    path = DATA_DIR / "lsft_raw_per_perturbation.csv"
     if not path.exists():
         print(f"❌ Missing {path}")
         return None
@@ -120,10 +120,10 @@ def plot_consistency_violin(df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_consistency_is_key.png", 
+    plt.savefig(OUTPUT_DIR / "why_consistency_is_key.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_consistency_is_key.png")
+    print("✅ why_consistency_is_key.png")
 
 
 # =============================================================================
@@ -186,10 +186,10 @@ def plot_generalization_gap(lsft_df, logo_df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_generalization_gap.png", 
+    plt.savefig(OUTPUT_DIR / "why_generalization_gap.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_generalization_gap.png")
+    print("✅ why_generalization_gap.png")
 
 
 # =============================================================================
@@ -249,10 +249,10 @@ def plot_tangent_alignment(lsft_df, tangent_df):
     ax.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_manifold_alignment.png", 
+    plt.savefig(OUTPUT_DIR / "why_manifold_alignment.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_manifold_alignment.png")
+    print("✅ why_manifold_alignment.png")
 
 
 def main():

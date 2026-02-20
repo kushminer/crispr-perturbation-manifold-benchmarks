@@ -4,7 +4,7 @@ This folder contains skeleton versions of key analysis reports and a dataset fac
 
 ## Contents
 
-### 1. `RESAMPLING_FINDINGS_REPORT_SKELETON.md`
+### 1. `resampling_findings_report_skeleton.md`
 - **Purpose:** Skeleton version of the resampling findings report
 - **Content:** Methods and observations only (no commentary or interpretation)
 - **Key Features:**
@@ -31,7 +31,7 @@ This folder contains skeleton versions of key analysis reports and a dataset fac
   - Performance tables by dataset and top percentage (with attribution captions)
   - Fraction of perturbations improved statistics
 
-### 3. `DATASET_FACT_SHEET.md`
+### 3. `dataset_fact_sheet.md`
 - **Purpose:** Fact sheet about the raw datasets (Adamson and Replogle)
 - **Content:** Dataset characteristics, publication information, and data access
 - **Includes:**
@@ -46,14 +46,14 @@ This folder contains skeleton versions of key analysis reports and a dataset fac
 
 **Contents:**
 - **Raw Per-Perturbation Data:**
-  - `LSFT_raw_per_perturbation.csv` (9,744 rows) - Individual perturbation results for LSFT
-  - `LOGO_raw_per_perturbation.csv` (19,305 rows) - Individual perturbation results for LOGO
+  - `lsft_raw_per_perturbation.csv` (9,744 rows) - Individual perturbation results for LSFT
+  - `logo_raw_per_perturbation.csv` (19,305 rows) - Individual perturbation results for LOGO
 
 - **Summary Statistics:**
   - `LSFT_results.csv` (72 rows) - LSFT summary (point estimates, all top_k)
-  - `LSFT_resampling.csv` (24 rows) - LSFT resampling (with CIs, top_k=0.05)
+  - `lsft_resampling.csv` (24 rows) - LSFT resampling (with CIs, top_k=0.05)
   - `LOGO_results.csv` (27 rows) - LOGO summary (point estimates with CIs)
-  - `LOGO_resampling.csv` (27 rows) - LOGO resampling (with bootstrap CIs)
+  - `logo_resampling.csv` (27 rows) - LOGO resampling (with bootstrap CIs)
 
 **See `data/README.md` for complete documentation of all CSV files.**
 

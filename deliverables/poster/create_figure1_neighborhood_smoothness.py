@@ -25,8 +25,8 @@ plt.rcParams['axes.spines.top'] = False
 plt.rcParams['axes.spines.right'] = False
 
 # Load data - use raw per-perturbation data directly (NOT corrupted LSFT_results.csv)
-lsft_raw_path = project_root / "skeletons_and_fact_sheets" / "data" / "LSFT_raw_per_perturbation.csv"
-lsft_resampling_path = project_root / "skeletons_and_fact_sheets" / "data" / "LSFT_resampling.csv"
+lsft_raw_path = project_root / "skeletons_and_fact_sheets" / "data" / "lsft_raw_per_perturbation.csv"
+lsft_resampling_path = project_root / "skeletons_and_fact_sheets" / "data" / "lsft_resampling.csv"
 
 lsft_raw = pd.read_csv(lsft_raw_path)
 lsft_resampling = pd.read_csv(lsft_resampling_path)

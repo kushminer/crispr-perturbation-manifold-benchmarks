@@ -30,7 +30,7 @@ plt.rcParams['font.size'] = 11
 
 def load_data():
     """Load LSFT raw per-perturbation data."""
-    df = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    df = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     # Filter to top_pct = 0.05
     df = df[df['top_pct'] == 0.05].copy()
     return df
@@ -204,7 +204,7 @@ def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     
     df = load_data()
-    print(f"Loaded {len(df)} perturbations from LSFT_raw_per_perturbation.csv\n")
+    print(f"Loaded {len(df)} perturbations from lsft_raw_per_perturbation.csv\n")
     
     create_scatter_pearson_r(df)
     create_scatter_l2(df)

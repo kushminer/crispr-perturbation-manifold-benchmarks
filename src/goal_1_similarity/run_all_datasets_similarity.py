@@ -20,19 +20,19 @@ LOGGER = logging.getLogger(__name__)
 # Dataset configurations
 DATASETS = {
     "adamson": {
-        "adata_path": "../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad",
+        "adata_path": "data/gears_pert_data/adamson/perturb_processed.h5ad",
         "split_config": "results/goal_2_baselines/splits/adamson_split_seed1.json",
         "baseline_results": "results/goal_2_baselines/adamson_reproduced/baseline_results_reproduced.csv",
         "output_base": "results/similarity_adamson",
     },
     "k562": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
+        "adata_path": "data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad",
         "split_config": "results/goal_2_baselines/splits/replogle_k562_essential_split_seed1.json",
         "baseline_results": "results/goal_2_baselines/replogle_k562_essential_reproduced/baseline_results_reproduced.csv",
         "output_base": "results/similarity_k562",
     },
     "rpe1": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad",
+        "adata_path": "data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad",
         "split_config": "results/goal_2_baselines/splits/replogle_rpe1_essential_split_seed1.json",
         "baseline_results": "results/goal_2_baselines/replogle_rpe1_essential_reproduced/baseline_results_reproduced.csv",
         "output_base": "results/similarity_rpe1",

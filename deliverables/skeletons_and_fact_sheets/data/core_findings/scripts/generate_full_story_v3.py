@@ -30,9 +30,9 @@ plt.rcParams['font.size'] = 12
 
 def load_data():
     """Load all data."""
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
-    lsft = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    lsft = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     return {'raw': raw, 'logo': logo, 'lsft': lsft}
 
 
@@ -112,9 +112,9 @@ def plot_4_headline_updated(data):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_4_headline.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_4_headline.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_4_headline.png (updated with raw baseline + more models)")
+    print("✅ full_4_headline.png (updated with raw baseline + more models)")
 
 
 # =============================================================================
@@ -217,9 +217,9 @@ def plot_5_complete_updated(data):
                 fontsize=20, fontweight='bold', y=0.98)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "FULL_5_complete.png", dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "full_5_complete.png", dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ FULL_5_complete.png (updated: vertical + more models)")
+    print("✅ full_5_complete.png (updated: vertical + more models)")
 
 
 def main():

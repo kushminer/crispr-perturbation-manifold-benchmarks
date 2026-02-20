@@ -8,16 +8,16 @@
 
 | File | Layout | Best For |
 |------|--------|----------|
-| `POSTER_single_slide.png` | Side-by-side (2 panels) | Quick comparison, wide posters |
-| `POSTER_v2_stacked.png` | Stacked (2 panels) | Narrow posters, vertical flow |
-| `POSTER_v3_three_panels.png` | Horizontal (3 panels) | Wide posters, complete story |
-| `POSTER_v4_vertical.png` | Vertical (3 panels) | **Recommended** — tall posters, best flow |
+| `poster_single_slide.png` | Side-by-side (2 panels) | Quick comparison, wide posters |
+| `poster_v2_stacked.png` | Stacked (2 panels) | Narrow posters, vertical flow |
+| `poster_v3_three_panels.png` | Horizontal (3 panels) | Wide posters, complete story |
+| `poster_v4_vertical.png` | Vertical (3 panels) | **Recommended** — tall posters, best flow |
 
 ---
 
 ## Detailed Descriptions
 
-### POSTER_single_slide.png
+### poster_single_slide.png
 
 **Title:** Local Similarity vs Giant AI Models — Baseline & Generalization Comparison
 
@@ -33,7 +33,7 @@
 
 ---
 
-### POSTER_v2_stacked.png
+### poster_v2_stacked.png
 
 **Title:** Two-Stage Validation — Unseen Perturbations & Unseen Functions
 
@@ -51,7 +51,7 @@
 
 ---
 
-### POSTER_v3_three_panels.png
+### poster_v3_three_panels.png
 
 **Title:** The Complete Story — Raw → Local Similarity → Generalization
 
@@ -73,7 +73,7 @@
 
 ---
 
-### POSTER_v4_vertical.png ⭐ RECOMMENDED
+### poster_v4_vertical.png ⭐ RECOMMENDED
 
 **Title:** The Manifold Law — Why Simple Models Win
 
@@ -140,6 +140,6 @@ python generate_poster_v4.py         # v4 (vertical)
 ```
 
 Data sources:
-- `LSFT_raw_per_perturbation.csv` — baseline and LSFT performance
+- `lsft_raw_per_perturbation.csv` — baseline and LSFT performance
 - `LOGO_results.csv` — functional generalization results
 

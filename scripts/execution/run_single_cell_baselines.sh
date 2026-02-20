@@ -1,69 +1,61 @@
 #!/bin/bash
 #
-# Run single-cell baseline evaluation for Adamson and K562 datasets
+# Run single-cell baseline evaluation for Adamson and K562 datasets.
 #
 
-set -e
+set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$REPO_ROOT"
 
-# Activate conda environment
-source /opt/anaconda3/etc/profile.d/conda.sh
-conda activate gears_env2
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
-# Data paths
-ADAMSON_DATA="/Users/samuelminer/Documents/classes/nih_research/data_adamson/perturb_processed.h5ad"
-K562_DATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
+# Canonical paths (override via env vars if needed)
+ADAMSON_DATA_PATH="${ADAMSON_DATA_PATH:-data/gears_pert_data/adamson/perturb_processed.h5ad}"
+K562_DATA_PATH="${K562_DATA_PATH:-data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad}"
 
-# Split config paths (use existing or create)
 RESULTS_DIR="$REPO_ROOT/results/single_cell_analysis"
 mkdir -p "$RESULTS_DIR"
 
-# Parameters
-N_CELLS_PER_PERT=50
-PCA_DIM=10
-RIDGE_PENALTY=0.1
-SEED=1
+if [[ ! -f "$ADAMSON_DATA_PATH" ]]; then
+  echo "Missing Adamson data: $ADAMSON_DATA_PATH"
+  exit 1
+fi
+if [[ ! -f "$K562_DATA_PATH" ]]; then
+  echo "Missing K562 data: $K562_DATA_PATH"
+  exit 1
+fi
 
 echo "=============================================="
 echo "SINGLE-CELL BASELINE EVALUATION"
 echo "=============================================="
-echo "N cells per perturbation: $N_CELLS_PER_PERT"
-echo "PCA dimension: $PCA_DIM"
-echo "Ridge penalty: $RIDGE_PENALTY"
-echo "Seed: $SEED"
+echo "Adamson data: $ADAMSON_DATA_PATH"
+echo "K562 data: $K562_DATA_PATH"
+
 echo ""
 
-# Add src to PYTHONPATH
-export PYTHONPATH="$REPO_ROOT/src:$PYTHONPATH"
+export PYTHONPATH="$REPO_ROOT/src:${PYTHONPATH:-}"
+export ADAMSON_DATA_PATH
+export K562_DATA_PATH
 
-# Run Python script
-python3 << 'EOF'
-import sys
+"${PYTHON_BIN}" <<'PY'
+import json
 import logging
+import os
 from pathlib import Path
+
+import anndata as ad
+import numpy as np
+
+from goal_2_baselines.baseline_runner_single_cell import run_all_baselines_single_cell
+from goal_2_baselines.baseline_types import BaselineType
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 LOGGER = logging.getLogger(__name__)
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
-
-from goal_2_baselines.baseline_runner_single_cell import run_all_baselines_single_cell
-from goal_2_baselines.baseline_types import BaselineType
-from goal_2_baselines.split_logic import load_split_config, prepare_perturbation_splits
-import anndata as ad
-import json
-
-# Configuration
 datasets = {
-    "adamson": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_adamson/perturb_processed.h5ad",
-    },
-    "k562": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
-    },
+    "adamson": Path(os.environ["ADAMSON_DATA_PATH"]),
+    "k562": Path(os.environ["K562_DATA_PATH"]),
 }
 
 n_cells_per_pert = 50
@@ -74,59 +66,47 @@ seed = 1
 results_dir = Path("results/single_cell_analysis")
 results_dir.mkdir(parents=True, exist_ok=True)
 
-# Baselines to run
 baselines = [
     BaselineType.SELFTRAINED,
     BaselineType.RANDOM_GENE_EMB,
     BaselineType.RANDOM_PERT_EMB,
 ]
 
-for dataset_name, config in datasets.items():
-    LOGGER.info(f"\n{'='*60}")
-    LOGGER.info(f"Dataset: {dataset_name}")
-    LOGGER.info(f"{'='*60}")
-    
-    adata_path = Path(config["adata_path"])
-    
+for dataset_name, adata_path in datasets.items():
+    LOGGER.info("\n%s", "=" * 60)
+    LOGGER.info("Dataset: %s", dataset_name)
+    LOGGER.info("%s", "=" * 60)
+
     if not adata_path.exists():
-        LOGGER.warning(f"Data file not found: {adata_path}")
+        LOGGER.warning("Data file not found: %s", adata_path)
         continue
-    
-    # Create or load split config
+
     split_config_path = results_dir / f"{dataset_name}_split_config.json"
-    
+
     if not split_config_path.exists():
         LOGGER.info("Creating train/test split...")
         adata = ad.read_h5ad(adata_path)
-        
-        # Get all perturbation conditions (excluding ctrl)
         conditions = [c for c in adata.obs["condition"].unique() if c != "ctrl"]
-        
-        # Simple random 80/20 split
-        import numpy as np
         np.random.seed(seed)
         np.random.shuffle(conditions)
-        
+
         n_train = int(0.8 * len(conditions))
         train_conditions = conditions[:n_train]
         test_conditions = conditions[n_train:]
-        
-        # Include ctrl in all splits
+
         split_config = {
             "train": list(train_conditions) + ["ctrl"],
             "test": list(test_conditions),
         }
-        
-        with open(split_config_path, "w") as f:
-            json.dump(split_config, f, indent=2)
-        
-        LOGGER.info(f"Created split: {len(train_conditions)} train, {len(test_conditions)} test")
+        with open(split_config_path, "w", encoding="utf-8") as handle:
+            json.dump(split_config, handle, indent=2)
+
+        LOGGER.info("Created split: %s train, %s test", len(train_conditions), len(test_conditions))
     else:
-        LOGGER.info(f"Using existing split config: {split_config_path}")
-    
-    # Run baselines
+        LOGGER.info("Using existing split config: %s", split_config_path)
+
     output_dir = results_dir / dataset_name
-    
+
     try:
         results_df = run_all_baselines_single_cell(
             adata_path=adata_path,
@@ -139,20 +119,15 @@ for dataset_name, config in datasets.items():
             n_cells_per_pert=n_cells_per_pert,
             cell_embedding_method="cell_pca",
         )
-        
-        LOGGER.info(f"\n{dataset_name} Results:")
-        LOGGER.info(f"\n{results_df.to_string()}")
-        
-    except Exception as e:
-        LOGGER.error(f"Failed to run {dataset_name}: {e}")
-        import traceback
-        traceback.print_exc()
+        LOGGER.info("\n%s Results:\n%s", dataset_name, results_df.to_string())
+    except Exception as exc:  # noqa: BLE001
+        LOGGER.error("Failed to run %s: %s", dataset_name, exc)
+        raise
 
-LOGGER.info("\n" + "="*60)
+LOGGER.info("\n%s", "=" * 60)
 LOGGER.info("SINGLE-CELL BASELINE EVALUATION COMPLETE")
-LOGGER.info("="*60)
-EOF
+LOGGER.info("%s", "=" * 60)
+PY
 
 echo ""
-echo "Done! Results saved to $RESULTS_DIR"
-
+echo "Done. Results saved to $RESULTS_DIR"

@@ -99,10 +99,10 @@ def plot_consistency_is_key(logo_df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_consistency_is_key.png", 
+    plt.savefig(OUTPUT_DIR / "why_consistency_is_key.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_consistency_is_key.png")
+    print("✅ why_consistency_is_key.png")
 
 
 def plot_failure_rate(logo_df):
@@ -146,10 +146,10 @@ def plot_failure_rate(logo_df):
     ax.grid(True, alpha=0.3, axis='x')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_failure_rate.png", 
+    plt.savefig(OUTPUT_DIR / "why_failure_rate.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_failure_rate.png")
+    print("✅ why_failure_rate.png")
 
 
 def plot_variance_comparison(logo_df):
@@ -204,10 +204,10 @@ def plot_variance_comparison(logo_df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_variance_comparison.png", 
+    plt.savefig(OUTPUT_DIR / "why_variance_comparison.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_variance_comparison.png")
+    print("✅ why_variance_comparison.png")
 
 
 def plot_summary_why_pca_wins():
@@ -273,10 +273,10 @@ def plot_summary_why_pca_wins():
                 fontsize=16, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_summary.png", 
+    plt.savefig(OUTPUT_DIR / "why_summary.png", 
                 dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ WHY_summary.png")
+    print("✅ why_summary.png")
 
 
 def main():

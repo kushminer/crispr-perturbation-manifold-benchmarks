@@ -180,9 +180,9 @@ def construct_gene_embeddings(
         if "checkpoint_dir" in embedding_args:
             checkpoint_dir = Path(embedding_args["checkpoint_dir"])
             if not checkpoint_dir.is_absolute():
-                # Resolve relative to evaluation_framework root
-                eval_framework_root = Path(__file__).parent.parent.parent
-                checkpoint_dir = eval_framework_root / checkpoint_dir
+                # Resolve relative to repository root
+                repo_root = Path(__file__).parent.parent.parent
+                checkpoint_dir = repo_root / checkpoint_dir
             embedding_args["checkpoint_dir"] = str(checkpoint_dir.resolve())
         
         result = load("scgpt_gene", **embedding_args)
@@ -233,16 +233,16 @@ def construct_gene_embeddings(
         # Resolve relative paths
         embedding_args = embedding_args.copy()
         gene_name_mapping = embedding_args.pop("gene_name_mapping", None)  # Remove from args, handle separately
-        eval_framework_root = Path(__file__).parent.parent.parent
+        repo_root = Path(__file__).parent.parent.parent
         if "checkpoint_path" in embedding_args:
             checkpoint_path = Path(embedding_args["checkpoint_path"])
             if not checkpoint_path.is_absolute():
-                checkpoint_path = eval_framework_root / checkpoint_path
+                checkpoint_path = repo_root / checkpoint_path
             embedding_args["checkpoint_path"] = str(checkpoint_path.resolve())
         if "demo_h5ad" in embedding_args:
             demo_h5ad = Path(embedding_args["demo_h5ad"])
             if not demo_h5ad.is_absolute():
-                demo_h5ad = eval_framework_root / demo_h5ad
+                demo_h5ad = repo_root / demo_h5ad
             embedding_args["demo_h5ad"] = str(demo_h5ad.resolve())
         
         result = load("scfoundation_gene", **embedding_args)
@@ -354,9 +354,9 @@ def construct_pert_embeddings(
         if "source_csv" in embedding_args:
             source_csv = Path(embedding_args["source_csv"])
             if not source_csv.is_absolute():
-                # Resolve relative to evaluation_framework root
-                eval_framework_root = Path(__file__).parent.parent.parent
-                source_csv = eval_framework_root / source_csv
+                # Resolve relative to repository root
+                repo_root = Path(__file__).parent.parent.parent
+                source_csv = repo_root / source_csv
             embedding_args["source_csv"] = str(source_csv.resolve())
             LOGGER.info(f"GEARS CSV path (resolved): {source_csv}")
             if not source_csv.exists():

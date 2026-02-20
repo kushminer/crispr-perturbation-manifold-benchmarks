@@ -4,9 +4,9 @@
 set -e  # Exit on error
 
 # Dataset paths
-ADAMSON_DATA_PATH="../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
-K562_DATA_PATH="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
-RPE1_DATA_PATH="/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"
+ADAMSON_DATA_PATH="data/gears_pert_data/adamson/perturb_processed.h5ad"
+K562_DATA_PATH="data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"
+RPE1_DATA_PATH="data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"
 
 # Split paths
 ADAMSON_SPLIT="results/goal_2_baselines/splits/adamson_split_seed1.json"

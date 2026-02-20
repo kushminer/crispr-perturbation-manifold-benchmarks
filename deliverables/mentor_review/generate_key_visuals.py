@@ -355,22 +355,22 @@ def main():
     print()
     
     print("1. Creating LSFT Beeswarm (Adamson)...")
-    create_lsft_beeswarm_adamson(output_dir / "1_LSFT_Beeswarm_Adamson.png")
+    create_lsft_beeswarm_adamson(output_dir / "1_lsft_beeswarm_adamson.png")
     
     print("\n2. Creating LSFT Hardness-Performance Curve...")
-    create_lsft_hardness_curve(output_dir / "2_LSFT_Hardness_Performance_Curve.png")
+    create_lsft_hardness_curve(output_dir / "2_lsft_hardness_performance_curve.png")
     
     print("\n3. Creating LOGO Performance Bar Chart...")
-    create_logo_bar_chart(output_dir / "3_LOGO_Performance_Bar_Chart.png")
+    create_logo_bar_chart(output_dir / "3_logo_performance_bar_chart.png")
     
     print("\n4. Creating PCA vs scGPT LOGO Scatter...")
-    create_pca_vs_scgpt_logo_scatter(output_dir / "4_PCA_vs_scGPT_LOGO_Scatter.png")
+    create_pca_vs_scgpt_logo_scatter(output_dir / "4_pca_vs_scgpt_logo_scatter.png")
     
     print("\n5. Creating Manifold Schematic...")
-    create_manifold_schematic(output_dir / "5_Manifold_Schematic.png")
+    create_manifold_schematic(output_dir / "5_manifold_schematic.png")
     
     print("\n6. Creating Baseline Crisis Visual...")
-    create_baseline_crisis_visual(output_dir / "6_Baseline_Crisis_Visual.png")
+    create_baseline_crisis_visual(output_dir / "6_baseline_crisis_visual.png")
     
     print()
     print("=" * 70)

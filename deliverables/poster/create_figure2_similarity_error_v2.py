@@ -38,7 +38,7 @@ plt.rcParams['axes.spines.top'] = False
 plt.rcParams['axes.spines.right'] = False
 
 # Load data - USE CORRECTED SINGLE-CELL DATA instead of buggy pseudobulk
-# The pseudobulk LSFT_raw_per_perturbation.csv (Nov 21) contains buggy data from before centering fix
+# The pseudobulk lsft_raw_per_perturbation.csv (Nov 21) contains buggy data from before centering fix
 # Single-cell LSFT data has been corrected and shows accurate similarity-error relationships
 
 print("Creating Figure 2 v2: Similarity → Error (Upgraded)")
@@ -79,7 +79,7 @@ if lsft_data:
     print(f"Loaded {len(lsft_raw)} corrected single-cell LSFT results")
 else:
     # Fallback to old file with warning
-    lsft_raw_path = project_root / "skeletons_and_fact_sheets" / "data" / "LSFT_raw_per_perturbation.csv"
+    lsft_raw_path = project_root / "skeletons_and_fact_sheets" / "data" / "lsft_raw_per_perturbation.csv"
     print(f"WARNING: Using old pseudobulk data (may contain buggy values)")
     lsft_raw = pd.read_csv(lsft_raw_path)
     print(f"Loaded {len(lsft_raw)} LSFT raw results (OLD DATA - may be buggy)")

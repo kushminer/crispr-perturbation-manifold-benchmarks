@@ -104,7 +104,7 @@ def plot_simple_curvature(df):
     ax.spines['right'].set_visible(False)
     
     plt.tight_layout()
-    output_path = OUTPUT_DIR / "SIMPLE_1_curvature.png"
+    output_path = OUTPUT_DIR / "simple_1_curvature.png"
     plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f"✅ {output_path.name}")
@@ -161,7 +161,7 @@ def plot_simple_baseline(df):
     ax.grid(True, alpha=0.3, axis='x')
     
     plt.tight_layout()
-    output_path = OUTPUT_DIR / "SIMPLE_2_baseline.png"
+    output_path = OUTPUT_DIR / "simple_2_baseline.png"
     plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f"✅ {output_path.name}")
@@ -218,7 +218,7 @@ def plot_simple_similarity(df):
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    output_path = OUTPUT_DIR / "SIMPLE_3_similarity.png"
+    output_path = OUTPUT_DIR / "simple_3_similarity.png"
     plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f"✅ {output_path.name}")
@@ -300,7 +300,7 @@ def plot_combined_simple(df):
                 fontsize=20, fontweight='bold', y=1.02)
     
     plt.tight_layout()
-    output_path = OUTPUT_DIR / "SIMPLE_combined.png"
+    output_path = OUTPUT_DIR / "simple_combined.png"
     plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f"✅ {output_path.name}")

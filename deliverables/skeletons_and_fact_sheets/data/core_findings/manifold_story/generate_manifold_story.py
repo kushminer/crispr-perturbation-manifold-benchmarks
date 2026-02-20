@@ -9,9 +9,9 @@ Three-part narrative proving geometry > deep learning:
 3. EXTRAPOLATION BREAKS DL — PCA generalizes, FMs collapse
 
 Data sources:
-- LSFT_resampling.csv — bootstrapped LSFT results with CIs
+- lsft_resampling.csv — bootstrapped LSFT results with CIs
 - LOGO_results.csv — leave-one-GO-class-out generalization
-- LSFT_raw_per_perturbation.csv — per-perturbation details
+- lsft_raw_per_perturbation.csv — per-perturbation details
 """
 
 import pandas as pd
@@ -44,9 +44,9 @@ plt.rcParams['font.size'] = 11
 
 def load_all_data():
     """Load all data sources."""
-    lsft = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    lsft = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     return {'lsft': lsft, 'logo': logo, 'raw': raw}
 
 

@@ -16,15 +16,15 @@ echo ""
 
 # Dataset configuration
 declare -A DATASETS
-DATASETS[adamson,adata]="${REPO_ROOT}/../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
+DATASETS[adamson,adata]="${REPO_ROOT}/data/gears_pert_data/adamson/perturb_processed.h5ad"
 DATASETS[adamson,split]="${REPO_ROOT}/results/goal_2_baselines/splits/adamson_split_seed1.json"
 DATASETS[adamson,annot]="${REPO_ROOT}/data/annotations/adamson_functional_classes_go.tsv"
 
-DATASETS[k562,adata]="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
+DATASETS[k562,adata]="data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"
 DATASETS[k562,split]="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_k562_essential_split_seed1.json"
 DATASETS[k562,annot]="${REPO_ROOT}/data/annotations/replogle_k562_functional_classes_go.tsv"
 
-DATASETS[rpe1,adata]="/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"
+DATASETS[rpe1,adata]="data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"
 DATASETS[rpe1,split]="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_rpe1_essential_split_seed1.json"
 DATASETS[rpe1,annot]="${REPO_ROOT}/data/annotations/replogle_rpe1_functional_classes_go.tsv"
 

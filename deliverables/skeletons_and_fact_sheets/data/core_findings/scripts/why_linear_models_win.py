@@ -37,11 +37,11 @@ def load_data():
 
     # LSFT results
     data['lsft'] = pd.read_csv(DATA_DIR / "LSFT_results.csv")
-    data['lsft_raw'] = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    data['lsft_raw'] = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
 
     # LOGO results
     data['logo'] = pd.read_csv(DATA_DIR / "LOGO_results.csv")
-    data['logo_raw'] = pd.read_csv(DATA_DIR / "LOGO_raw_per_perturbation.csv")
+    data['logo_raw'] = pd.read_csv(DATA_DIR / "logo_raw_per_perturbation.csv")
 
     return data
 
@@ -91,9 +91,9 @@ def plot_variance_explained(data):
     plt.suptitle('PCA Captures More Predictive Variance in Embedding Space',
                 fontsize=16, fontweight='bold', y=1.02)
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_variance_explained.png", dpi=150, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR / "why_variance_explained.png", dpi=150, bbox_inches='tight')
     plt.close()
-    print("✅ WHY_variance_explained.png")
+    print("✅ why_variance_explained.png")
 
 
 # =============================================================================
@@ -149,9 +149,9 @@ def plot_consistency_across_perturbations(data):
     plt.suptitle('PCA Shows More Consistent Performance Across Perturbations',
                 fontsize=16, fontweight='bold', y=1.02)
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_consistency_is_key.png", dpi=150, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR / "why_consistency_is_key.png", dpi=150, bbox_inches='tight')
     plt.close()
-    print("✅ WHY_consistency_is_key.png")
+    print("✅ why_consistency_is_key.png")
 
 
 # =============================================================================
@@ -240,9 +240,9 @@ def plot_failure_rate(data):
     plt.suptitle('PCA Fails Less Catastrophically on Hard Perturbations',
                 fontsize=16, fontweight='bold', y=1.02)
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_failure_rate.png", dpi=150, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR / "why_failure_rate.png", dpi=150, bbox_inches='tight')
     plt.close()
-    print("✅ WHY_failure_rate.png")
+    print("✅ why_failure_rate.png")
 
 
 # =============================================================================
@@ -335,9 +335,9 @@ def plot_manifold_alignment(data):
     plt.suptitle('PCA Shows Better Manifold Alignment Across All Metrics',
                 fontsize=16, fontweight='bold', y=0.98)
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_manifold_alignment.png", dpi=150, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR / "why_manifold_alignment.png", dpi=150, bbox_inches='tight')
     plt.close()
-    print("✅ WHY_manifold_alignment.png")
+    print("✅ why_manifold_alignment.png")
 
 
 # =============================================================================
@@ -399,9 +399,9 @@ def plot_generalization_gap(data):
            bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
 
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_generalization_gap.png", dpi=150, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR / "why_generalization_gap.png", dpi=150, bbox_inches='tight')
     plt.close()
-    print("✅ WHY_generalization_gap.png")
+    print("✅ why_generalization_gap.png")
 
 
 # =============================================================================
@@ -549,9 +549,9 @@ def plot_why_summary(data):
             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.3))
 
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "WHY_summary.png", dpi=150, bbox_inches='tight')
+    plt.savefig(OUTPUT_DIR / "why_summary.png", dpi=150, bbox_inches='tight')
     plt.close()
-    print("✅ WHY_summary.png")
+    print("✅ why_summary.png")
 
 
 def main():

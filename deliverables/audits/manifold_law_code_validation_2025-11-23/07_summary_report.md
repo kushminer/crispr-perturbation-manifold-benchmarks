@@ -27,7 +27,7 @@ using PCA, scGPT, scFoundation, GEARS, random embeddings, and the 8 Nature basel
 **Conclusion:** Environment setup documented, dependencies pinned, basic functionality verified.
 
 **Artifacts:**
-- `00_README.md` - Environment setup and command documentation
+- `00_readme.md` - Environment setup and command documentation
 - `test_environment.py` - Environment validation script
 - `logs/phase0_fresh_run.log` - Test execution log
 
@@ -101,7 +101,7 @@ using PCA, scGPT, scFoundation, GEARS, random embeddings, and the 8 Nature basel
 - ✅ Implementation matches specification
 
 **Artifacts:**
-- `04_LOGO_split_check.md`
+- `04_logo_split_check.md`
 - Phase 1 validation covers LOGO split checks
 
 ---
@@ -119,7 +119,7 @@ using PCA, scGPT, scFoundation, GEARS, random embeddings, and the 8 Nature basel
 - ✅ Test perturbation never used in training
 
 **Artifacts:**
-- `05_LSFT_implementation_check.md`
+- `05_lsft_implementation_check.md`
 - Code review: `src/goal_3_prediction/lsft/lsft.py`
 
 ---
@@ -191,12 +191,12 @@ Based on the above systematic checks, we find **NO EVIDENCE** that coding or met
 All validation artifacts are located in:
 ```
 deliverables/audits/manifold_law_code_validation_2025-11-23/
-├── 00_README.md
+├── 00_readme.md
 ├── 01_data_pipeline_check.md
 ├── 02_embedding_check.md
 ├── 03_baseline_reproduction_check.md
-├── 04_LOGO_split_check.md
-├── 05_LSFT_implementation_check.md
+├── 04_logo_split_check.md
+├── 05_lsft_implementation_check.md
 ├── 06_metrics_and_resampling_check.md
 ├── 07_summary_report.md (this file)
 ├── notebooks/
@@ -212,7 +212,7 @@ deliverables/audits/manifold_law_code_validation_2025-11-23/
 │   ├── pca_explained_variance_train_vs_all.png
 │   ├── split_overlap_check.png
 │   ├── baseline_toy_truth_vs_pred.png
-│   ├── lsft_neighbor_counts_topK.png
+│   ├── lsft_neighbor_counts_topk.png
 │   ├── bootstrap_distribution_example.png
 │   └── permutation_null_distribution.png
 └── unit_tests/ (empty - validation scripts used instead)

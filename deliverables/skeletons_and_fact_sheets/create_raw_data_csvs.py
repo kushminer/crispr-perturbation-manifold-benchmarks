@@ -172,7 +172,7 @@ def main():
         output_dir = Path(__file__).parent / "data"
         output_dir.mkdir(exist_ok=True)
         
-        output_path = output_dir / "LSFT_raw_per_perturbation.csv"
+        output_path = output_dir / "lsft_raw_per_perturbation.csv"
         lsft_raw.to_csv(output_path, index=False)
         print(f"\nSaved LSFT raw data to {output_path}")
         print(f"  Total rows: {len(lsft_raw)}")
@@ -191,7 +191,7 @@ def main():
         output_dir = Path(__file__).parent / "data"
         output_dir.mkdir(exist_ok=True)
         
-        output_path = output_dir / "LOGO_raw_per_perturbation.csv"
+        output_path = output_dir / "logo_raw_per_perturbation.csv"
         logo_raw.to_csv(output_path, index=False)
         print(f"\nSaved LOGO raw data to {output_path}")
         print(f"  Total rows: {len(logo_raw)}")

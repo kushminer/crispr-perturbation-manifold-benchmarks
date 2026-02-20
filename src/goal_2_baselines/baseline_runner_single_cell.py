@@ -263,9 +263,9 @@ def run_single_baseline_single_cell(
                 # Resolve path the same way construct_pert_embeddings does
                 source_csv_path = Path(pert_embedding_args["source_csv"])
                 if not source_csv_path.is_absolute():
-                    # Resolve relative to evaluation_framework root (same as baseline_runner.py)
-                    eval_framework_root = Path(__file__).parent.parent.parent
-                    source_csv_path = eval_framework_root / source_csv_path
+                    # Resolve relative to repository root (same as baseline_runner.py)
+                    repo_root = Path(__file__).parent.parent.parent
+                    source_csv_path = repo_root / source_csv_path
                 source_csv_path = source_csv_path.resolve()
                 
                 if source_csv_path.exists():
@@ -276,16 +276,16 @@ def run_single_baseline_single_cell(
         
         LOGGER.info(f"[{config.baseline_type.value}] Calling construct_pert_embeddings with source='{config.pert_embedding_source}'")
         try:
-        B_pert_train, train_pert_labels, _, B_pert_test, test_pert_labels = construct_pert_embeddings(
-            source=config.pert_embedding_source,
-            train_data=train_pseudobulk.values,
-            pert_names=train_pseudobulk.columns.tolist(),
-            pca_dim=config.pca_dim,
-            seed=config.seed,
-            embedding_args=pert_embedding_args,
-            test_data=test_pseudobulk.values if test_pseudobulk is not None else None,
-            test_pert_names=test_pseudobulk.columns.tolist() if test_pseudobulk is not None else None,
-        )
+            B_pert_train, train_pert_labels, _, B_pert_test, test_pert_labels = construct_pert_embeddings(
+                source=config.pert_embedding_source,
+                train_data=train_pseudobulk.values,
+                pert_names=train_pseudobulk.columns.tolist(),
+                pca_dim=config.pca_dim,
+                seed=config.seed,
+                embedding_args=pert_embedding_args,
+                test_data=test_pseudobulk.values if test_pseudobulk is not None else None,
+                test_pert_names=test_pseudobulk.columns.tolist() if test_pseudobulk is not None else None,
+            )
             LOGGER.info(f"[{config.baseline_type.value}] construct_pert_embeddings returned:")
             LOGGER.info(f"  B_pert_train shape: {B_pert_train.shape if B_pert_train is not None else None}")
             LOGGER.info(f"  train_pert_labels: {len(train_pert_labels) if train_pert_labels else 0} perturbations")
@@ -596,4 +596,3 @@ def run_all_baselines_single_cell(
     LOGGER.info(f"Summary:\n{results_df.to_string()}")
     
     return results_df
-

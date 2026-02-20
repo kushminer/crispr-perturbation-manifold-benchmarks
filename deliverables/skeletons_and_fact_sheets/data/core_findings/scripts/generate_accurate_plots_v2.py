@@ -3,7 +3,7 @@
 Generate Accurate Plots from CSV Data - V2
 
 Uses the CORRECT data from:
-- LSFT_resampling.csv (with bootstrap CIs)
+- lsft_resampling.csv (with bootstrap CIs)
 - LOGO_results.csv (with bootstrap CIs)
 
 Creates both Pearson R and L2 versions of each plot.
@@ -56,14 +56,14 @@ def load_data():
     data = {}
     
     # LSFT with bootstrap CIs (correct data)
-    data['lsft'] = pd.read_csv(DATA_DIR / "LSFT_resampling.csv")
+    data['lsft'] = pd.read_csv(DATA_DIR / "lsft_resampling.csv")
     
     # LOGO with bootstrap CIs
     data['logo'] = pd.read_csv(DATA_DIR / "LOGO_results.csv")
     
     # Raw per-perturbation for additional analysis
-    data['lsft_raw'] = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
-    data['logo_raw'] = pd.read_csv(DATA_DIR / "LOGO_raw_per_perturbation.csv")
+    data['lsft_raw'] = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
+    data['logo_raw'] = pd.read_csv(DATA_DIR / "logo_raw_per_perturbation.csv")
     
     return data
 

@@ -14,7 +14,7 @@ import pandas as pd
 import torch
 
 parser = argparse.ArgumentParser(description="Extract subset of scGPT gene embeddings")
-parser.add_argument("--model_dir", type=str, required=True, help="Path to scGPT_human checkpoint directory")
+parser.add_argument("--model_dir", type=str, required=True, help="Path to scgpt_human checkpoint directory")
 parser.add_argument("--gene_list", type=str, required=True, help="Path to text file listing subset genes (one per line)")
 parser.add_argument("--output_tsv", type=str, required=True, help="Where to write the legacy-format TSV output")
 args = parser.parse_args()

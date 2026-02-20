@@ -35,7 +35,7 @@ fi
 echo "Creating v2 repository directory..."
 mkdir -p "${V2_DIR}"
 
-echo "Copying files from evaluation_framework..."
+echo "Copying files from current repository..."
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Copy all files and directories, preserving structure
@@ -161,4 +161,3 @@ echo "   cd ${V2_DIR}"
 echo "   PYTHONPATH=src python verify_sprint11_implementation.py"
 echo ""
 echo "============================================================"
-

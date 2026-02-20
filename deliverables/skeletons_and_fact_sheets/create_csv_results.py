@@ -165,7 +165,7 @@ def main():
     print(f"Created {lsft_csv} with {len(lsft_results)} rows")
     
     # Read LOGO skeleton
-    logo_file = base_dir / "RESAMPLING_FINDINGS_REPORT_SKELETON.md"
+    logo_file = base_dir / "resampling_findings_report_skeleton.md"
     with open(logo_file, 'r') as f:
         logo_lines = f.readlines()
     

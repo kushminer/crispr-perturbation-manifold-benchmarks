@@ -55,11 +55,9 @@ def test_split_logic_paths():
     try:
         # Simulate path resolution from split_logic.py
         current_file = Path(__file__).parent.parent.parent / "src" / "goal_2_baselines" / "split_logic.py"
-        framework_root = current_file.parent.parent.parent.parent  # evaluation_framework/
-        repo_root = framework_root.parent  # repository root
+        repo_root = current_file.parent.parent.parent  # repository root
         pert_data_folder = repo_root / "paper" / "benchmark" / "data" / "gears_pert_data"
-        
-        print(f"Framework root: {framework_root}")
+
         print(f"Repo root: {repo_root}")
         print(f"Resolved GEARS path: {pert_data_folder}")
         print(f"Path exists: {pert_data_folder.exists()} (expected: False - needs GEARS API)")
@@ -232,4 +230,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-

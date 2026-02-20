@@ -60,7 +60,7 @@ if lsft_data:
     lsft_raw = pd.concat(lsft_data, ignore_index=True)
     print(f"Loaded {len(lsft_raw)} corrected single-cell LSFT results")
 else:
-    lsft_raw_path = project_root / "skeletons_and_fact_sheets" / "data" / "LSFT_raw_per_perturbation.csv"
+    lsft_raw_path = project_root / "skeletons_and_fact_sheets" / "data" / "lsft_raw_per_perturbation.csv"
     print(f"WARNING: Using old pseudobulk data (may contain buggy values)")
     lsft_raw = pd.read_csv(lsft_raw_path)
     print(f"Loaded {len(lsft_raw)} LSFT raw results (OLD DATA - may be buggy)")

@@ -36,9 +36,9 @@ LOGGER = logging.getLogger(__name__)
 
 # Default data paths
 DATA_PATHS = {
-    "adamson": "/Users/samuelminer/Documents/classes/nih_research/data_adamson/perturb_processed.h5ad",
-    "k562": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
-    "rpe1": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad",
+    "adamson": "data/gears_pert_data/adamson/perturb_processed.h5ad",
+    "k562": "data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad",
+    "rpe1": "data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad",
 }
 
 
@@ -212,7 +212,7 @@ def audit_all_datasets(
         LOGGER.info(f"\nSaved audit results to: {csv_path}")
         
         # Save detailed report
-        report_path = output_dir / "SINGLE_CELL_AUDIT_REPORT.md"
+        report_path = output_dir / "single_cell_audit_report.md"
         with open(report_path, "w") as f:
             f.write("# Single-Cell Data Audit Report\n\n")
             f.write("## Summary\n\n")

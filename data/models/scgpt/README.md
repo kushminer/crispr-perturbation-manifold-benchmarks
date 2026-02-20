@@ -1,6 +1,6 @@
 ## scGPT Checkpoint Placeholder
 
-Download the **scGPT_human (whole-human)** checkpoint from the official scGPT model zoo and place the extracted files here, e.g.:
+Download the **scgpt_human (whole-human)** checkpoint from the official scGPT model zoo and place the extracted files here, e.g.:
 
 - `args.json`
 - `best_model.pt`

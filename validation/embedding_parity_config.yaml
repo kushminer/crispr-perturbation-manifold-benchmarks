@@ -34,7 +34,7 @@ entries:
     loader:
       name: scgpt_gene
       args:
-        checkpoint_dir: data/models/scgpt/scGPT_human
+        checkpoint_dir: data/models/scgpt/scgpt_human
         subset_genes_path: validation/legacy_runs/data/scgpt_subset_genes.txt
 
   - name: scfoundation_subset

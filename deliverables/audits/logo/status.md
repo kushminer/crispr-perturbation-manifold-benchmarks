@@ -8,8 +8,8 @@
 ```
 deliverables/audits/logo/
 ├── README.md                          # Overview and structure
-├── AUDIT_PLAN.md                      # Detailed audit plan
-├── STATUS.md                          # This file
+├── audit_plan.md                      # Detailed audit plan
+├── status.md                          # This file
 │
 ├── ablation_study/                    # Task 1: Quantify impact
 │   ├── run_logo_ablation.py          # Run LOGO excluding "Other"

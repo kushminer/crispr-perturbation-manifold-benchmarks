@@ -4,7 +4,7 @@
 set -e
 
 DATASET_NAME=${1:-"adamson"}
-ADATA_PATH=${2:-"../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"}
+ADATA_PATH=${2:-"data/gears_pert_data/adamson/perturb_processed.h5ad"}
 SPLIT_CONFIG=${3:-"results/goal_2_baselines/splits/adamson_split_seed1.json"}
 OUTPUT_DIR=${4:-"results/manifold_law_diagnostics/epic1_curvature"}
 K_LIST=${5:-"3 5 10 20 30 50"}

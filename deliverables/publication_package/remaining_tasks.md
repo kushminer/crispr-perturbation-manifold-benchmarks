@@ -8,7 +8,7 @@
 ## ✅ COMPLETED (Core Deliverables)
 
 ### Reports (10 files)
-- ✅ Master Summary Report (`MANIFOLD_LAW_SUMMARY.md`)
+- ✅ Master Summary Report (`manifold_law_summary.md`)
 - ✅ Epic 1: Curvature Sweep Report
 - ✅ Epic 2: Mechanism Ablation Report
 - ✅ Epic 3: Noise Stability Report

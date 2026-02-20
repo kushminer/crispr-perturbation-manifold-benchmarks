@@ -141,7 +141,7 @@ Each notebook is self-contained with inline code, clear explanations of domain c
 
 ## Usage
 
-1. Navigate to the `evaluation_framework` directory
+1. Navigate to the repository root directory
 2. Install dependencies: `pip install -r requirements.txt`
 3. Launch Jupyter: `jupyter notebook`
 4. Open and run the tutorials in order (Goal 1 → Goal 5)
@@ -149,7 +149,7 @@ Each notebook is self-contained with inline code, clear explanations of domain c
 ## Dataset Information
 
 All tutorials use the **Adamson dataset** as the primary example:
-- **Location:** `../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad`
+- **Location:** `data/gears_pert_data/adamson/perturb_processed.h5ad`
 - **Split Configuration:** `results/goal_2_baselines/splits/adamson_split_seed1.json`
 - **Annotations:** `data/annotations/adamson_functional_classes_enriched.tsv`
 

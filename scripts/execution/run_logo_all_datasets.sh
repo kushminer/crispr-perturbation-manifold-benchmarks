@@ -23,7 +23,7 @@ echo "   Class: Transcription (5 genes)"
 echo ""
 
 PYTHONPATH=src python -m goal_3_prediction.functional_class_holdout.logo \
-    --adata_path ../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad \
+    --adata_path data/gears_pert_data/adamson/perturb_processed.h5ad \
     --annotation_path data/annotations/adamson_functional_classes_enriched.tsv \
     --dataset_name adamson \
     --output_dir results/goal_3_prediction/functional_class_holdout/adamson \
@@ -56,7 +56,7 @@ echo "   Class: Transcription (397 genes)"
 echo ""
 
 # Check if K562 data path exists
-K562_DATA_PATH="${K562_DATA_PATH:-/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad}"
+K562_DATA_PATH="${K562_DATA_PATH:-data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad}"
 
 if [ ! -f "$K562_DATA_PATH" ]; then
     echo "   ⚠️  K562 data not found at: $K562_DATA_PATH"
@@ -97,7 +97,7 @@ echo "   Class: Transcription (to be determined)"
 echo ""
 
 # Check if RPE1 data path exists
-RPE1_DATA_PATH="${RPE1_DATA_PATH:-/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad}"
+RPE1_DATA_PATH="${RPE1_DATA_PATH:-data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad}"
 
 if [ ! -f "$RPE1_DATA_PATH" ]; then
     echo "   ⚠️  RPE1 data not found at: $RPE1_DATA_PATH"

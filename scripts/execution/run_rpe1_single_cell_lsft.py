@@ -23,7 +23,7 @@ results_dir = project_root / 'results/single_cell_analysis'
 # RPE1 configuration
 dataset_name = 'rpe1'
 config = {
-    'adata_path': '/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad',
+    'adata_path': 'data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad',
     'split_config': results_dir / 'rpe1_split_config.json',
 }
 

@@ -82,7 +82,7 @@ def get_baseline_config(baseline_type: BaselineType, **kwargs) -> BaselineConfig
             baseline_type=BaselineType.SCGPT_GENE_EMB,
             gene_embedding_source="scgpt",  # Will use embedding loader
             pert_embedding_source="training_data",
-            gene_embedding_args={"checkpoint_dir": "data/models/scgpt/scGPT_human"},
+            gene_embedding_args={"checkpoint_dir": "data/models/scgpt/scgpt_human"},
             **defaults,
         ),
         BaselineType.SCFOUNDATION_GENE_EMB: BaselineConfig(
@@ -109,7 +109,7 @@ def get_baseline_config(baseline_type: BaselineType, **kwargs) -> BaselineConfig
             gene_embedding_source="training_data",
             pert_embedding_source="k562_pca",  # Cross-dataset: PCA on K562, transform target
             pert_embedding_args={
-                "source_adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
+                "source_adata_path": "data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad",
             },
             **defaults,
         ),
@@ -118,7 +118,7 @@ def get_baseline_config(baseline_type: BaselineType, **kwargs) -> BaselineConfig
             gene_embedding_source="training_data",
             pert_embedding_source="rpe1_pca",  # Cross-dataset: PCA on RPE1, transform target
             pert_embedding_args={
-                "source_adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad",
+                "source_adata_path": "data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad",
             },
             **defaults,
         ),

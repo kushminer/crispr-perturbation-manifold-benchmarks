@@ -12,15 +12,15 @@ This package contains all materials needed for mentor review of the resampling-e
 ### ✅ Required Components
 
 1. **Minimum Data Tables** (`data_tables/`)
-   - `A_LSFT_Summary_Table.csv` - LSFT performance summary
-   - `B_LOGO_Summary_Table.csv` - LOGO performance summary
-   - `C_Hardness_Performance_Regression_Table.csv` - Hardness-performance regression results
+   - `a_lsft_summary_table.csv` - LSFT performance summary
+   - `b_logo_summary_table.csv` - LOGO performance summary
+   - `c_hardness_performance_regression_table.csv` - Hardness-performance regression results
 
 2. **Key Visuals** (`key_visuals/`)
    - 6 critical figures for manuscript/poster
    - High-resolution PNG files (300 DPI)
 
-3. **Methods Appendix** (`METHODS_APPENDIX.md`)
+3. **Methods Appendix** (`methods_appendix.md`)
    - Page 1: Resampling Methods (Bootstrap, Permutation, CI, Hardness, Metrics)
    - Page 2: Evaluation Splits (LSFT, LOGO, Rationale)
 
@@ -41,7 +41,7 @@ This package contains all materials needed for mentor review of the resampling-e
    - Contains point estimates, CIs, and sample sizes
    - Verify bootstrap CIs are reasonable (typically ±0.01-0.05 for Pearson r)
 
-2. **Review the methods** (`METHODS_APPENDIX.md`)
+2. **Review the methods** (`methods_appendix.md`)
    - Bootstrap procedure: B=1,000 samples, percentile method
    - Permutation test: P=10,000 permutations, sign-flip test
    - Hardness metric: Mean cosine similarity to top-K training perturbations
@@ -229,10 +229,10 @@ If using this evaluation framework, please cite:
 ## ❓ Questions?
 
 For questions about:
-- **Statistical methods:** See `METHODS_APPENDIX.md`
+- **Statistical methods:** See `methods_appendix.md`
 - **Data sources:** See `data/README.md`
 - **Code structure:** See main `README.md` in repository root
-- **Results interpretation:** See `deliverables/archive/docs/legacy/RESAMPLING_FINDINGS_REPORT.md`
+- **Results interpretation:** See `deliverables/archive/docs/legacy/resampling_findings_report.md`
 
 ---
 

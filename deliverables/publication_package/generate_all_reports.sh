@@ -70,7 +70,7 @@ done
 
 echo ""
 echo "Key deliverables:"
-echo "  📄 MANIFOLD_LAW_SUMMARY.md - Executive summary"
+echo "  📄 manifold_law_summary.md - Executive summary"
 echo "  🖼️  poster_figures/ - Publication-ready figures"
 echo "  📊 final_tables/ - CSV summary tables"
 echo ""

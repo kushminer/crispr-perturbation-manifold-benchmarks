@@ -21,7 +21,7 @@
 - [x] **scGPT/scFoundation gene embeddings**
   - [x] Confirm static pretrained embeddings are loaded (not retrained)
   - [x] Verify gene name/ID alignment
-  - [x] Found checkpoints at: `crispr-perturbation-manifold-benchmarks/data/models/scgpt/scGPT_human/` and `crispr-perturbation-manifold-benchmarks/data/models/scfoundation/`
+  - [x] Found checkpoints at: `crispr-perturbation-manifold-benchmarks/data/models/scgpt/scgpt_human/` and `crispr-perturbation-manifold-benchmarks/data/models/scfoundation/`
   - [x] Verified embeddings are static (identical on reload)
 
 - [x] **GEARS perturbation embeddings**
@@ -76,7 +76,7 @@
 ### 3. Pretrained Embeddings Validation
 
 **scGPT Gene Embeddings:**
-- ✅ Checkpoint found at: `crispr-perturbation-manifold-benchmarks/data/models/scgpt/scGPT_human/`
+- ✅ Checkpoint found at: `crispr-perturbation-manifold-benchmarks/data/models/scgpt/scgpt_human/`
 - ✅ Verified embeddings are static (identical on reload)
 - ✅ Successfully loaded 100 common genes for testing
 - ✅ Embedding dimensions: 512 × genes

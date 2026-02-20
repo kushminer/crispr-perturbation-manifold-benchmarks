@@ -15,7 +15,7 @@ echo "============================================================"
 echo ""
 
 # Dataset configuration
-ADAMSON_ADATA="${REPO_ROOT}/../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
+ADAMSON_ADATA="${REPO_ROOT}/data/gears_pert_data/adamson/perturb_processed.h5ad"
 ADAMSON_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/adamson_split_seed1.json"
 # Try GO version first, fallback to enriched
 if [ -f "${REPO_ROOT}/data/annotations/adamson_functional_classes_go.tsv" ]; then
@@ -26,11 +26,11 @@ else
     ADAMSON_ANNOT="${REPO_ROOT}/data/annotations/adamson_functional_classes.tsv"
 fi
 
-K562_ADATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
+K562_ADATA="data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"
 K562_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_k562_essential_split_seed1.json"
 K562_ANNOT="${REPO_ROOT}/data/annotations/replogle_k562_functional_classes_go.tsv"
 
-RPE1_ADATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"
+RPE1_ADATA="data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"
 RPE1_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_rpe1_essential_split_seed1.json"
 RPE1_ANNOT="${REPO_ROOT}/data/annotations/replogle_rpe1_functional_classes_go.tsv"
 

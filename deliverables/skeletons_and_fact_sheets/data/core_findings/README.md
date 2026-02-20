@@ -139,7 +139,7 @@ python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_p
 
 **These plots explain WHY PCA systematically outperforms deep learning models across LSFT, LOGO, and baseline predictions.**
 
-### WHY_variance_explained.png
+### why_variance_explained.png
 **"PCA Captures More Predictive Variance in Embedding Space"**
 
 **Purpose:** Shows that PCA extracts more useful information from the embedding space than deep learning models.
@@ -152,7 +152,7 @@ python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_p
 
 **Key insight:** PCA is better at preserving the low-dimensional structure that contains predictive information.
 
-### WHY_consistency_is_key.png
+### why_consistency_is_key.png
 **"PCA Shows More Consistent Performance Across Perturbations"**
 
 **Purpose:** Demonstrates that PCA has more reliable performance across different perturbations.
@@ -165,7 +165,7 @@ python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_p
 
 **Key insight:** Linear models provide reliable performance regardless of perturbation characteristics.
 
-### WHY_failure_rate.png
+### why_failure_rate.png
 **"PCA Fails Less Catastrophically on Hard Perturbations"**
 
 **Purpose:** Shows that PCA is more robust to challenging perturbations.
@@ -178,7 +178,7 @@ python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_p
 
 **Key insight:** Linear models are more robust and don't break down on challenging cases.
 
-### WHY_manifold_alignment.png
+### why_manifold_alignment.png
 **"PCA Shows Better Manifold Alignment Across All Metrics"**
 
 **Purpose:** Comprehensive view of how well different embeddings align with the perturbation manifold.
@@ -194,7 +194,7 @@ python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_p
 
 **Key insight:** The perturbation manifold is locally linear, so linear methods capture its structure better.
 
-### WHY_generalization_gap.png
+### why_generalization_gap.png
 **"PCA Shows Better Generalization from Local to Global"**
 
 **Purpose:** Tests how well local predictions (LSFT) generalize to global predictions (LOGO).
@@ -207,7 +207,7 @@ python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_p
 
 **Key insight:** Linear models learned locally transfer better to global prediction tasks.
 
-### WHY_summary.png
+### why_summary.png
 **"Why Linear Models (PCA) Systematically Outperform Deep Learning"**
 
 **Purpose:** Unified summary of all mechanistic explanations.
@@ -236,7 +236,7 @@ core_findings/
 ├── generate_honest_plots.py            # Statistically validated plots
 ├── generate_validated_plots.py         # Validated comparison plots
 ├── why_linear_models_win.py            # WHY plots generator
-├── STATISTICAL_VALIDATION.md           # Statistical analysis details
+├── statistical_validation.md           # Statistical analysis details
 ├── curvature_stratified_3panel.png     # 3-panel by dataset
 ├── curvature_easy_vs_hard.png          # 2-panel easy vs hard
 ├── curvature_clean_single.png          # Single panel averaged
@@ -245,22 +245,22 @@ core_findings/
 ├── baseline_adamson_simple.png         # Horizontal bars, Adamson only
 ├── similarity_vs_performance_clean.png # Scatter with trend
 ├── similarity_vs_performance_binned.png # Binned percentile plot
-├── SIMPLE_1_curvature.png              # Ultra-simple curvature
-├── SIMPLE_2_baseline.png               # Ultra-simple baseline
-├── SIMPLE_3_similarity.png             # Ultra-simple similarity
-├── SIMPLE_combined.png                 # All 3 simple plots
-├── HONEST_1_curvature.png              # Honest curvature
-├── HONEST_2_deep_learning_adds_nothing.png # Honest baseline
-├── HONEST_3_lsft_lifts_all.png         # Honest LSFT lift
-├── HONEST_combined.png                 # Honest combined
-├── VALIDATED_comparison.png            # Statistically validated comparison
-├── VALIDATED_effect_size_context.png   # Effect size context
-├── VALIDATED_real_finding.png          # Real finding (RandomPertEmb bad)
-├── WHY_variance_explained.png          # More variance captured
-├── WHY_consistency_is_key.png          # More consistent performance
-├── WHY_failure_rate.png                # Fewer catastrophic failures
-├── WHY_manifold_alignment.png          # Better manifold alignment
-├── WHY_generalization_gap.png          # Better generalization
-└── WHY_summary.png                     # Complete WHY summary
+├── simple_1_curvature.png              # Ultra-simple curvature
+├── simple_2_baseline.png               # Ultra-simple baseline
+├── simple_3_similarity.png             # Ultra-simple similarity
+├── simple_combined.png                 # All 3 simple plots
+├── honest_1_curvature.png              # Honest curvature
+├── honest_2_deep_learning_adds_nothing.png # Honest baseline
+├── honest_3_lsft_lifts_all.png         # Honest LSFT lift
+├── honest_combined.png                 # Honest combined
+├── validated_comparison.png            # Statistically validated comparison
+├── validated_effect_size_context.png   # Effect size context
+├── validated_real_finding.png          # Real finding (RandomPertEmb bad)
+├── why_variance_explained.png          # More variance captured
+├── why_consistency_is_key.png          # More consistent performance
+├── why_failure_rate.png                # Fewer catastrophic failures
+├── why_manifold_alignment.png          # Better manifold alignment
+├── why_generalization_gap.png          # Better generalization
+└── why_summary.png                     # Complete WHY summary
 ```
 

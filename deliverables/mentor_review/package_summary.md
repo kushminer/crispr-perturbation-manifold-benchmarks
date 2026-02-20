@@ -10,15 +10,15 @@
 
 ### Required Components
 
-- [x] **A. LSFT Summary Table** (`data_tables/A_LSFT_Summary_Table.csv`)
+- [x] **A. LSFT Summary Table** (`data_tables/a_lsft_summary_table.csv`)
   - 9 rows (3 baselines × 3 datasets)
   - Columns: baseline, dataset, pearson_r, pearson_ci_lower, pearson_ci_upper, l2, n_test
 
-- [x] **B. LOGO Summary Table** (`data_tables/B_LOGO_Summary_Table.csv`)
+- [x] **B. LOGO Summary Table** (`data_tables/b_logo_summary_table.csv`)
   - 9 rows (3 baselines × 3 datasets)
   - Columns: baseline, dataset, pearson_r, pearson_ci_lower, pearson_ci_upper, l2, n_test
 
-- [x] **C. Hardness-Performance Regression Table** (`data_tables/C_Hardness_Performance_Regression_Table.csv`)
+- [x] **C. Hardness-Performance Regression Table** (`data_tables/c_hardness_performance_regression_table.csv`)
   - 9 rows (3 baselines × 3 datasets, top_pct=0.05)
   - Columns: baseline, dataset, top_pct, slope, slope_ci_lower, slope_ci_upper, r, sample_size
 
@@ -31,7 +31,7 @@
     5. Manifold Schematic
     6. Baseline Crisis Visual
 
-- [x] **Methods Appendix** (`METHODS_APPENDIX.md`)
+- [x] **Methods Appendix** (`methods_appendix.md`)
   - Page 1: Resampling Methods (Bootstrap, Permutation, CI, Hardness, Metrics)
   - Page 2: Evaluation Splits (LSFT, LOGO, Rationale)
 
@@ -51,7 +51,7 @@
   - Repository structure
   - How to run resampling
 
-- [x] **Limitations** (`LIMITATIONS.md`)
+- [x] **Limitations** (`limitations.md`)
   - Small sample sizes for LOGO variants
   - Embedding variability across datasets
   - PCA's dependence on dataset-specific noise
@@ -61,7 +61,7 @@
   - Computational limitations
   - Biological interpretation limitations
 
-- [x] **Future Work** (`FUTURE_WORK.md`)
+- [x] **Future Work** (`future_work.md`)
   - Research directions (5 areas)
   - Translational applications (4 areas)
   - Methodological improvements (3 areas)
@@ -129,21 +129,21 @@
 ```
 deliverables/mentor_review/
 ├── README.md                          # Package overview
-├── PACKAGE_SUMMARY.md                 # This file
-├── METHODS_APPENDIX.md                 # 2-page methods description
-├── LIMITATIONS.md                     # Limitations section
-├── FUTURE_WORK.md                     # Future work & translational impact
+├── package_summary.md                 # This file
+├── methods_appendix.md                 # 2-page methods description
+├── limitations.md                     # Limitations section
+├── future_work.md                     # Future work & translational impact
 ├── data_tables/
-│   ├── A_LSFT_Summary_Table.csv       # LSFT summary (9 rows)
-│   ├── B_LOGO_Summary_Table.csv       # LOGO summary (9 rows)
-│   └── C_Hardness_Performance_Regression_Table.csv  # Hardness regression (9 rows)
+│   ├── a_lsft_summary_table.csv       # LSFT summary (9 rows)
+│   ├── b_logo_summary_table.csv       # LOGO summary (9 rows)
+│   └── c_hardness_performance_regression_table.csv  # Hardness regression (9 rows)
 ├── key_visuals/
-│   ├── 1_LSFT_Beeswarm_Adamson.png
-│   ├── 2_LSFT_Hardness_Performance_Curve.png
-│   ├── 3_LOGO_Performance_Bar_Chart.png
-│   ├── 4_PCA_vs_scGPT_LOGO_Scatter.png
-│   ├── 5_Manifold_Schematic.png
-│   └── 6_Baseline_Crisis_Visual.png
+│   ├── 1_lsft_beeswarm_adamson.png
+│   ├── 2_lsft_hardness_performance_curve.png
+│   ├── 3_logo_performance_bar_chart.png
+│   ├── 4_pca_vs_scgpt_logo_scatter.png
+│   ├── 5_manifold_schematic.png
+│   └── 6_baseline_crisis_visual.png
 ├── full_results.zip                   # Complete results (optional)
 └── generate_summary_tables.py         # Script to regenerate tables
 └── generate_key_visuals.py             # Script to regenerate visuals
@@ -195,17 +195,17 @@ deliverables/mentor_review/
    - Check figure quality
    - Evaluate visual design
 
-3. **Read methods appendix** (`METHODS_APPENDIX.md`)
+3. **Read methods appendix** (`methods_appendix.md`)
    - Verify statistical methods are sound
    - Check for missing details
    - Assess reproducibility
 
-4. **Review limitations** (`LIMITATIONS.md`)
+4. **Review limitations** (`limitations.md`)
    - Assess whether limitations are adequately addressed
    - Check for missing limitations
    - Evaluate mitigation strategies
 
-5. **Consider future work** (`FUTURE_WORK.md`)
+5. **Consider future work** (`future_work.md`)
    - Assess feasibility
    - Evaluate translational impact
    - Provide feedback on priorities

@@ -33,9 +33,9 @@ LOGGER = logging.getLogger(__name__)
 
 # Dataset paths mapping
 DATASET_PATHS = {
-    "adamson": "../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad",
-    "replogle_k562_essential": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
-    "replogle_rpe1_essential": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad",
+    "adamson": "data/gears_pert_data/adamson/perturb_processed.h5ad",
+    "replogle_k562_essential": "data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad",
+    "replogle_rpe1_essential": "data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad",
 }
 
 

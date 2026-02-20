@@ -10,12 +10,12 @@ This package contains **publication-ready reports, figures, and data tables** fo
 
 ### 📄 Executive Reports
 
-1. **`MANIFOLD_LAW_SUMMARY.md`** - High-level executive summary integrating all findings
-2. **`EPIC1_CURVATURE_SWEEP_REPORT.md`** - Detailed Epic 1 analysis
-3. **`EPIC2_MECHANISM_ABLATION_REPORT.md`** - Detailed Epic 2 analysis
-4. **`EPIC3_NOISE_STABILITY_REPORT.md`** - Detailed Epic 3 analysis
-5. **`EPIC4_DIRECTION_FLIP_REPORT.md`** - Detailed Epic 4 analysis
-6. **`EPIC5_TANGENT_ALIGNMENT_REPORT.md`** - Detailed Epic 5 analysis
+1. **`manifold_law_summary.md`** - High-level executive summary integrating all findings
+2. **`epic1_curvature_sweep_report.md`** - Detailed Epic 1 analysis
+3. **`epic2_mechanism_ablation_report.md`** - Detailed Epic 2 analysis
+4. **`epic3_noise_stability_report.md`** - Detailed Epic 3 analysis
+5. **`epic4_direction_flip_report.md`** - Detailed Epic 4 analysis
+6. **`epic5_tangent_alignment_report.md`** - Detailed Epic 5 analysis
 
 ### 🖼️ Publication-Ready Figures
 
@@ -68,12 +68,12 @@ Detailed figures for each epic including:
 
 1. **Start with the executive summary:**
    ```bash
-   cat deliverables/publication_package/MANIFOLD_LAW_SUMMARY.md
+   cat deliverables/publication_package/manifold_law_summary.md
    ```
 
 2. **View specific epic reports:**
    ```bash
-   cat deliverables/publication_package/EPIC1_CURVATURE_SWEEP_REPORT.md
+   cat deliverables/publication_package/epic1_curvature_sweep_report.md
    # etc.
    ```
 
@@ -140,7 +140,7 @@ bash deliverables/publication_package/generate_all_reports.sh
 ```
 deliverables/publication_package/
 ├── README.md                          # This file
-├── MANIFOLD_LAW_SUMMARY.md           # Executive summary
+├── manifold_law_summary.md           # Executive summary
 ├── EPIC1-5_*_REPORT.md               # Individual epic reports
 │
 ├── generate_publication_reports.py   # Report generator
@@ -173,7 +173,7 @@ If using these results in a publication, please cite:
 
 For questions about the data, methods, or results, refer to:
 - Individual epic reports for detailed methodology
-- `MANIFOLD_LAW_SUMMARY.md` for high-level interpretation
+- `manifold_law_summary.md` for high-level interpretation
 - Raw data in `results/manifold_law_diagnostics/`
 
 ---

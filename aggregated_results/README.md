@@ -24,7 +24,7 @@ This script rebuilds all summaries without hardcoded metric values.
 - `lsft_improvement_summary.csv`: Single-cell LSFT lift summary.
 - `lsft_improvement_summary_pseudobulk.csv`: Pseudobulk LSFT lift summary.
 - `logo_generalization_all_analyses.csv`: LOGO extrapolation summary for pseudobulk and single-cell.
-- `ENGINEER_ANALYSIS_GUIDE.md`: compact guidance for interpreting these outputs.
+- `engineer_analysis_guide.md`: compact guidance for interpreting these outputs.
 - `final_conclusions_verified.md`: markdown summary of verified project conclusions.
 
 ## Notes

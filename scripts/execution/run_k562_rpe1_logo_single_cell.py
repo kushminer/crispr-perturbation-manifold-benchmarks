@@ -21,11 +21,11 @@ results_dir = Path('results/single_cell_analysis')
 
 datasets = {
     'k562': {
-        'adata_path': '/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad',
+        'adata_path': 'data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad',
         'annotation_path': 'data/annotations/replogle_k562_functional_classes_go.tsv',
     },
     'rpe1': {
-        'adata_path': '/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad',
+        'adata_path': 'data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad',
         'annotation_path': 'data/annotations/replogle_rpe1_functional_classes_go.tsv',
     },
 }

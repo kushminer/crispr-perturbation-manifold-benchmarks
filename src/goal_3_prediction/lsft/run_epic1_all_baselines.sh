@@ -14,13 +14,13 @@ OUTPUT_DIR="${REPO_ROOT}/results/manifold_law_diagnostics/epic1_curvature"
 K_LIST="3 5 10 20 30 50"
 
 # Dataset paths (use absolute paths)
-ADAMSON_ADATA="${REPO_ROOT}/../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
+ADAMSON_ADATA="${REPO_ROOT}/data/gears_pert_data/adamson/perturb_processed.h5ad"
 ADAMSON_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/adamson_split_seed1.json"
 
-K562_ADATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
+K562_ADATA="data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"
 K562_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_k562_essential_split_seed1.json"
 
-RPE1_ADATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"
+RPE1_ADATA="data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"
 RPE1_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_rpe1_essential_split_seed1.json"
 
 # Baselines to test (excluding some that may need special setup)

@@ -3,7 +3,7 @@
 Utility script to build lightweight subsets of legacy embedding inputs for parity
 validation (Sprint 5 / Issue #18).
 
-Outputs are written under evaluation_framework/validation/embedding_subsets/.
+Outputs are written under validation/embedding_subsets/.
 """
 
 from __future__ import annotations
@@ -206,4 +206,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

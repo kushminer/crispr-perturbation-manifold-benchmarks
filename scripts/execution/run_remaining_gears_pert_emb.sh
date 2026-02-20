@@ -17,9 +17,9 @@ OUTPUT_BASE="results/goal_3_prediction/lsft_resampling"
 BASELINE="lpm_gearsPertEmb"
 
 # Dataset paths
-ADAMSON_DATA="../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad"
-K562_DATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad"
-RPE1_DATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"
+ADAMSON_DATA="data/gears_pert_data/adamson/perturb_processed.h5ad"
+K562_DATA="data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad"
+RPE1_DATA="data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"
 
 # Split paths
 ADAMSON_SPLIT="results/goal_2_baselines/splits/adamson_split_seed1.json"

@@ -2,7 +2,7 @@ dataset:
   name: replogle_k562_essential
   expression_path: ../../../../working_dir/results/py_comparison_replogle_k562_essential_seed1/all_predictions.json
   gene_names_path: ../../../../working_dir/results/py_comparison_replogle_k562_essential_seed1/gene_names.json
-  annotation_path: ../../evaluation_framework/data/annotations/replogle_k562_functional_classes_go.tsv
+  annotation_path: data/annotations/replogle_k562_functional_classes_go.tsv
   results_dir: ../results/replogle
   seed: 1
   hardness_bins: [0.33, 0.66]
@@ -26,7 +26,7 @@ tasks:
 output_root: ../results/replogle
 
 embedding_sources:
-  scgpt_model_dir: ../data/models/scgpt  # Place scGPT_human checkpoint files here
+  scgpt_model_dir: ../data/models/scgpt  # Place scgpt_human checkpoint files here
   scfoundation_model_dir: ../data/models/scfoundation  # Place scFoundation maeautobin checkpoint files here
 
 embedding_validation:

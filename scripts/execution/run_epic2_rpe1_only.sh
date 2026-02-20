@@ -8,7 +8,7 @@ cd "$REPO_ROOT"
 
 export PYTHONPATH="${PYTHONPATH}:${REPO_ROOT}/src"
 
-RPE1_ADATA="/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad"
+RPE1_ADATA="data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad"
 RPE1_SPLIT="${REPO_ROOT}/results/goal_2_baselines/splits/replogle_rpe1_essential_split_seed1.json"
 
 # Use K562 annotations for RPE1 (same functional classes)

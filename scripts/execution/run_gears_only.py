@@ -22,13 +22,13 @@ import json
 # Configuration
 datasets = {
     "adamson": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_adamson/perturb_processed.h5ad",
+        "adata_path": "data/gears_pert_data/adamson/perturb_processed.h5ad",
     },
     "k562": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_k562_essential/perturb_processed.h5ad",
+        "adata_path": "data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad",
     },
     "rpe1": {
-        "adata_path": "/Users/samuelminer/Documents/classes/nih_research/data_replogle_rpe1_essential/perturb_processed.h5ad",
+        "adata_path": "data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad",
     },
 }
 

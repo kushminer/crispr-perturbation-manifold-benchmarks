@@ -4,7 +4,7 @@ This folder stores external checkpoints needed for embedding parity validation a
 
 Place the downloaded assets in the following subdirectories:
 
-- `scgpt/` – unzip the **scGPT_human (whole-human)** checkpoint here. Required files: `args.json`, `best_model.pt`, `vocab.json`, plus any auxiliary metadata the authors provide. Official source: [bowang-lab/scGPT](https://github.com/bowang-lab/scGPT).
+- `scgpt/` – unzip the **scgpt_human (whole-human)** checkpoint here. Required files: `args.json`, `best_model.pt`, `vocab.json`, plus any auxiliary metadata the authors provide. Official source: [bowang-lab/scGPT](https://github.com/bowang-lab/scGPT).
 - `scfoundation/` – store the **maeautobin** checkpoint from scFoundation here (e.g., `models.ckpt`, `demo.h5ad`). Official source: [biomap-research/scFoundation](https://github.com/biomap-research/scFoundation).
 
 After copying each file, run `shasum -a 256 <file>` (or `sha256sum`) and record the hashes in `hashes.json` (or similar) for reproducibility.

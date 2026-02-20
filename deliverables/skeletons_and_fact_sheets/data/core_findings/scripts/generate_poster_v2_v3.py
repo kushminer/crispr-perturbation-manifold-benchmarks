@@ -30,7 +30,7 @@ plt.rcParams['font.family'] = 'DejaVu Sans'
 
 def load_data():
     """Load all data."""
-    raw = pd.read_csv(DATA_DIR / "LSFT_raw_per_perturbation.csv")
+    raw = pd.read_csv(DATA_DIR / "lsft_raw_per_perturbation.csv")
     logo = pd.read_csv(DATA_DIR / "LOGO_results.csv")
     return {'raw': raw, 'logo': logo}
 
@@ -141,9 +141,9 @@ def create_poster_v2(data):
             bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.8, edgecolor=GREEN))
     
     plt.tight_layout(rect=[0, 0.05, 1, 0.92])
-    plt.savefig(OUTPUT_DIR / "POSTER_v2_stacked.png", dpi=200, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "poster_v2_stacked.png", dpi=200, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ POSTER_v2_stacked.png")
+    print("✅ poster_v2_stacked.png")
 
 
 # =============================================================================
@@ -254,9 +254,9 @@ def create_poster_v3(data):
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.9, edgecolor='black'))
     
     plt.tight_layout(rect=[0, 0.06, 1, 0.92])
-    plt.savefig(OUTPUT_DIR / "POSTER_v3_three_panels.png", dpi=200, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUTPUT_DIR / "poster_v3_three_panels.png", dpi=200, bbox_inches='tight', facecolor='white')
     plt.close()
-    print("✅ POSTER_v3_three_panels.png")
+    print("✅ poster_v3_three_panels.png")
 
 
 def main():

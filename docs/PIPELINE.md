@@ -33,10 +33,10 @@ the Manifold Law diagnostics at single-cell resolution.
 4. **Analysis & Reporting**
    - `src/analysis/pseudobulk_vs_single_cell.py` generates unified tables
      and figures (`results/single_cell_analysis/comparison/`).
-   - `audits/single_cell_data_audit/*.py` runs the GEARS vs PCA audit.
+   - `deliverables/audits/single_cell_data_audit/*.py` runs the GEARS vs PCA audit.
 
 5. **Publication Package**
-   - `publication_package/run_publication_generation.sh` regenerates epic
+   - `deliverables/publication_package/generate_all_reports.sh` regenerates epic
      plots, summary tables, and the 5-epic winner grid.
 
 ## Dependencies
@@ -46,8 +46,8 @@ the Manifold Law diagnostics at single-cell resolution.
 | Baselines | `.env` dataset paths, split configs | `results/.../<baseline>/pert_metrics.csv` | LSFT, comparison report |
 | LSFT | Baseline metrics, cell embeddings | `lsft_single_cell_summary_*.csv` | Comparison report, story plots |
 | LOGO | Baseline models | `logo_single_cell_summary_*.csv` | Story plots, publication |
-| Audits | Baseline results | `audits/.../output/*.csv/.png` | README, integrity notes |
-| Publication | Results CSVs | `publication_package/figures/*.png` | Manuscript / poster |
+| Audits | Baseline results | `deliverables/audits/.../output/*.csv/.png` | README, integrity notes |
+| Publication | Results CSVs | `deliverables/publication_package/poster_figures/*.png` | Manuscript / poster |
 
 ## Command Reference
 
@@ -57,9 +57,9 @@ the Manifold Law diagnostics at single-cell resolution.
 | `bash run_single_cell_lsft.sh` | Run LSFT sweeps |
 | `bash run_single_cell_logo.sh` | Run LOGO experiments |
 | `python src/analysis/pseudobulk_vs_single_cell.py` | Regenerate summary tables/plots |
-| `python audits/single_cell_data_audit/validate_embeddings.py` | Compare baselines (e.g., GEARS vs PCA) |
-| `python audits/single_cell_data_audit/audit_visuals.py` | Render audit plots |
-| `bash publication_package/run_publication_generation.sh` | Regenerate publication figures |
+| `python deliverables/audits/single_cell_data_audit/validate_embeddings.py` | Compare baselines (e.g., GEARS vs PCA) |
+| `python deliverables/audits/single_cell_data_audit/audit_visuals.py` | Render audit plots |
+| `bash deliverables/publication_package/generate_all_reports.sh` | Regenerate publication figures |
 
 ## Tips
 

@@ -93,7 +93,7 @@ All fixes are verified. Can now proceed with:
 Re-run the full diagnostic suite to get complete results:
 
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 ./run_all_epics_all_baselines.sh
 ```
 

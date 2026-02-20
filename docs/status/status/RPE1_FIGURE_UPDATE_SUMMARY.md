@@ -40,7 +40,7 @@ RPE1 single-cell resolution data is complete and correctly included in all poste
 
 **Source:** `results/single_cell_analysis/rpe1/logo/logo_single_cell_summary_rpe1_Transcription.csv`
 
-**Code:** Dynamically loads RPE1 data in `poster/create_figure4_logo_comparison.py` (lines 94-104)
+**Code:** Dynamically loads RPE1 data in `deliverables/poster/create_figure4_logo_comparison.py` (lines 94-104)
 
 ---
 

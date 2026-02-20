@@ -243,6 +243,6 @@ echo "2. ✅ Epic 3 Lipschitz constants aggregated"
 echo "     (lipschitz_summary.csv created)"
 echo ""
 echo "Next step: Run report generation to regenerate 5-epic grid"
-echo "  python publication_package/generate_publication_reports.py"
+echo "  python deliverables/publication_package/generate_publication_reports.py"
 echo ""
 

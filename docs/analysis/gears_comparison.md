@@ -18,7 +18,7 @@ This document summarizes:
 
 ### 1. Historical Issue
 
-From `audits/single_cell_data_audit/GEARS_vs_PCA_FINDINGS.md`:
+From `deliverables/audits/single_cell_data_audit/GEARS_vs_PCA_FINDINGS.md`:
 
 > Pre-fix, per-perturbation curves for `lpm_selftrained` and
 > `lpm_gearsPertEmb` were identical within floating-point noise,

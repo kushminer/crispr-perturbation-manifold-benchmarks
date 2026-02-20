@@ -8,8 +8,8 @@ used to ensure our baselines and embeddings behave as intended.
 Key locations:
 - `src/goal_2_baselines/baseline_runner_single_cell.py`
 - `src/goal_2_baselines/baseline_runner.py`
-- `audits/single_cell_data_audit/*`
-- `audits/manifold_law_code_validation_2025-11-23/*`
+- `deliverables/audits/single_cell_data_audit/*`
+- `deliverables/audits/manifold_law_code_validation_2025-11-23/*`
 
 ---
 
@@ -76,8 +76,8 @@ Outcome:
 ### 3. GEARS vs Self-Trained PCA Audit
 
 Location:
-- `audits/single_cell_data_audit/GEARS_vs_PCA_FINDINGS.md`
-- `audits/single_cell_data_audit/validate_embeddings.py`
+- `deliverables/audits/single_cell_data_audit/GEARS_vs_PCA_FINDINGS.md`
+- `deliverables/audits/single_cell_data_audit/validate_embeddings.py`
 
 Goal:
 - Quantify how much GEARS and self-trained PCA differ at the **single-cell
@@ -105,7 +105,7 @@ Key findings (post-fix):
 ### 4. Embedding Parity & Resource Validation
 
 Location:
-- `audits/manifold_law_code_validation_2025-11-23/*`
+- `deliverables/audits/manifold_law_code_validation_2025-11-23/*`
 
 Checks:
 1. **scGPT & scFoundation**:

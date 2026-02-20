@@ -49,9 +49,9 @@ Ensure these paths are accessible before running baselines/LSFT.
 
 ## Data Integrity Checks
 
-- `audits/single_cell_data_audit/cell_counts.py` reports per-perturbation
+- `deliverables/audits/single_cell_data_audit/cell_counts.py` reports per-perturbation
   cell counts and sparsity.
-- `audits/single_cell_data_audit/validate_embeddings.py` ensures GEARS,
+- `deliverables/audits/single_cell_data_audit/validate_embeddings.py` ensures GEARS,
   scGPT, etc., produce unique metrics.
 
 ## Privacy / Licensing

@@ -41,7 +41,7 @@ The current results in `results/manifold_law_diagnostics/` are from **before** t
 
 ### Test GEARS Fix (5-10 minutes):
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 python -m goal_3_prediction.lsft.curvature_sweep \
   --adata_path ../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad \
   --split_config results/goal_2_baselines/splits/adamson_split_seed1.json \
@@ -57,7 +57,7 @@ python -m goal_3_prediction.lsft.curvature_sweep \
 
 ### Test Epic 3 Fix (15-30 minutes):
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 python -m goal_3_prediction.lsft.run_epic3_noise_injection \
   --adata_path ../paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad \
   --split_config results/goal_2_baselines/splits/adamson_split_seed1.json \
@@ -81,7 +81,7 @@ python -m goal_3_prediction.lsft.run_epic3_noise_injection \
 Once quick tests pass, re-run full diagnostic suite:
 
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 ./run_all_epics_all_baselines.sh
 ```
 

@@ -203,7 +203,7 @@ All required components are complete and meet specifications:
 - ✅ Full results zip file
 - ✅ Comprehensive documentation
 
-**Package Location:** `lpm-evaluation-framework-v2/deliverables/mentor_review/`
+**Package Location:** `crispr-perturbation-manifold-benchmarks/deliverables/mentor_review/`
 
 **Next Steps:**
 1. Share `deliverables/mentor_review/` folder with mentor

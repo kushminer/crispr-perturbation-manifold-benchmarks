@@ -50,9 +50,9 @@ The repository has been reorganized following scientific software repository bes
 - `deliverables/archive/development/next_steps/` - Planning documents
 
 ### Publication Materials (Unchanged)
-- `publication_package/` - Publication materials
-- `poster/` - Poster figures
-- `audits/` - Audit reports
+- `deliverables/publication_package/` - Publication materials
+- `deliverables/poster/` - Poster figures
+- `deliverables/audits/` - Audit reports
 - `deliverables/skeletons_and_fact_sheets/` - Data skeletons
 
 ## Path Reference Notes
@@ -61,7 +61,7 @@ The repository has been reorganized following scientific software repository bes
 
 1. **Run scripts from project root** (recommended):
    ```bash
-   cd /path/to/lpm-evaluation-framework-v2
+   cd /path/to/crispr-perturbation-manifold-benchmarks
    python scripts/execution/run_script.py
    ```
 

@@ -7,6 +7,18 @@ import pandas as pd
 from pathlib import Path
 import re
 
+def resolve_repo_root(base_dir: Path) -> Path:
+    """Resolve repository root across old/new folder layouts."""
+    if (base_dir / "results").exists():
+        return base_dir
+
+    for candidate in ("crispr-perturbation-manifold-benchmarks", "lpm-evaluation-framework-v2", "evaluation_framework"):
+        candidate_root = base_dir / candidate
+        if (candidate_root / "results").exists():
+            return candidate_root
+
+    return base_dir
+
 def extract_dataset_and_baseline_from_filename(filename):
     """Extract dataset and baseline from standardized filename.
     
@@ -28,9 +40,9 @@ def extract_dataset_and_baseline_from_filename(filename):
     
     return None, None
 
-def concatenate_lsft_raw_data(base_dir: Path):
+def concatenate_lsft_raw_data(repo_root: Path):
     """Concatenate all LSFT standardized CSV files."""
-    lsft_dir = base_dir / "lpm-evaluation-framework-v2" / "results" / "goal_3_prediction" / "lsft_resampling"
+    lsft_dir = repo_root / "results" / "goal_3_prediction" / "lsft_resampling"
     
     all_data = []
     
@@ -80,16 +92,16 @@ def concatenate_lsft_raw_data(base_dir: Path):
     
     return combined_df
 
-def concatenate_logo_raw_data(base_dir: Path):
+def concatenate_logo_raw_data(repo_root: Path):
     """Concatenate all LOGO result CSV files."""
-    logo_dir = base_dir / "lpm-evaluation-framework-v2" / "results" / "goal_3_prediction" / "functional_class_holdout_resampling"
+    logo_dir = repo_root / "results" / "goal_3_prediction" / "functional_class_holdout_resampling"
     
     all_data = []
     
     # Try different possible directory structures
     possible_dirs = [
         logo_dir,
-        base_dir / "evaluation_framework" / "results" / "goal_3_prediction" / "functional_class_holdout"
+        repo_root / "results" / "goal_3_prediction" / "functional_class_holdout",
     ]
     
     for logo_base in possible_dirs:
@@ -149,11 +161,12 @@ def concatenate_logo_raw_data(base_dir: Path):
 
 def main():
     base_dir = Path(__file__).parent.parent.parent
+    repo_root = resolve_repo_root(base_dir)
     
     print("=" * 60)
     print("Concatenating LSFT raw per-perturbation data...")
     print("=" * 60)
-    lsft_raw = concatenate_lsft_raw_data(base_dir)
+    lsft_raw = concatenate_lsft_raw_data(repo_root)
     
     if lsft_raw is not None:
         output_dir = Path(__file__).parent / "data"
@@ -172,7 +185,7 @@ def main():
     print("\n" + "=" * 60)
     print("Concatenating LOGO raw per-perturbation data...")
     print("=" * 60)
-    logo_raw = concatenate_logo_raw_data(base_dir)
+    logo_raw = concatenate_logo_raw_data(repo_root)
     
     if logo_raw is not None:
         output_dir = Path(__file__).parent / "data"
@@ -191,4 +204,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

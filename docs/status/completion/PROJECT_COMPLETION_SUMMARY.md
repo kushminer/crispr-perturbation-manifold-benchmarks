@@ -140,7 +140,7 @@
 
 ### Step 1: Review Key Findings
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 cat RESAMPLING_FINDINGS_REPORT.md
 ```
 
@@ -188,7 +188,7 @@ ls -lh results/goal_3_prediction/lsft_resampling/*/plots/
 ## 📚 Documentation Structure
 
 ```
-lpm-evaluation-framework-v2/
+crispr-perturbation-manifold-benchmarks/
 ├── RESAMPLING_FINDINGS_REPORT.md          # Complete findings
 ├── RESAMPLING_FINDINGS_REPORT_SKELETON.md # Methods & observations
 ├── STATUS_SUMMARY.md                      # Progress tracking

@@ -10,15 +10,15 @@
 ### Main Reports (Repository Root):
 
 1. **📄 RESAMPLING_FINDINGS_REPORT.md**
-   - **Location:** `lpm-evaluation-framework-v2/RESAMPLING_FINDINGS_REPORT.md`
+   - **Location:** `crispr-perturbation-manifold-benchmarks/RESAMPLING_FINDINGS_REPORT.md`
    - **Content:** Complete LSFT results for all 3 datasets, cross-dataset analysis, statistical comparisons, key insights
 
 2. **📄 STATUS_SUMMARY.md**
-   - **Location:** `lpm-evaluation-framework-v2/STATUS_SUMMARY.md`
+   - **Location:** `crispr-perturbation-manifold-benchmarks/STATUS_SUMMARY.md`
    - **Content:** Overall progress tracking, component completion status, summary statistics
 
 3. **📄 NEXT_STEPS.md**
-   - **Location:** `lpm-evaluation-framework-v2/NEXT_STEPS.md`
+   - **Location:** `crispr-perturbation-manifold-benchmarks/NEXT_STEPS.md`
    - **Content:** Detailed next steps guide, script references, status tracking
 
 ### Dataset-Specific Analysis Reports:
@@ -44,11 +44,11 @@
 ### Technical Documentation:
 
 7. **📄 docs/resampling.md**
-   - **Location:** `lpm-evaluation-framework-v2/docs/resampling.md`
+   - **Location:** `crispr-perturbation-manifold-benchmarks/docs/resampling.md`
    - **Content:** API reference for resampling functions, usage examples, interpretation
 
 8. **📄 RUN_FULL_RESAMPLING_EVALUATION.md**
-   - **Location:** `lpm-evaluation-framework-v2/RUN_FULL_RESAMPLING_EVALUATION.md`
+   - **Location:** `crispr-perturbation-manifold-benchmarks/RUN_FULL_RESAMPLING_EVALUATION.md`
    - **Content:** Running instructions, parameter configuration, troubleshooting
 
 ---

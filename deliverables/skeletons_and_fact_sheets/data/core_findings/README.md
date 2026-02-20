@@ -129,7 +129,7 @@ Use `curvature_stratified_3panel.png` - Contains all key information in one figu
 ## Regenerating Plots
 
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_plots.py
 ```
 

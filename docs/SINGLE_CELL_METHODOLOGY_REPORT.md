@@ -435,5 +435,5 @@ Tests extrapolation to novel functional classes:
 ---
 
 *Report generated: 2025-11-25*
-*Framework version: lpm-evaluation-framework-v2*
+*Framework version: crispr-perturbation-manifold-benchmarks*
 

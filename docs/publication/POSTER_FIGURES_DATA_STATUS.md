@@ -7,7 +7,7 @@
 ## Figure-by-Figure Analysis
 
 ### ✅ Figure 1: Baseline Performance Comparison
-**Script:** `poster/create_figure1_baseline_comparison.py`
+**Script:** `deliverables/poster/create_figure1_baseline_comparison.py`
 
 **Data Sources:**
 - **Pseudobulk:** Hardcoded values (verified against raw data)
@@ -25,7 +25,7 @@
 ---
 
 ### ✅ Figure 3: LSFT Improvements (Δr = LSFT - baseline)
-**Script:** `poster/create_figure3_lsft_improvements.py`
+**Script:** `deliverables/poster/create_figure3_lsft_improvements.py`
 
 **Data Sources:**
 - **Pseudobulk:** `results/goal_3_prediction/lsft_resampling/{dataset}/lsft_{dataset}_lpm_*.csv`
@@ -39,7 +39,7 @@
 ---
 
 ### ✅ Figure 4: LOGO Comparison
-**Script:** `poster/create_figure4_logo_comparison.py`
+**Script:** `deliverables/poster/create_figure4_logo_comparison.py`
 
 **Data Sources:**
 - **Pseudobulk:** `deliverables/skeletons_and_fact_sheets/data/LOGO_results.csv`
@@ -56,10 +56,10 @@
 
 The following scripts were updated to bypass the corrupted file:
 
-1. ✅ `poster/create_figure1_neighborhood_smoothness.py` (if it exists)
+1. ✅ `deliverables/poster/create_figure1_neighborhood_smoothness.py` (if it exists)
    - Now computes from raw data
    
-2. ✅ `audits/random_embedding_audit/06_resolution_comparison.py`
+2. ✅ `deliverables/audits/random_embedding_audit/06_resolution_comparison.py`
    - Now uses `LSFT_resampling.csv`
 
 3. ✅ `deliverables/skeletons_and_fact_sheets/data/core_findings/scripts/why_linear_models_win.py`

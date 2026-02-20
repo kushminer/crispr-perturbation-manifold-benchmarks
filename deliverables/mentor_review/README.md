@@ -134,7 +134,7 @@ This package contains all materials needed for mentor review of the resampling-e
 ## 📁 Repository Structure
 
 ```
-lpm-evaluation-framework-v2/
+crispr-perturbation-manifold-benchmarks/
 ├── src/
 │   ├── goal_3_prediction/
 │   │   ├── lsft/              # LSFT evaluation

@@ -1,6 +1,6 @@
 # Publication Package - Quick Reference Index
 
-**Location:** `publication_package/`  
+**Location:** `deliverables/publication_package/`  
 **Generated:** 2025-11-24  
 **Status:** ✅ Ready for Publication
 
@@ -12,19 +12,19 @@
 → Read `FINAL_SUMMARY.md` (this repo root)
 
 ### For Conference Presentation
-→ Use `publication_package/poster_figures/unified_comparison_4panel.png`
+→ Use `deliverables/publication_package/poster_figures/unified_comparison_4panel.png`
 
 ### For Manuscript Preparation
-→ Read `publication_package/MANIFOLD_LAW_PUBLICATION_REPORT.md`
+→ Read `deliverables/publication_package/MANIFOLD_LAW_PUBLICATION_REPORT.md`
 
 ### For Custom Analysis
-→ Load `publication_package/final_tables/unified_metrics.csv`
+→ Load `deliverables/publication_package/final_tables/unified_metrics.csv`
 
 ---
 
 ## 📊 The Key Figure
 
-**File:** `publication_package/poster_figures/unified_comparison_4panel.png`
+**File:** `deliverables/publication_package/poster_figures/unified_comparison_4panel.png`
 
 **What it shows:** All 4 epics (1, 3, 4, 5) side-by-side comparing baselines
 

@@ -155,4 +155,4 @@ PYTHONPATH=src python3 -m goal_3_prediction.lsft.lsft \
 - `aggregated_results/`: cleaned, analysis-ready summaries
 - `docs/`: methodology and analysis notes
 - `deliverables/`: archived development artifacts, mentor package, and fact-sheet materials
-- `poster/`, `publication_package/`, `audits/`: active figure-generation and audit workflows
+- `deliverables/poster/`, `deliverables/publication_package/`, `deliverables/audits/`: active figure-generation and audit workflows

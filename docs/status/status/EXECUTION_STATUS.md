@@ -13,7 +13,7 @@
 
 **Monitor Progress:**
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 ./monitor_progress.sh
 # OR
 tail -f full_diagnostic_suite_run.log

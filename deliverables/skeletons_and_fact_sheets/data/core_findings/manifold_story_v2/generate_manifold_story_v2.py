@@ -546,7 +546,7 @@ It includes:
 ## Regenerate
 
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 python deliverables/skeletons_and_fact_sheets/data/core_findings/manifold_story_v2/generate_manifold_story_v2.py
 ```
 """

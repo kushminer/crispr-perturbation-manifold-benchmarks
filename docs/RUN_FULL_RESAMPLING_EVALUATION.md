@@ -38,7 +38,7 @@ Functional class annotations:
 ### Quick Start (All Datasets & Baselines)
 
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 ./run_lsft_resampling_all.sh
 ```
 
@@ -92,7 +92,7 @@ PYTHONPATH=src python -m goal_3_prediction.lsft.run_lsft_with_resampling \
 ### Quick Start (All Datasets)
 
 ```bash
-cd lpm-evaluation-framework-v2
+cd crispr-perturbation-manifold-benchmarks
 ./run_logo_resampling_all.sh
 ```
 

@@ -309,6 +309,8 @@ def evaluate_lsft_with_k_list(
                     noise_level=noise_level,
                     noise_type=noise_type,
                     noise_target=noise_target,
+                    # CENTERING FIX: Use global center for fair comparison
+                    center_global=center_baseline[:, 0],
                 )
                 
                 # For prediction, use local test embedding if available (for self-trained embeddings)

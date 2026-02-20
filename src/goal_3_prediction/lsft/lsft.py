@@ -166,6 +166,8 @@ def retrain_lpm_on_filtered_data(
     noise_level: float = 0.0,
     noise_type: str = "none",
     noise_target: str = "embedding",  # "embedding", "expression", or "both"
+    # CENTERING FIX: Use global center for fair comparison
+    center_global: Optional[np.ndarray] = None,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, Optional[np.ndarray]]:
     """
     Retrain LPM model on filtered training data (OPTIMIZED).
@@ -273,8 +275,13 @@ def retrain_lpm_on_filtered_data(
             # Inject noise into expression data (Y)
             Y_train_filtered_np = inject_noise(Y_train_filtered_np, noise_type=noise_type, noise_level=noise_level, seed=noise_seed + 2)
     
-    # Center Y
-    center = Y_train_filtered_np.mean(axis=1, keepdims=True)  # (genes, 1)
+    # Center Y using GLOBAL center for fair comparison with baseline
+    # IMPORTANT: Using filtered center would inflate LSFT improvements
+    if center_global is not None:
+        center = center_global.reshape(-1, 1) if center_global.ndim == 1 else center_global
+    else:
+        # Fallback to filtered center (for backward compatibility, but should be avoided)
+        center = Y_train_filtered_np.mean(axis=1, keepdims=True)  # (genes, 1)
     Y_centered = Y_train_filtered_np - center
     
     # Solve for K: Y = A @ K @ B_train
@@ -476,6 +483,8 @@ def evaluate_lsft(
                     A_baseline_cached=A_baseline if config.gene_embedding_source in ["scgpt", "scfoundation"] else None,
                     B_train_baseline=B_train_baseline if config.pert_embedding_source in ["k562_pca", "rpe1_pca", "gears"] else None,
                     train_pert_indices=train_pert_indices if config.pert_embedding_source in ["k562_pca", "rpe1_pca", "gears"] else None,
+                    # CENTERING FIX: Use global center for fair comparison
+                    center_global=center_baseline[:, 0],  # Pass global center (flatten from 2D)
                 )
                 
                 # For prediction, use local test embedding if available (for self-trained embeddings)

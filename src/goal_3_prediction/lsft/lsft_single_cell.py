@@ -312,8 +312,9 @@ def evaluate_lsft_single_cell(
             B_train_filtered = B_train[:, filtered_indices]
             
             # Retrain model on filtered cells
-            center = Y_train_filtered.mean(axis=1, keepdims=True)
-            Y_centered = Y_train_filtered - center
+            # IMPORTANT: Use the GLOBAL center (center_baseline) for fair comparison
+            # Both baseline and LSFT should use the same centering reference
+            Y_centered = Y_train_filtered - center_baseline
             
             solution = solve_y_axb(
                 Y=Y_centered,
@@ -323,9 +324,9 @@ def evaluate_lsft_single_cell(
             )
             K = solution["K"]
             
-            # Predict test cell
+            # Predict test cell (use global center for consistency with baseline)
             test_cell_embedding = B_test[:, test_idx:test_idx+1]
-            y_pred = (A @ K @ test_cell_embedding + center).flatten()
+            y_pred = (A @ K @ test_cell_embedding + center_baseline).flatten()
             
             # Compute metrics
             lsft_metrics = compute_metrics(y_true, y_pred)

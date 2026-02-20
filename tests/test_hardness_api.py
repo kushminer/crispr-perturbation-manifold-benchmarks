@@ -6,7 +6,10 @@ Unit tests for hardness_api.py
 import numpy as np
 import pytest
 
-from similarity.hardness_api import compute_target_similarity, compute_multiple_targets_similarity
+from goal_1_similarity.hardness_api import (
+    compute_multiple_targets_similarity,
+    compute_target_similarity,
+)
 
 
 def test_identical_target_train():
@@ -128,4 +131,3 @@ def test_k_values_larger_than_train():
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
-

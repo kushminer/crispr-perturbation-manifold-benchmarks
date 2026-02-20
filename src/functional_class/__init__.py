@@ -6,7 +6,7 @@ when holding out entire functional classes.
 """
 
 from .functional_class import run_class_holdout
-from .class_mapping import map_classes
+from .class_mapping import map_adamson_to_replogle_classes as map_classes
 from .test_utils import generate_synthetic_class_annotations
 
 __all__ = [
@@ -14,4 +14,3 @@ __all__ = [
     "map_classes",
     "generate_synthetic_class_annotations",
 ]
-

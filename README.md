@@ -1,208 +1,156 @@
-# Linear Perturbation Prediction Evaluation Framework (v2 - Resampling-Enabled)
+# NIH Bridges Project: Local Manifold Structure in CRISPR Perturbation Prediction
 
-## Overview
+## Project Status
+This repository is finalized for presentation and reproducible review.
 
-This is **version 2** of the evaluation framework, enhanced with **resampling-based statistical methods** for LSFT (Local Similarity-Filtered Training) evaluation. This version maintains **point-estimate parity** with v1 while adding:
+## Objective
+Evaluate whether increasingly complex embedding methods improve perturbation-response prediction versus simpler geometric baselines.
 
-- **Bootstrap confidence intervals** for mean performance metrics
-- **Permutation tests** for baseline comparisons
-- **Bootstrapped regression** for hardness-performance relationships
-- **Enhanced visualizations** with uncertainty quantification
+## Lineage (Replication + Continuation)
+This repository is a replication and continuation of the baseline framework from:
 
-## Version Information
+- Ahlmann-Eltze, Huber, Anders (2025), *Nature Methods*: [https://www.nature.com/articles/s41592-025-02772-6](https://www.nature.com/articles/s41592-025-02772-6)
+- Original code/data repository: [https://github.com/const-ae/linear_perturbation_prediction-Paper](https://github.com/const-ae/linear_perturbation_prediction-Paper)
 
-- **v1 Baseline**: Original evaluation framework (see original repository)
-- **v2 Resampling-Enabled**: This repository (adds statistical resampling)
+The baseline families evaluated here are inherited from that framework; this project extends the evaluation with LSFT/LOGO analyses and consolidated result verification.
 
-### Key Differences from v1
+## Final Conclusions (Verified)
+These conclusions are computed from files in `results/` and regenerated into `aggregated_results/` on February 20, 2026.
 
-| Feature | v1 | v2 |
-|---------|----|----|
-| Point estimates | ✅ | ✅ (identical) |
-| Bootstrap CIs | ❌ | ✅ |
-| Permutation tests | ❌ | ✅ |
-| Hardness regression CIs | ❌ | ✅ |
-| Per-perturbation output | Basic | Standardized (JSONL/Parquet) |
+1. **Your newer methods did not materially improve prediction accuracy on the strongest baseline.**
+- Single-cell LSFT gain for `lpm_selftrained` is very small (mean Δr ≈ +0.0006).
+- `lpm_scgptGeneEmb` also has minimal single-cell lift (mean Δr ≈ +0.0002).
+- `lpm_randomPertEmb` worsens under LSFT (mean Δr ≈ -0.0163).
 
-**Note**: All point estimates (means, correlations, etc.) are **identical** between v1 and v2. v2 only adds confidence intervals and significance tests.
+2. **Self-trained PCA (`lpm_selftrained`) is the most consistent top performer.**
+- Single-cell baseline Pearson r:
+  - Adamson: **0.396**
+  - K562: **0.262**
+  - RPE1: **0.395**
+- Pseudobulk baseline Pearson r:
+  - Adamson: **0.946**
+  - K562: **0.664**
+  - RPE1: **0.768**
+- Mean ranking in both single-cell and pseudobulk: **Self-trained PCA > scGPT > scFoundation > GEARS/random variants**.
 
-## Quick Start
+3. **More local training data can increase accuracy, with diminishing returns.**
+In pseudobulk LSFT sweeps for `lpm_selftrained`, increasing neighborhood size from top 1% to top 10% improves mean r:
+- Adamson: 0.925 -> 0.943
+- K562: 0.677 -> 0.706
+- RPE1: 0.776 -> 0.793
 
-### Prerequisites
+4. **PCA also remains strongest under functional-class holdout (LOGO).**
+- Single-cell LOGO mean r: `lpm_selftrained` **0.327** (highest)
+- Pseudobulk LOGO mean r: `lpm_selftrained` **0.773** (highest)
 
-1. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Sponsorship
+This project was sponsored by the **NIH Bridges to Baccalaureate** program.
 
-2. **Install additional resampling dependencies** (if not in requirements.txt):
-   ```bash
-   pip install scipy statsmodels  # For bootstrap and permutation tests
-   ```
+## Data Setup (for Raw-Data Re-runs)
+If you only need to verify the final conclusions in this repo, use the existing `results/` artifacts and skip data download.
 
-### Running LSFT with Resampling
+If you want to rerun baselines/LSFT from raw `.h5ad` data, download and place files as follows.
 
-```bash
-# Run LSFT with bootstrap CIs
-PYTHONPATH=src python -m goal_3_prediction.lsft.lsft \
-    --adata_path path/to/data.h5ad \
-    --split_config results/goal_2_baselines/splits/adamson_split_seed1.json \
-    --baseline_type lpm_selftrained \
-    --output_dir results/lsft_with_resampling/ \
-    --n_boot 1000  # Number of bootstrap samples
+1. Download source data from one of:
+- GEARS repository/docs: [https://github.com/snap-stanford/GEARS](https://github.com/snap-stanford/GEARS)
+- Original paper repository: [https://github.com/const-ae/linear_perturbation_prediction-Paper](https://github.com/const-ae/linear_perturbation_prediction-Paper)
+
+Direct raw dataset links (used by GEARS `PertData`):
+- Adamson (zip): [https://dataverse.harvard.edu/api/access/datafile/6154417](https://dataverse.harvard.edu/api/access/datafile/6154417)
+- Replogle K562 essential (zip): [https://dataverse.harvard.edu/api/access/datafile/7458695](https://dataverse.harvard.edu/api/access/datafile/7458695)
+- Replogle RPE1 essential (zip): [https://dataverse.harvard.edu/api/access/datafile/7458694](https://dataverse.harvard.edu/api/access/datafile/7458694)
+
+2. Store datasets at these exact paths:
+```text
+data/gears_pert_data/adamson/perturb_processed.h5ad
+data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad
+data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad
 ```
 
-## New Features (Sprint 11)
-
-### 1. Bootstrap Confidence Intervals
-
-All LSFT summary metrics now include confidence intervals:
-
+3. Optional: pull datasets with GEARS
 ```python
-{
-    "baseline": "lpm_selftrained",
-    "mean_pearson_r": 0.75,
-    "pearson_r_ci_lower": 0.72,
-    "pearson_r_ci_upper": 0.78,
-    "mean_l2": 5.5,
-    "l2_ci_lower": 5.2,
-    "l2_ci_upper": 5.8,
-    "n_boot": 1000
-}
+from gears import PertData
+
+pert_data = PertData("data/gears_pert_data")
+pert_data.download_dataset("adamson")
+pert_data.download_dataset("replogle_k562_essential")
+pert_data.download_dataset("replogle_rpe1_essential")
 ```
 
-### 2. Permutation Tests
-
-Paired baseline comparisons include p-values:
-
-```python
-{
-    "baseline1": "lpm_scgptGeneEmb",
-    "baseline2": "lpm_randomGeneEmb",
-    "mean_delta_pearson_r": 0.15,
-    "delta_ci_lower": 0.12,
-    "delta_ci_upper": 0.18,
-    "p_value": 0.001,
-    "n_perm": 10000
-}
-```
-
-### 3. Hardness-Performance Regression
-
-Hardness plots include bootstrapped CI bands for:
-- Regression slope
-- Correlation coefficient (r)
-- R²
-
-### 4. Standardized Per-Perturbation Output
-
-LSFT now emits standardized per-perturbation files (JSONL/Parquet) with:
-- `perturbation`: Perturbation name
-- `pearson_r`: Pearson correlation
-- `l2`: L2 distance
-- `hardness`: Top-K cosine similarity
-- `embedding_similarity`: Similarity in embedding space
-- `split_fraction`: Training data fraction used
-
-## Repository Structure
-
-```
-lpm-evaluation-framework-v2/
-├── README.md                # This file
-├── requirements.txt         # Python dependencies
-├── pytest.ini              # Test configuration
-├── CHANGELOG.md            # Version history (in docs/)
-│
-├── src/                    # Source code
-│   ├── goal_1_similarity/   # Goal 1: Cosine similarity
-│   ├── goal_2_baselines/    # Goal 2: Baseline reproduction
-│   ├── goal_3_prediction/   # Goal 3: LSFT + LOGO (enhanced with resampling)
-│   ├── goal_4_logo/         # Goal 4: LOGO evaluation
-│   ├── shared/              # Shared utilities
-│   └── stats/               # Resampling utilities
-│       ├── bootstrapping.py # Bootstrap CI functions
-│       └── permutation.py   # Permutation test functions
-│
-├── scripts/                # Execution and analysis scripts
-│   ├── execution/          # Main execution scripts (run_*.sh, run_*.py)
-│   ├── analysis/           # Analysis & visualization scripts (generate_*.py, create_*.py)
-│   ├── utilities/          # Utility scripts (fix_*.py, validate_*.py)
-│   └── monitoring/         # Monitoring scripts (monitor_*.sh)
-│
-├── docs/                   # Documentation
-│   ├── methodology/        # Methodology documentation
-│   ├── analysis/           # Analysis documentation
-│   ├── publication/        # Publication-specific documentation
-│   └── status/             # Status and completion reports
-│       ├── completion/     # Completion reports
-│       ├── status/         # Status updates
-│       └── fixes/          # Fix verification reports
-│
-├── archive/                # Development artifacts
-│   ├── logs/               # Execution logs
-│   ├── status_reports/     # Old status reports
-│   └── development/        # Development notes & plans
-│
-├── configs/                # Dataset configurations
-├── data/                   # Data files
-├── tests/                  # Unit tests
-├── tutorials/              # Tutorial notebooks
-├── results/                # Generated results
-├── publication_package/    # Publication materials
-├── poster/                 # Poster figures
-├── audits/                 # Audit reports
-└── skeletons_and_fact_sheets/ # Data skeletons
-```
-
-## Migration from v1
-
-If you have results from v1:
-
-1. **Point estimates are identical** - you can directly compare means, correlations, etc.
-2. **New fields** - v2 outputs include CI fields that v1 doesn't have
-3. **No breaking changes** - all v1 outputs are still valid and comparable
-
-## Documentation
-
-### Core Documentation
-- **Methodology**: `docs/methodology/` - Pseudobulk, single-cell, LSFT, LOGO, embeddings, validation
-- **Analysis**: `docs/analysis/` - Single-cell baselines, LSFT, LOGO, GEARS comparisons, cross-resolution
-- **Publication**: `docs/publication/` - Publication-specific documentation and indices
-- **API Reference**: See docstrings in `src/stats/` modules
-- **Changelog**: `docs/CHANGELOG.md` - Version history
-
-### Quick Navigation
-- **Execution Scripts**: `scripts/execution/` - Run experiments and analyses
-- **Analysis Scripts**: `scripts/analysis/` - Generate figures and reports
-- **Tutorials**: `tutorials/` - Step-by-step guides (e.g., `tutorial_y_akb_formula.ipynb`)
-- **Results**: `results/` - Generated evaluation results
-- **Poster Figures**: `poster/` - Publication-ready figures
-
-## Testing
-
+Alternative manual download (zip + extract):
 ```bash
-# Run all tests
-PYTHONPATH=src pytest tests/ -v
+mkdir -p data/gears_pert_data /tmp/lpm_raw_data
 
-# Run resampling-specific tests
-PYTHONPATH=src pytest tests/test_bootstrapping.py tests/test_permutation.py -v
+curl -L https://dataverse.harvard.edu/api/access/datafile/6154417 -o /tmp/lpm_raw_data/adamson.zip
+curl -L https://dataverse.harvard.edu/api/access/datafile/7458695 -o /tmp/lpm_raw_data/replogle_k562_essential.zip
+curl -L https://dataverse.harvard.edu/api/access/datafile/7458694 -o /tmp/lpm_raw_data/replogle_rpe1_essential.zip
+
+unzip -o /tmp/lpm_raw_data/adamson.zip -d data/gears_pert_data
+unzip -o /tmp/lpm_raw_data/replogle_k562_essential.zip -d data/gears_pert_data
+unzip -o /tmp/lpm_raw_data/replogle_rpe1_essential.zip -d data/gears_pert_data
 ```
 
-## Citation
+4. Legacy compatibility path (some older scripts expect this exact location):
+```bash
+mkdir -p ../paper/benchmark/data
+ln -sfn "$(pwd)/data/gears_pert_data" ../paper/benchmark/data/gears_pert_data
+```
 
-If using this resampling-enabled version, cite:
+5. Validate local files before running scripts:
+```bash
+ls data/gears_pert_data/adamson/perturb_processed.h5ad
+ls data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad
+ls data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad
+```
 
-1. **Original Paper**: Ahlmann-Eltze et al. (2025) - Nature Methods 2025
-2. **Original Repository**: https://github.com/const-ae/linear_perturbation_prediction-Paper
-3. **This Framework**: Note that this extends the evaluation with resampling-based statistical methods
+Annotation files are already included in this repo under `data/annotations/`. Split configs used by scripts are already present in `results/goal_2_baselines/splits/`.
 
-## Changelog
+## Reproducibility
+1. Create an environment and install dependencies:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-See `docs/CHANGELOG.md` for detailed version history and Sprint 11 enhancements.
+2. Run the single end-to-end demo script (rebuild + verify conclusions):
+```bash
+python3 scripts/demo/run_end_to_end_results_demo.py
+```
 
----
+3. (Optional) Run only aggregation:
+```bash
+python3 src/analysis/aggregate_all_results.py
+```
 
-**Status**: 🚧 In Development (Sprint 11)
+4. Review summary tables:
+- `aggregated_results/baseline_performance_all_analyses.csv`
+- `aggregated_results/best_baseline_per_dataset.csv`
+- `aggregated_results/lsft_improvement_summary.csv`
+- `aggregated_results/lsft_improvement_summary_pseudobulk.csv`
+- `aggregated_results/logo_generalization_all_analyses.csv`
+- `aggregated_results/final_conclusions_verified.md`
 
-This is the resampling-enabled v2. For the original v1 baseline, see the original repository.
+5. Notebook walkthrough:
+- `tutorials/tutorial_end_to_end_results.ipynb`
 
+6. Example raw-data runs (after completing Data Setup):
+```bash
+PYTHONPATH=src python3 -m goal_2_baselines.run_all \
+  --adata_path data/gears_pert_data/adamson/perturb_processed.h5ad \
+  --split_config results/goal_2_baselines/splits/adamson_split_seed1.json \
+  --output_dir results/goal_2_baselines/adamson_reproduced
+
+PYTHONPATH=src python3 -m goal_3_prediction.lsft.lsft \
+  --adata_path data/gears_pert_data/adamson/perturb_processed.h5ad \
+  --split_config results/goal_2_baselines/splits/adamson_split_seed1.json \
+  --baseline_type lpm_selftrained \
+  --output_dir results/goal_3_prediction/lsft_resampling/adamson
+```
+
+## Repository Scope
+- `src/`: core evaluation and analysis code
+- `scripts/`: execution and analysis helpers
+- `results/`: experiment outputs
+- `aggregated_results/`: cleaned, analysis-ready summaries
+- `docs/`: methodology and analysis notes

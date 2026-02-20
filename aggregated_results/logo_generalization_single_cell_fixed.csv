@@ -1,7 +1,0 @@
-dataset,baseline,pearson_r,analysis_type
-adamson,lpm_selftrained,0.3085666303163965,single_cell_fixed
-adamson,lpm_randomGeneEmb,0.0011634708119333,single_cell_fixed
-adamson,lpm_randomPertEmb,0.0037827991349607,single_cell_fixed
-adamson,lpm_scgptGeneEmb,0.1833622559682168,single_cell_fixed
-adamson,lpm_scFoundationGeneEmb,0.0906318243565351,single_cell_fixed
-adamson,lpm_gearsPertEmb,0.1394396925091464,single_cell_fixed

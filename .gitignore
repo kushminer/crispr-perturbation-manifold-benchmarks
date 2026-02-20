@@ -44,6 +44,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+*.tar.gz
 
 # Large data files (>100MB) - see data/README.md for download instructions
 # Model checkpoints

@@ -120,6 +120,19 @@ Each notebook is self-contained with inline code, clear explanations of domain c
 - Tolerance and precision
 - Embedding parity: Comparing embedding spaces
 
+### 6. End-to-End Results Demo
+**File:** `tutorial_end_to_end_results.ipynb`
+
+**Topics:**
+- Run one script that regenerates aggregate outputs and verifies final conclusions
+- Inspect the key summary tables used in the project README
+- Review the generated markdown summary (`aggregated_results/final_conclusions_verified.md`)
+
+**Key Concepts:**
+- Reproducibility from canonical `results/` artifacts
+- Baseline ranking consistency across single-cell and pseudobulk
+- LSFT effect size interpretation
+
 ## Prerequisites
 
 - Basic Python knowledge (pandas, numpy)
@@ -160,6 +173,7 @@ We recommend following the tutorials in order:
 3. **Goal 3** - Explore advanced prediction strategies (LSFT and LOGO)
 4. **Goal 4** - Analyze results statistically across datasets
 5. **Goal 5** - Validate reproducibility and parity
+6. **End-to-End Demo** - Rebuild and verify the final project conclusions
 
 **Note:** The Y = A × K × B tutorial is especially recommended for new students to build foundational intuition before diving into the goal-specific tutorials.
 

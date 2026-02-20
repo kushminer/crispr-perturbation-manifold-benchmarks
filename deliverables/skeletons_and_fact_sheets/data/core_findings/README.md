@@ -130,7 +130,7 @@ Use `curvature_stratified_3panel.png` - Contains all key information in one figu
 
 ```bash
 cd lpm-evaluation-framework-v2
-python skeletons_and_fact_sheets/data/core_findings/generate_core_plots.py
+python deliverables/skeletons_and_fact_sheets/data/core_findings/generate_core_plots.py
 ```
 
 ---

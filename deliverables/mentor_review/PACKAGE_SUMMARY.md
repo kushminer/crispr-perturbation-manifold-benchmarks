@@ -127,7 +127,7 @@
 ## 📁 File Structure
 
 ```
-mentor_review/
+deliverables/mentor_review/
 ├── README.md                          # Package overview
 ├── PACKAGE_SUMMARY.md                 # This file
 ├── METHODS_APPENDIX.md                 # 2-page methods description

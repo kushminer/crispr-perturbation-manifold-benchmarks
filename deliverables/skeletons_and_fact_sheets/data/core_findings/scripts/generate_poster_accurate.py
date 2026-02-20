@@ -15,7 +15,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-DATA_DIR = Path("/Users/samuelminer/Documents/classes/nih_research/linear_perturbation_prediction-Paper/lpm-evaluation-framework-v2/skeletons_and_fact_sheets/data")
+DATA_DIR = Path("/Users/samuelminer/Documents/classes/nih_research/linear_perturbation_prediction-Paper/lpm-evaluation-framework-v2/deliverables/skeletons_and_fact_sheets/data")
 OUTPUT_DIR = DATA_DIR / "core_findings"
 
 # Colors

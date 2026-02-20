@@ -132,5 +132,4 @@ If you have any scripts or notebooks that reference the old structure, update th
 ## See Also
 
 - **Main README:** `README.md` - Updated with new structure and examples
-- **Migration Guide:** `archive/MIGRATION_GUIDE.md` - Details on what was archived
-
+- **Migration Guide:** `deliverables/archive/MIGRATION_GUIDE.md` - Details on what was archived

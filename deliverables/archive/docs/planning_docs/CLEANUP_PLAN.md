@@ -18,9 +18,9 @@
 | `evaluation_framework/` | 3.1 GB | 🗑️ DELETE | Older version, duplicates v2 |
 | `paper/` | 441 MB | ✅ KEEP | Paper files |
 | `illustrations/` | 1.1 MB | ✅ KEEP | Design files |
-| `archive/` | 96 KB | ⚠️ REVIEW | Deprecated scripts |
+| `deliverables/archive/` | 96 KB | ⚠️ REVIEW | Deprecated scripts |
 | `data/` | 20 KB | ✅ KEEP | Annotations |
-| `skeletons_and_fact_sheets/` | 8 KB | ⚠️ REVIEW | Planning docs |
+| `deliverables/skeletons_and_fact_sheets/` | 8 KB | ⚠️ REVIEW | Planning docs |
 | `reference_data/` | 4 KB | ✅ KEEP | Reference data |
 | `validation/` | 0 B | 🗑️ DELETE | Empty directory |
 
@@ -47,8 +47,8 @@
 
 4. **Review and clean subdirectories:**
    - `audits/` (1.1 MB) - audit logs, likely can be trimmed
-   - `archive/` (376 KB) - old versions
-   - `mentor_review/` (1.2 MB) - review documents
+   - `deliverables/archive/` (376 KB) - old versions
+   - `deliverables/mentor_review/` (1.2 MB) - review documents
    - `publication_figures/` vs `publication_package/` - possible overlap
 
 5. **Clean results directories:**
@@ -154,10 +154,10 @@ linear_perturbation_prediction-Paper/   (~5.5 GB)
 ├── lpm-evaluation-framework-v2/        (5.0 GB) - Main framework
 ├── paper/                              (441 MB) - Paper files
 ├── illustrations/                      (1.1 MB) - Design files
-├── archive/                            (96 KB)  - Deprecated scripts
+├── deliverables/archive/                            (96 KB)  - Deprecated scripts
 ├── data/                               (20 KB)  - Shared annotations
 ├── reference_data/                     (4 KB)   - Reference data
-├── skeletons_and_fact_sheets/          (8 KB)   - Planning docs
+├── deliverables/skeletons_and_fact_sheets/          (8 KB)   - Planning docs
 ├── CLEANUP_PLAN.md                     - This file
 └── README.md
 ```

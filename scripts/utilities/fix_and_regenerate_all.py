@@ -78,7 +78,7 @@ def task1_regenerate_aggregated_results():
         })
     
     # Load pseudobulk LOGO results as proxy for pseudobulk baselines
-    logo_path = PROJECT_ROOT / "skeletons_and_fact_sheets" / "data" / "LOGO_results.csv"
+    logo_path = PROJECT_ROOT / "deliverables" / "skeletons_and_fact_sheets" / "data" / "LOGO_results.csv"
     if logo_path.exists():
         logo_df = pd.read_csv(logo_path)
         # These are LOGO (extrapolation) results, not baseline
@@ -94,7 +94,7 @@ def task1_regenerate_aggregated_results():
                 })
     
     # Load pseudobulk LSFT baseline_r as true baseline
-    lsft_path = PROJECT_ROOT / "skeletons_and_fact_sheets" / "data" / "LSFT_results.csv"
+    lsft_path = PROJECT_ROOT / "deliverables" / "skeletons_and_fact_sheets" / "data" / "LSFT_results.csv"
     if lsft_path.exists():
         lsft_df = pd.read_csv(lsft_path)
         # Get unique baseline_r per dataset/baseline (use top_k=0.1 as reference)
@@ -280,9 +280,9 @@ def task4_verify_pseudobulk_baselines():
     # Sources of pseudobulk baseline data
     sources = [
         ("LSFT_results.csv (baseline_r column)", 
-         PROJECT_ROOT / "skeletons_and_fact_sheets" / "data" / "LSFT_results.csv"),
+         PROJECT_ROOT / "deliverables" / "skeletons_and_fact_sheets" / "data" / "LSFT_results.csv"),
         ("LOGO_results.csv", 
-         PROJECT_ROOT / "skeletons_and_fact_sheets" / "data" / "LOGO_results.csv"),
+         PROJECT_ROOT / "deliverables" / "skeletons_and_fact_sheets" / "data" / "LOGO_results.csv"),
         ("Epic2 mechanism ablation (original_r)", 
          PROJECT_ROOT / "results" / "manifold_law_diagnostics" / "epic2_mechanism_ablation" / "mechanism_ablation_adamson_lpm_selftrained.csv"),
     ]
@@ -416,4 +416,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

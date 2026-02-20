@@ -147,7 +147,7 @@ lpm-evaluation-framework-v2/
 │       ├── lsft_resampling/   # LSFT results
 │       └── functional_class_holdout_resampling/  # LOGO results
 ├── data/                      # Input data (see data/README.md)
-└── mentor_review/             # This package
+└── deliverables/mentor_review/             # This package
 ```
 
 ---

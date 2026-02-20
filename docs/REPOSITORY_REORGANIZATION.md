@@ -45,15 +45,15 @@ The repository has been reorganized following scientific software repository bes
   - `status/` - 9 status updates
   - `fixes/` - 4 fix verification reports
 
-#### `archive/` - Development artifacts
-- `archive/logs/` - 20 execution log files
-- `archive/development/next_steps/` - Planning documents
+#### `deliverables/archive/` - Development artifacts
+- `deliverables/archive/logs/` - 20 execution log files
+- `deliverables/archive/development/next_steps/` - Planning documents
 
 ### Publication Materials (Unchanged)
 - `publication_package/` - Publication materials
 - `poster/` - Poster figures
 - `audits/` - Audit reports
-- `skeletons_and_fact_sheets/` - Data skeletons
+- `deliverables/skeletons_and_fact_sheets/` - Data skeletons
 
 ## Path Reference Notes
 
@@ -80,8 +80,8 @@ The repository has been reorganized following scientific software repository bes
 - [x] Move utility scripts to `scripts/utilities/`
 - [x] Move monitoring scripts to `scripts/monitoring/`
 - [x] Move status/completion reports to `docs/status/`
-- [x] Move log files to `archive/logs/`
-- [x] Move planning docs to `archive/development/`
+- [x] Move log files to `deliverables/archive/logs/`
+- [x] Move planning docs to `deliverables/archive/development/`
 - [x] Merge `methodology/` into `docs/methodology/`
 - [x] Merge `analysis_docs/` into `docs/analysis/`
 - [x] Move publication docs to `docs/publication/`
@@ -100,8 +100,8 @@ The repository has been reorganized following scientific software repository bes
 
 All development artifacts have been moved:
 - Status/completion reports → `docs/status/`
-- Execution logs → `archive/logs/`
-- Planning documents → `archive/development/`
+- Execution logs → `deliverables/archive/logs/`
+- Planning documents → `deliverables/archive/development/`
 - Execution scripts → `scripts/execution/`
 - Analysis scripts → `scripts/analysis/`
 
@@ -109,4 +109,3 @@ Only essential files remain:
 - `README.md`
 - `requirements.txt`
 - `pytest.ini`
-

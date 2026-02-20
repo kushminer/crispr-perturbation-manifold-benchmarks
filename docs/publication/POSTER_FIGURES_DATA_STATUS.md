@@ -42,7 +42,7 @@
 **Script:** `poster/create_figure4_logo_comparison.py`
 
 **Data Sources:**
-- **Pseudobulk:** `skeletons_and_fact_sheets/data/LOGO_results.csv`
+- **Pseudobulk:** `deliverables/skeletons_and_fact_sheets/data/LOGO_results.csv`
 - **Single-cell:** `results/goal_4_logo/{dataset}_single_cell_summary.csv`
 
 **Status:** ✅ **CORRECT**
@@ -62,7 +62,7 @@ The following scripts were updated to bypass the corrupted file:
 2. ✅ `audits/random_embedding_audit/06_resolution_comparison.py`
    - Now uses `LSFT_resampling.csv`
 
-3. ✅ `skeletons_and_fact_sheets/data/core_findings/scripts/why_linear_models_win.py`
+3. ✅ `deliverables/skeletons_and_fact_sheets/data/core_findings/scripts/why_linear_models_win.py`
    - Now computes from raw data
 
 4. ✅ `fix_and_regenerate_all.py`
@@ -76,4 +76,3 @@ The following scripts were updated to bypass the corrupted file:
 - Do NOT rely on the corrupted `LSFT_results.csv` file
 
 No regeneration needed for the poster figures themselves.
-

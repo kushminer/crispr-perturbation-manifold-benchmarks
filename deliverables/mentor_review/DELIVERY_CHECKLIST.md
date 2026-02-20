@@ -203,10 +203,10 @@ All required components are complete and meet specifications:
 - ✅ Full results zip file
 - ✅ Comprehensive documentation
 
-**Package Location:** `lpm-evaluation-framework-v2/mentor_review/`
+**Package Location:** `lpm-evaluation-framework-v2/deliverables/mentor_review/`
 
 **Next Steps:**
-1. Share `mentor_review/` folder with mentor
+1. Share `deliverables/mentor_review/` folder with mentor
 2. Point mentor to `README.md` for quick start
 3. Highlight `PACKAGE_SUMMARY.md` for overview
 4. Provide `full_results.zip` for deeper review (optional)

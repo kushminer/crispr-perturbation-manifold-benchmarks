@@ -45,7 +45,7 @@ def create_synthetic_data(output_dir):
     return adata_path, split_path
 
 def main():
-    output_dir = Path("reproduce_output")
+    output_dir = Path("deliverables/reproduce_output")
     output_dir.mkdir(exist_ok=True)
     
     adata_path, split_path = create_synthetic_data(output_dir)

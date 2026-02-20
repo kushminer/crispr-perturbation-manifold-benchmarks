@@ -65,5 +65,5 @@ It includes:
 
 ```bash
 cd lpm-evaluation-framework-v2
-python skeletons_and_fact_sheets/data/core_findings/manifold_story_v2/generate_manifold_story_v2.py
+python deliverables/skeletons_and_fact_sheets/data/core_findings/manifold_story_v2/generate_manifold_story_v2.py
 ```

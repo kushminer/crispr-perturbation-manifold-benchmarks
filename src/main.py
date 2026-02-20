@@ -168,7 +168,7 @@ def task_combined(cfg: ExperimentConfig) -> None:
         "This functionality is no longer available in the core framework."
     )
     raise NotImplementedError(
-        "Combined analysis has been moved to archive/eval_framework_logo/"
+        "Combined analysis has been moved to deliverables/archive/eval_framework_logo/"
     )
 
 
@@ -179,7 +179,7 @@ def task_visualize(cfg: ExperimentConfig) -> None:
         "This functionality is no longer available in the core framework."
     )
     raise NotImplementedError(
-        "LOGO visualizations have been moved to archive/eval_framework_logo/"
+        "LOGO visualizations have been moved to deliverables/archive/eval_framework_logo/"
     )
 
 
@@ -256,4 +256,3 @@ def run(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(run())
-

@@ -42,13 +42,13 @@
 
 ### Main Reports
 - **Findings Report:** `RESAMPLING_FINDINGS_REPORT.md`
-- **Skeleton Reports:** `skeletons_and_fact_sheets/`
+- **Skeleton Reports:** `deliverables/skeletons_and_fact_sheets/`
 - **Status Tracking:** `STATUS_SUMMARY.md`
 - **Documentation Index:** `FINAL_COMPREHENSIVE_REPORT.md`
 
 ### Data Files
-- **All CSV files:** `skeletons_and_fact_sheets/data/`
-- **Data README:** `skeletons_and_fact_sheets/data/README.md`
+- **All CSV files:** `deliverables/skeletons_and_fact_sheets/data/`
+- **Data README:** `deliverables/skeletons_and_fact_sheets/data/README.md`
 
 ### Results
 - **LSFT Results:** `results/goal_3_prediction/lsft_resampling/`
@@ -146,14 +146,14 @@ cat RESAMPLING_FINDINGS_REPORT.md
 
 ### Step 2: Access Data Files
 ```bash
-cd skeletons_and_fact_sheets/data
+cd deliverables/skeletons_and_fact_sheets/data
 ls -lh *.csv
 cat README.md  # Detailed documentation
 ```
 
 ### Step 3: Review Skeleton Reports
 ```bash
-cd skeletons_and_fact_sheets
+cd deliverables/skeletons_and_fact_sheets
 cat RESAMPLING_FINDINGS_REPORT_SKELETON.md
 cat lsft_analysis_skeleton.md
 cat DATASET_FACT_SHEET.md
@@ -193,7 +193,7 @@ lpm-evaluation-framework-v2/
 ├── RESAMPLING_FINDINGS_REPORT_SKELETON.md # Methods & observations
 ├── STATUS_SUMMARY.md                      # Progress tracking
 ├── FINAL_COMPREHENSIVE_REPORT.md          # Documentation index
-├── skeletons_and_fact_sheets/
+├── deliverables/skeletons_and_fact_sheets/
 │   ├── lsft_analysis_skeleton.md           # Pooled LSFT analysis
 │   ├── DATASET_FACT_SHEET.md              # Raw dataset facts
 │   ├── data/                              # All CSV files
@@ -230,4 +230,3 @@ The evaluation framework has:
 
 **Generated:** 2025-11-21  
 **Status:** ✅ **PROJECT COMPLETE**
-

@@ -232,11 +232,10 @@ For questions about:
 - **Statistical methods:** See `METHODS_APPENDIX.md`
 - **Data sources:** See `data/README.md`
 - **Code structure:** See main `README.md` in repository root
-- **Results interpretation:** See `RESAMPLING_FINDINGS_REPORT.md` in repository root
+- **Results interpretation:** See `deliverables/archive/docs/legacy/RESAMPLING_FINDINGS_REPORT.md`
 
 ---
 
 **Package Generated:** [Date]  
 **Framework Version:** v2 (Resampling-Enabled)  
 **Evaluation Scope:** LSFT + LOGO across 3 datasets (Adamson, K562, RPE1)
-

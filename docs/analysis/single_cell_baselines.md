@@ -59,16 +59,16 @@ All numbers come from:
 
 ### 3. RPE1
 
-#### 3.1 Current Status
+#### 3.1 Baseline Metrics
 
-Single-cell baseline runs for RPE1 are still in progress.
-At present:
-- Only GEARS Pert Emb baseline is available:
-  - r = 0.20312
-  - L2 = 28.88
-
-Once all RPE1 baselines are complete, this section should be updated
-with a full table mirroring Adamson and K562.
+| Baseline              | Perturbation r | L2     |
+|-----------------------|----------------|--------|
+| Self-trained PCA      | **0.39513**    | 28.10  |
+| scGPT Gene Emb        | 0.31574        | 28.52  |
+| scFoundation Gene Emb | 0.23297        | 28.73  |
+| GEARS Pert Emb        | 0.20312        | 28.88  |
+| Random Gene Emb       | 0.20263        | 28.87  |
+| Random Pert Emb       | 0.20253        | 28.87  |
 
 ---
 
@@ -96,6 +96,5 @@ Average perturbation-level r across datasets:
   competitive with PCA on average.
 
 For a broader interpretation of why these patterns occur, see:
-- `COMPREHENSIVE_SINGLE_CELL_REPORT.md`.
-
+- `docs/analysis/single_cell_overview.md`.
 

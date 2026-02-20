@@ -11,6 +11,6 @@ and where to find the relevant code.
 - `embeddings.md` – All embedding types and how they are constructed
 - `validation_and_audits.md` – Validation framework and GEARS / embedding audits
 
-For **results and interpretations**, see the documents in `analysis_docs/`.
+For **results and interpretations**, see the documents in `docs/analysis/`.
 
 

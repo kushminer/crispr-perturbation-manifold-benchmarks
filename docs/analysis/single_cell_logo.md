@@ -2,76 +2,35 @@
 
 ### Key Findings
 
-- Self-trained PCA exhibits **strong extrapolation** to held-out
-  functional classes (e.g. Transcription).
-- Random embeddings largely **fail** at LOGO, with near-zero r.
-- Pretrained embeddings (scGPT, scFoundation) sit between random and
-  self-trained PCA.
+- `lpm_selftrained` is the top LOGO baseline across Adamson, K562, and RPE1.
+- scGPT/scFoundation are intermediate.
+- GEARS and random baselines are lower, though the exact gap varies by dataset.
 
-LOGO results at single-cell level largely mirror the pseudobulk LOGO
-findings.
+Primary source:
+- `aggregated_results/logo_generalization_all_analyses.csv` (`analysis_type = single_cell_logo`)
 
 ---
 
-### 1. Adamson (Transcription Holdout)
+### 1. Single-Cell LOGO (Transcription holdout) Summary
 
-Illustrative LOGO metrics (from single-cell report and pseudobulk LOGO):
-
-| Baseline              | Holdout Class | Perturbation r | L2     |
-|-----------------------|---------------|----------------|--------|
-| Self-trained PCA      | Transcription | ~0.42          | 21.77  |
-| scGPT Gene Emb        | Transcription | ~0.33          | 22.62  |
-| scFoundation Gene Emb | Transcription | ~0.28          | 23.07  |
-| Random Gene Emb       | Transcription | ~0.23          | 23.45  |
-
-Interpretation:
-- Self-trained PCA generalizes well to a **new functional class** it
-  has never seen during training.
-- Random embeddings fail to extrapolate beyond observed patterns.
-- Pretrained embeddings improve over random but still lag PCA.
+| Dataset | Self-trained | scGPT | scFoundation | GEARS | Random Gene | Random Pert |
+|---|---:|---:|---:|---:|---:|---:|
+| Adamson | 0.309 | 0.183 | 0.091 | 0.139 | 0.001 | 0.004 |
+| K562 | 0.259 | 0.193 | 0.112 | 0.072 | 0.069 | 0.068 |
+| RPE1 | 0.414 | 0.344 | 0.270 | 0.254 | 0.254 | 0.253 |
 
 ---
 
-### 2. K562 (Transcription Holdout)
+### 2. Interpretation
 
-Similar pattern to Adamson, but with generally lower r values due to
-dataset difficulty:
-
-- Self-trained PCA:
-  - r ≈ 0.26 (single-cell / pseudobulk)
-- Random baselines:
-  - r ≈ 0.07–0.11
-- Pretrained baselines:
-  - r ≈ 0.19–0.20
-
-Interpretation:
-- The ordering of baselines remains stable even under functional
-  extrapolation pressure.
-- The manifold learned by PCA appears to reflect **functional structure**
-  beyond the training classes.
+- LOGO preserves the same primary conclusion as baseline and LSFT analyses:
+  - **self-trained PCA generalizes best**.
+- The absolute performance level is dataset dependent, but ranking stability is consistent.
+- Functional-class extrapolation at single-cell resolution is therefore aligned with the pseudobulk story, not contradictory to it.
 
 ---
 
-### 3. RPE1
+### 3. Method Reference
 
-LOGO single-cell runs for RPE1 are not yet complete in the current
-repository snapshot.
-Expected behavior based on pseudobulk LOGO:
-- Self-trained PCA should maintain moderate r on held-out classes.
-- Random baselines should again collapse towards r ~ 0.
-
----
-
-### 4. Overall Interpretation
-
-- LOGO demonstrates that:
-  - The perturbation response manifold learned by self-trained PCA
-    carries meaningful **functional structure**.
-  - Random/global baselines without such structure cannot extrapolate.
-- Pretrained models (scGPT, scFoundation) recover some functional
-  organization, but not to the level of self-trained PCA.
-
-For methodological details, see:
-- `methodology/logo_single_cell.md`.
-
-
+For methodology details, see:
+- `docs/methodology/logo_single_cell.md`

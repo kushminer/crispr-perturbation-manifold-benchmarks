@@ -130,6 +130,6 @@ Output artifacts:
     isolate the effect of **functional extrapolation**.
 
 For results and interpretations of LOGO experiments, see:
-- `analysis_docs/single_cell_logo.md`.
+- `docs/analysis/single_cell_logo.md`.
 
 

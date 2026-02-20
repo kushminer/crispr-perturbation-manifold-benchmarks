@@ -11,7 +11,7 @@ Primary entry points:
 - `src/goal_2_baselines/baseline_runner_single_cell.py`
 
 This is the structured reference version of
-`SINGLE_CELL_METHODOLOGY_REPORT.md`.
+`deliverables/archive/docs/legacy/SINGLE_CELL_METHODOLOGY_REPORT.md`.
 
 ---
 
@@ -165,7 +165,7 @@ We extend this to additional baselines such as scGPT, scFoundation, GEARS.
   are used to understand performance.
 
 For results and interpretations, see:
-- `analysis_docs/single_cell_overview.md`
-- `analysis_docs/single_cell_baselines.md`
+- `docs/analysis/single_cell_overview.md`
+- `docs/analysis/single_cell_baselines.md`
 
 

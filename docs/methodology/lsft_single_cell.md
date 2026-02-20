@@ -83,14 +83,16 @@ For each test cell and each `top_pct`:
 1. Extract filtered training data:
    - `Y_train_filtered = Y_train[:, filtered_indices]`.
    - `B_train_filtered = B_train[:, filtered_indices]`.
-2. Center:
-   - `center = Y_train_filtered.mean(axis=1, keepdims=True)`.
-   - `Y_centered = Y_train_filtered - center`.
+2. Center (fair-comparison rule):
+   - Compute one global center from the full training set baseline model:
+     - `center_baseline = mean(Y_train, axis=1)`.
+   - Reuse that same center for LSFT retraining:
+     - `Y_centered = Y_train_filtered - center_baseline`.
 3. Solve for `K`:
    - `solve_y_axb(Y_centered, A, B_train_filtered, ridge_penalty)`.
 4. Predict the test cell:
    - Take its embedding: `B_test[:, test_idx:test_idx+1]`.
-   - `y_pred = (A @ K @ test_cell_embedding + center).flatten()`.
+   - `y_pred = (A @ K @ test_cell_embedding + center_baseline).flatten()`.
 5. Compute metrics:
    - Pearson r and L2 vs `y_true` for that cell.
 
@@ -129,6 +131,5 @@ Code reference:
   - Focus on **change in r** vs the global baseline.
 
 For interpretations of LSFT results, see:
-- `analysis_docs/single_cell_lsft.md`.
-
+- `docs/analysis/single_cell_lsft.md`.
 

@@ -36,7 +36,7 @@ Root causes:
 
 ### 2. Fix Summary
 
-Documented in `FIX_SINGLE_CELL_METHODOLOGY.md`:
+Documented in `deliverables/archive/docs/legacy/status/fixes/FIX_SINGLE_CELL_METHODOLOGY.md`:
 
 1. **Path fix**:
    - Updated GEARS CSV path to:
@@ -88,10 +88,12 @@ Interpretation:
 
 #### 3.3 RPE1
 
-Currently, only GEARS single-cell baseline is fully run for RPE1:
-- GEARS: r ≈ 0.203.
-- Self-trained PCA baseline for RPE1 is still in progress in the
-  single-cell pipeline.
+| Baseline         | Perturbation r | L2     |
+|------------------|----------------|--------|
+| Self-trained PCA | 0.39513        | 28.10  |
+| GEARS Pert Emb   | 0.20312        | 28.88  |
+
+Δr (GEARS − self-trained) ≈ −0.192.
 
 ---
 
@@ -108,7 +110,6 @@ Currently, only GEARS single-cell baseline is fully run for RPE1:
      simple PCA on the task of interest.
 
 For methodological details, see:
-- `methodology/embeddings.md`
-- `methodology/validation_and_audits.md`
-
+- `docs/methodology/embeddings.md`
+- `docs/methodology/validation_and_audits.md`
 

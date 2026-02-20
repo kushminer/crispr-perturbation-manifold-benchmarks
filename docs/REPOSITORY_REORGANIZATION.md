@@ -38,12 +38,10 @@ The repository has been reorganized following scientific software repository bes
 
 #### `docs/` - Enhanced documentation
 - `docs/methodology/` - Methodology documentation (merged from root `methodology/`)
-- `docs/analysis/` - Analysis documentation (merged from root `analysis_docs/`)
+- `docs/analysis/` - Analysis documentation (merged from legacy `analysis_docs/`)
 - `docs/publication/` - Publication-specific documentation
-- `docs/status/` - Status and completion reports
-  - `completion/` - 15 completion reports
-  - `status/` - 9 status updates
-  - `fixes/` - 4 fix verification reports
+- Legacy progress/status reports are archived under:
+  - `deliverables/archive/docs/legacy/status/`
 
 #### `deliverables/archive/` - Development artifacts
 - `deliverables/archive/logs/` - 20 execution log files
@@ -79,11 +77,11 @@ The repository has been reorganized following scientific software repository bes
 - [x] Move analysis scripts to `scripts/analysis/`
 - [x] Move utility scripts to `scripts/utilities/`
 - [x] Move monitoring scripts to `scripts/monitoring/`
-- [x] Move status/completion reports to `docs/status/`
+- [x] Move status/completion reports to `deliverables/archive/docs/legacy/status/`
 - [x] Move log files to `deliverables/archive/logs/`
 - [x] Move planning docs to `deliverables/archive/development/`
 - [x] Merge `methodology/` into `docs/methodology/`
-- [x] Merge `analysis_docs/` into `docs/analysis/`
+- [x] Merge legacy `analysis_docs/` into `docs/analysis/`
 - [x] Move publication docs to `docs/publication/`
 - [x] Update README.md with new structure
 - [ ] Verify all scripts work from new locations (may require path adjustments)
@@ -99,7 +97,7 @@ The repository has been reorganized following scientific software repository bes
 ## Files Removed from Root
 
 All development artifacts have been moved:
-- Status/completion reports → `docs/status/`
+- Status/completion reports → `deliverables/archive/docs/legacy/status/`
 - Execution logs → `deliverables/archive/logs/`
 - Planning documents → `deliverables/archive/development/`
 - Execution scripts → `scripts/execution/`

@@ -2,91 +2,50 @@
 
 ### Key Findings
 
-- **Self-trained PCA dominates** single-cell baselines across datasets.
-- **GEARS embeddings now diverge** from self-trained PCA after the path/validation fix.
-- **Pretrained models (scGPT, scFoundation)** perform only modestly better than random.
-- **Single-cell and pseudobulk results agree** on the ordering of baselines.
+- `lpm_selftrained` is the top baseline on all three single-cell datasets.
+- scGPT is generally second; scFoundation is intermediate.
+- GEARS and random baselines are lower and do not outperform self-trained PCA.
+- The **qualitative ranking** from pseudobulk largely transfers to single-cell.
 
-All numbers below come from:
+Primary sources:
+- `aggregated_results/baseline_performance_all_analyses.csv`
+- `aggregated_results/baseline_comparison_pseudobulk_vs_single_cell.csv`
 - `results/single_cell_analysis/comparison/SINGLE_CELL_ANALYSIS_REPORT.md`
-- `COMPREHENSIVE_SINGLE_CELL_REPORT.md`
 
 ---
 
-### 1. Baseline Performance (Single-Cell)
+### 1. Single-Cell Baseline Performance (Pearson r)
 
-#### 1.1 Per-Dataset Summary
-
-| Dataset  | Baseline              | Perturbation r | L2     |
-|----------|-----------------------|----------------|--------|
-| Adamson  | Self-trained PCA      | 0.396          | 21.71  |
-|          | scGPT Gene Emb        | 0.312          | 22.40  |
-|          | scFoundation Gene Emb | 0.257          | 22.87  |
-|          | GEARS Pert Emb        | 0.207          | 23.35  |
-|          | Random Gene Emb       | 0.205          | 23.24  |
-|          | Random Pert Emb       | 0.204          | 23.24  |
-| K562     | Self-trained PCA      | 0.262          | 28.25  |
-|          | scGPT Gene Emb        | 0.194          | 28.62  |
-|          | scFoundation Gene Emb | 0.115          | 29.12  |
-|          | GEARS Pert Emb        | 0.086          | 29.30  |
-|          | Random Pert Emb       | 0.074          | 29.35  |
-|          | Random Gene Emb       | 0.074          | 29.34  |
-| RPE1     | GEARS Pert Emb        | 0.203          | 28.88  |
-
-> Note: For RPE1, only GEARS is currently run in the single-cell pipeline.
-
-#### 1.2 Average Performance Across Datasets
-
-Average perturbation-level r:
-
-- **Self-trained PCA**: 0.329
-- **scGPT Gene Emb**: 0.253
-- **scFoundation Gene Emb**: 0.186
-- **GEARS Pert Emb**: 0.165
-- **Random Gene Emb**: 0.139
-- **Random Pert Emb**: 0.139
+| Dataset | Self-trained | scGPT | scFoundation | GEARS | Random Gene | Random Pert |
+|---|---:|---:|---:|---:|---:|---:|
+| Adamson | 0.396 | 0.312 | 0.257 | 0.207 | 0.205 | 0.204 |
+| K562 | 0.262 | 0.194 | 0.115 | 0.086 | 0.074 | 0.074 |
+| RPE1 | 0.395 | 0.316 | 0.233 | 0.203 | 0.203 | 0.203 |
 
 ---
 
-### 2. GEARS vs Self-Trained PCA (Single-Cell)
+### 2. Pseudobulk vs Single-Cell
 
-After fixing the GEARS CSV path and adding embedding validation:
+- Absolute r is lower at single-cell resolution for every baseline.
+- For `lpm_selftrained`, pseudobulk -> single-cell:
+  - Adamson: 0.946 -> 0.396
+  - K562: 0.664 -> 0.262
+  - RPE1: 0.768 -> 0.395
 
-- **Adamson**:
-  - Self-trained: r = 0.396
-  - GEARS: r = 0.207
-  - Δr = −0.189 (GEARS worse)
-- **K562**:
-  - Self-trained: r = 0.262
-  - GEARS: r = 0.086
-  - Δr = −0.176 (GEARS worse)
-
-Interpretation:
-- GEARS captures GO graph structure but does **not** align as well with
-  perturbation response manifolds as self-trained PCA.
-- GEARS still provides a meaningful alternative geometry for comparison
-  (no longer identical to PCA).
-
-For a deeper dive, see:
-- `analysis_docs/gears_comparison.md`
+Yet the top baseline is unchanged (`lpm_selftrained`), and baseline ordering is strongly aligned across resolutions.
 
 ---
 
-### 3. Single-Cell vs Pseudobulk
+### 3. LSFT and LOGO at Single-Cell
 
-Even though the single-cell pipeline is noisier (cell-to-cell variance),
-the **relative ordering** of baselines matches pseudobulk:
+- LSFT: mostly small deltas after correction (see `docs/analysis/single_cell_lsft.md`).
+- LOGO: `lpm_selftrained` remains top in held-out class generalization.
 
-- Self-trained PCA ≫ scGPT ≳ scFoundation ≫ random.
-- GEARS underperforms self-trained PCA but offers a distinct geometry.
+---
 
-Implications:
-- The **Manifold Law** holds at both pseudobulk and single-cell
-  resolution.
-- Aggregation to pseudobulk does not destroy the key structure used for
-  prediction.
+### 4. Bottom Line
 
-For detailed cross-resolution analysis, see:
-- `analysis_docs/cross_resolution_pseudobulk_vs_single_cell.md`
-
-
+The single-cell extension does not overturn the pseudobulk story. It strengthens it:
+- the same model class wins,
+- and the same structural signal is present,
+- but with expected reduction in absolute performance due to higher cell-level noise.

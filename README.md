@@ -6,16 +6,20 @@ This repository is finalized for presentation and reproducible review.
 ## Objective
 Evaluate whether increasingly complex embedding methods improve perturbation-response prediction versus simpler geometric baselines.
 
+## What LSFT and LOGO Mean
+- **LSFT (Local Similarity-Filtered Training):** for each test target, train on only the most similar training examples (top-k%) instead of the full training set.
+- **LOGO (Leave-One-GO-Out):** hold out one functional class (for example, Transcription) during training and test only on that held-out class.
+
 ## Lineage (Replication + Continuation)
 This repository is a replication and continuation of the baseline framework from:
 
 - Ahlmann-Eltze, Huber, Anders (2025), *Nature Methods*: [https://www.nature.com/articles/s41592-025-02772-6](https://www.nature.com/articles/s41592-025-02772-6)
 - Original code/data repository: [https://github.com/const-ae/linear_perturbation_prediction-Paper](https://github.com/const-ae/linear_perturbation_prediction-Paper)
 
-The baseline families evaluated here are inherited from that framework; this project extends the evaluation with LSFT/LOGO analyses and consolidated result verification.
+The baseline families evaluated here are inherited from that framework; this project extends the evaluation with LSFT/LOGO analyses, plus explicit single-cell testing (the original paper benchmark emphasized pseudobulk).
 
 ## Final Conclusions (Verified)
-These conclusions are computed from files in `results/` and regenerated into `aggregated_results/` on February 20, 2026.
+These conclusions were regenerated on February 20, 2026 and are documented in committed tables under `aggregated_results/` (derived from local `results/` runs).
 
 1. **Your newer methods did not materially improve prediction accuracy on the strongest baseline.**
 - Single-cell LSFT gain for `lpm_selftrained` is very small (mean Δr ≈ +0.0006).
@@ -31,15 +35,22 @@ These conclusions are computed from files in `results/` and regenerated into `ag
   - Adamson: **0.946**
   - K562: **0.664**
   - RPE1: **0.768**
-- Mean ranking in both single-cell and pseudobulk: **Self-trained PCA > scGPT > scFoundation > GEARS/random variants**.
+- In both pseudobulk and single-cell analyses, `lpm_selftrained` is the top baseline.
 
-3. **More local training data can increase accuracy, with diminishing returns.**
+3. **Core conclusions transfer from pseudobulk to single-cell, with lower absolute r at single-cell resolution.**
+- Absolute performance drops at single-cell resolution (for example, `lpm_selftrained` Adamson: **0.946 -> 0.396**).
+- Baseline ordering remains strongly aligned across resolutions (Spearman rank correlation across shared baselines):
+  - Adamson: **1.00**
+  - K562: **0.89**
+  - RPE1: **0.83**
+
+4. **More local training data can increase accuracy, with diminishing returns (most clearly in pseudobulk).**
 In pseudobulk LSFT sweeps for `lpm_selftrained`, increasing neighborhood size from top 1% to top 10% improves mean r:
 - Adamson: 0.925 -> 0.943
 - K562: 0.677 -> 0.706
 - RPE1: 0.776 -> 0.793
 
-4. **PCA also remains strongest under functional-class holdout (LOGO).**
+5. **PCA also remains strongest under functional-class holdout (LOGO).**
 - Single-cell LOGO mean r: `lpm_selftrained` **0.327** (highest)
 - Pseudobulk LOGO mean r: `lpm_selftrained` **0.773** (highest)
 
@@ -47,7 +58,7 @@ In pseudobulk LSFT sweeps for `lpm_selftrained`, increasing neighborhood size fr
 This project was sponsored by the **NIH Bridges to Baccalaureate** program.
 
 ## Data Setup (for Raw-Data Re-runs)
-If you only need to verify the final conclusions in this repo, use the existing `results/` artifacts and skip data download.
+If you only need to verify the final conclusions in this repo, use the committed `aggregated_results/` artifacts and skip raw-data download.
 
 If you want to rerun baselines/LSFT from raw `.h5ad` data, download and place files as follows.
 
@@ -151,8 +162,9 @@ PYTHONPATH=src python3 -m goal_3_prediction.lsft.lsft \
 ## Repository Scope
 - `src/`: core evaluation and analysis code
 - `scripts/`: execution and analysis helpers
-- `results/`: experiment outputs
+- `results/`: local experiment outputs (gitignored; regenerate locally)
 - `aggregated_results/`: cleaned, analysis-ready summaries
-- `docs/`: methodology and analysis notes
-- `deliverables/`: archived development artifacts, mentor package, and fact-sheet materials
+- `docs/`: signal-first methodology and analysis notes
+- `deliverables/archive/`: legacy docs/results, development artifacts, and prior execution logs
+- `deliverables/`: mentor package and fact-sheet materials
 - `deliverables/poster/`, `deliverables/publication_package/`, `deliverables/audits/`: active figure-generation and audit workflows

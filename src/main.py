@@ -168,7 +168,7 @@ def task_combined(cfg: ExperimentConfig) -> None:
         "This functionality is no longer available in the core framework."
     )
     raise NotImplementedError(
-        "Combined analysis has been moved to deliverables/archive/eval_framework_logo/"
+        "Combined analysis is not part of the maintained public repo."
     )
 
 
@@ -179,7 +179,7 @@ def task_visualize(cfg: ExperimentConfig) -> None:
         "This functionality is no longer available in the core framework."
     )
     raise NotImplementedError(
-        "LOGO visualizations have been moved to deliverables/archive/eval_framework_logo/"
+        "LOGO visualizations are not part of the maintained public repo."
     )
 
 

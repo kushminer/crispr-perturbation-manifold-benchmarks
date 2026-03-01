@@ -1,115 +1,29 @@
-## GEARS vs Self-Trained PCA – Single-Cell Analysis
+## GEARS vs Self-Trained PCA
 
-### Key Findings
+### Current Result
 
-- Historically, GEARS and self-trained PCA **incorrectly produced
-  identical results** in single-cell baselines.
-- After fixing the GEARS path and adding validation, GEARS now:
-  - Produces **distinct embeddings** and predictions.
-  - Performs **worse** than self-trained PCA on average.
-- GEARS remains valuable as a **graph-based control** embedding.
+In the committed aggregate summaries, self-trained PCA (`lpm_selftrained`) outperforms GEARS perturbation embeddings (`lpm_gearsPertEmb`) on all three single-cell datasets.
 
-This document summarizes:
-- The historical bug.
-- The fix.
-- The current single-cell GEARS vs PCA comparison.
+Single-cell perturbation-level Pearson r:
 
----
+| Dataset | Self-trained PCA | GEARS Pert Emb | Delta (GEARS - PCA) |
+| --- | ---: | ---: | ---: |
+| Adamson | 0.396 | 0.207 | -0.189 |
+| K562 | 0.262 | 0.086 | -0.176 |
+| RPE1 | 0.395 | 0.203 | -0.192 |
 
-### 1. Historical Issue
+These values are consistent with the headline conclusion of the repo: simple self-trained PCA geometry is more aligned with perturbation response than the graph-based GEARS perturbation representation in this evaluation setting.
 
-From `deliverables/audits/single_cell_data_audit/gears_vs_pca_findings.md`:
+### Interpretation
 
-> Pre-fix, per-perturbation curves for `lpm_selftrained` and
-> `lpm_gearsPertEmb` were identical within floating-point noise,
-> confirming that the earlier code path was reusing self-trained PCA
-> embeddings when GEARS was requested.
+- GEARS is still useful as a graph-based control baseline.
+- It does not improve predictive accuracy here.
+- The result supports the broader project conclusion that more complex embedding machinery was not necessary to beat PCA on this task.
 
-Root causes:
-- GEARS CSV path pointed to a non-existent location.
-- Single-cell runner used `training_data` embeddings when GEARS
-  loading failed.
-- No validation existed to detect that two baselines shared the same
-  embedding space.
+### Where This Is Enforced in Code
 
----
+- `src/goal_2_baselines/baseline_runner_single_cell.py`
+- `src/goal_2_baselines/split_logic.py`
+- `scripts/validate_single_cell_baselines.py`
 
-### 2. Fix Summary
-
-Documented in `deliverables/archive/docs/legacy/status/fixes/fix_single_cell_methodology.md`:
-
-1. **Path fix**:
-   - Updated GEARS CSV path to:
-     - `../linear_perturbation_prediction-Paper/paper/benchmark/data/gears_pert_data/go_essential_all/go_essential_all.csv`
-2. **Enhanced loader**:
-   - Validate GEARS CSV existence.
-   - Log embedding shapes and statistics.
-3. **Embedding validation**:
-   - Compare GEARS cell embeddings against self-trained PCA embeddings.
-   - Raise error if they are identical (max_diff < 1e-6).
-4. **Audit tools**:
-   - `validate_embeddings.py` joins per-perturbation metrics for
-     self-trained vs GEARS and measures deltas.
-
-Result:
-- GEARS now reliably loads and produces distinct embeddings.
-
----
-
-### 3. Single-Cell GEARS vs PCA – Current Results
-
-#### 3.1 Adamson
-
-| Baseline         | Perturbation r | L2     |
-|------------------|----------------|--------|
-| Self-trained PCA | 0.39597        | 21.71  |
-| GEARS Pert Emb   | 0.20719        | 23.35  |
-
-Δr (GEARS − self-trained) ≈ −0.189.
-
-Interpretation:
-- GEARS substantially underperforms self-trained PCA on Adamson.
-- This confirms that self-trained PCA’s local geometry is better
-  aligned with perturbation responses.
-
-#### 3.2 K562
-
-| Baseline         | Perturbation r | L2     |
-|------------------|----------------|--------|
-| Self-trained PCA | 0.26195        | 28.25  |
-| GEARS Pert Emb   | 0.08610        | 29.30  |
-
-Δr (GEARS − self-trained) ≈ −0.176.
-
-Interpretation:
-- K562 is harder overall, and GEARS again underperforms PCA.
-- Sparse GO coverage means many perturbations have no GEARS
-  embedding and receive zeros.
-
-#### 3.3 RPE1
-
-| Baseline         | Perturbation r | L2     |
-|------------------|----------------|--------|
-| Self-trained PCA | 0.39513        | 28.10  |
-| GEARS Pert Emb   | 0.20312        | 28.88  |
-
-Δr (GEARS − self-trained) ≈ −0.192.
-
----
-
-### 4. High-Level Interpretation
-
-1. **GEARS is now correctly wired** and produces distinct embeddings.
-2. **Self-trained PCA remains superior** for prediction accuracy.
-3. **Graph-based GO embeddings** capture biological connectivity, but
-   this structure does not translate into better perturbation-response
-   prediction in this setting.
-4. GEARS still serves as a useful **graph-based baseline** to
-   demonstrate that:
-   - “Fancy” graph-based embeddings are not automatically better than
-     simple PCA on the task of interest.
-
-For methodological details, see:
-- `docs/methodology/embeddings.md`
-- `docs/methodology/validation_and_audits.md`
-
+These paths contain the single-cell baseline logic and the checks that prevent silent fallback to the wrong embedding source.

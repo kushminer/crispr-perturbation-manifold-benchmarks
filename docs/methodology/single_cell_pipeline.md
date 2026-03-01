@@ -10,8 +10,7 @@ Primary entry points:
 - `src/goal_2_baselines/single_cell_loader.py`
 - `src/goal_2_baselines/baseline_runner_single_cell.py`
 
-This is the structured reference version of
-`deliverables/archive/docs/legacy/single_cell_methodology_report.md`.
+This document is the maintained reference for the single-cell evaluation path.
 
 ---
 

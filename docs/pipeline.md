@@ -2,23 +2,22 @@
 
 ## Scope
 
-This repository evaluates CRISPR perturbation prediction baselines and their
-local/generalization extensions:
+This repository evaluates CRISPR perturbation prediction baselines and their local and extrapolation extensions:
 
-- Baselines (goal 2)
-- LSFT (goal 3, local training)
-- LOGO (goal 3/4, functional-class holdout)
-- Cross-resolution aggregation (pseudobulk vs single-cell)
+- Baselines
+- LSFT
+- LOGO
+- Cross-resolution aggregation from pseudobulk to single-cell
 
 ## Preferred End-to-End Entry Point
 
-Run the single demo to regenerate aggregate tables and verified conclusions:
+Run the single demo to regenerate aggregate tables and the verified conclusions:
 
 ```bash
 python3 scripts/demo/run_end_to_end_results_demo.py
 ```
 
-This writes refreshed outputs into `aggregated_results/`.
+This refreshes outputs in `aggregated_results/` from local `results/` artifacts.
 
 ## Core Rebuild Steps
 
@@ -28,13 +27,13 @@ This writes refreshed outputs into `aggregated_results/`.
 python3 src/analysis/aggregate_all_results.py
 ```
 
-2. Build pseudobulk vs single-cell comparisons:
+2. Build pseudobulk vs single-cell comparison summaries:
 
 ```bash
 python3 src/analysis/pseudobulk_vs_single_cell.py
 ```
 
-3. (Optional) Re-run execution batches (dataset-level outputs):
+3. Optional dataset-level reruns:
 
 ```bash
 bash scripts/execution/run_single_cell_baselines.sh
@@ -44,9 +43,8 @@ bash scripts/execution/run_single_cell_logo.sh
 
 ## Output Locations
 
-- Active aggregate outputs: `aggregated_results/`
-- Local experiment outputs: `results/` (gitignored in this repo)
-- Archived historical outputs/docs: `deliverables/archive/`
+- `aggregated_results/`: committed summary tables and markdown conclusions
+- `results/`: local experiment outputs used to build those summaries
 
 ## Notebook Walkthrough
 

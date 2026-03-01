@@ -12,6 +12,8 @@ build/
 htmlcov/
 
 # Virtual environments
+.venv/
+.venv*/
 venv/
 venv_*/
 env/
@@ -50,7 +52,7 @@ Thumbs.db
 # Model checkpoints
 data/models/scfoundation/models.ckpt
 data/models/scfoundation/*.ckpt
-data/models/scgpt/scGPT_human/best_model.pt
+data/models/scgpt/scgpt_human/best_model.pt
 data/models/scgpt/**/best_model.pt
 
 # Large datasets

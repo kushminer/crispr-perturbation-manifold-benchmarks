@@ -1,2 +1,0 @@
-baseline_type,top_pct,n_test_cells,n_test_perts,cell_mean_baseline_r,cell_mean_lsft_r,cell_mean_delta_r,pert_mean_baseline_r,pert_mean_lsft_r,pert_mean_delta_r,mean_similarity
-lpm_gearsPertEmb,0.1,10,1,0.3572861281987093,0.20298882037867064,-0.15429730782003864,0.3572861281987093,0.20298882037867064,-0.15429730782003864,0.6491653562684914

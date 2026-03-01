@@ -196,9 +196,13 @@ def _build_summary(
     return "\n".join(lines)
 
 
-def _print_paths(paths: Iterable[Path]) -> None:
+def _print_paths(paths: Iterable[Path], repo_root: Path) -> None:
     for path in paths:
-        print(f"- {path}")
+        try:
+            display_path = path.resolve().relative_to(repo_root.resolve())
+        except ValueError:
+            display_path = path
+        print(f"- {display_path}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -260,7 +264,8 @@ def main() -> int:
                 agg_dir / "lsft_improvement_summary_pseudobulk.csv",
                 agg_dir / "logo_generalization_all_analyses.csv",
                 report_path,
-            ]
+            ],
+            repo_root=repo_root,
         )
 
     return 0

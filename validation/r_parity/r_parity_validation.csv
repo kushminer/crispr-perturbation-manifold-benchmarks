@@ -1,3 +1,0 @@
-baseline,mean_pearson_r,mean_l2,max_diff,within_tolerance,n_test_perturbations
-lpm_randomPertEmb,0.09042237964837802,41.150834151621794,5.303956485394341,0/5,5
-lpm_selftrained,0.12757870528447965,41.013242871945984,5.332381330608994,0/5,5

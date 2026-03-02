@@ -3,6 +3,7 @@
 ## Project Status
 This repository is finalized for presentation and reproducible review.
 It keeps both the full rerun framework and a compact end-to-end walkthrough of the final results.
+Stable release: [`v1.0.0`](https://github.com/kushminer/crispr-perturbation-manifold-benchmarks/releases/tag/v1.0.0)
 
 ## Objective
 Evaluate whether increasingly complex embedding methods improve CRISPR perturbation-response prediction relative to simpler geometric baselines.

@@ -2,6 +2,7 @@
 
 ## Project Status
 This repository is finalized for presentation and reproducible review.
+It keeps both the full rerun framework and a compact end-to-end walkthrough of the final results.
 
 ## Objective
 Evaluate whether increasingly complex embedding methods improve CRISPR perturbation-response prediction relative to simpler geometric baselines.
@@ -108,6 +109,8 @@ ls data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad
 ls data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad
 ```
 
+For a few legacy GEARS helpers that still reference the paper-style path `paper/benchmark/data/gears_pert_data/...`, create the compatibility symlink documented in `docs/data_sources.md`.
+
 Annotation files are already included under `data/annotations/`. Split configs used by scripts are already present in `results/goal_2_baselines/splits/`.
 
 ## Reproducibility
@@ -153,6 +156,6 @@ PYTHONPATH=src python3 -m goal_3_prediction.lsft.lsft \
 - `scripts/`: runnable entry points and helpers
 - `results/`: local experiment outputs used to regenerate summaries
 - `aggregated_results/`: committed final summary tables and verified conclusions
-- `docs/`: method and interpretation notes
+- `docs/`: maintained method and interpretation notes
 - `tutorials/`: one maintained end-to-end notebook demo
 - `tests/`: unit tests for the reusable code path

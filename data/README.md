@@ -1,387 +1,121 @@
-# Evaluation Framework Data Directory
+# Data Directory
 
-This directory contains data files used by the evaluation framework. This README documents all data dependencies, their sources, and how to obtain them.
+This directory documents the external inputs needed for the full rerun framework.
+The repository keeps lightweight annotations and metadata in git, but raw `.h5ad` datasets and large model checkpoints must be added locally.
 
-## Directory Structure
+## Canonical Local Layout
 
-```
+```text
 data/
-├── annotations/          # Functional class annotations (IN REPOSITORY)
+├── annotations/
 │   ├── adamson_functional_classes.tsv
 │   ├── adamson_functional_classes_enriched.tsv
 │   ├── replogle_k562_functional_classes.tsv
-│   └── replogle_k562_functional_classes_go.tsv
-├── gears_pert_data/     # Processed perturbation datasets (TOO LARGE FOR REPO)
-│   └── parity_subset/   # Small subset for testing (IN REPOSITORY)
-│       └── perturb_processed.h5ad
-├── models/              # Pretrained model checkpoints (TOO LARGE FOR REPO)
-│   ├── scgpt/
-│   │   └── scgpt_human/  # scGPT checkpoint (DOWNLOAD REQUIRED)
-│   └── scfoundation/     # scFoundation checkpoint (DOWNLOAD REQUIRED)
-├── paper_results/       # R output files for validation (OPTIONAL)
-│   └── adamson_filtered.RDS
-└── README.md            # This file
+│   ├── replogle_k562_functional_classes_go.tsv
+│   └── replogle_rpe1_functional_classes_go.tsv
+├── gears_pert_data/
+│   ├── adamson/perturb_processed.h5ad
+│   ├── replogle_k562_essential/perturb_processed.h5ad
+│   ├── replogle_rpe1_essential/perturb_processed.h5ad
+│   └── go_essential_all/go_essential_all.csv
+├── models/
+│   ├── scgpt/scgpt_human/
+│   │   ├── args.json
+│   │   ├── best_model.pt
+│   │   └── vocab.json
+│   └── scfoundation/
+│       ├── demo.h5ad
+│       └── models.ckpt
+└── paper_results/
+    └── adamson_filtered.RDS
 ```
 
-## Data Dependencies
-
-### 1. Dataset Files (.h5ad) - **DOWNLOAD REQUIRED**
-
-These are the main perturbation datasets. They are too large for the repository and must be obtained via the GEARS API or direct download.
-
-#### Adamson Dataset
-- **Path**: `paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad`
-- **Status**: Not in repository (too large)
-- **Source**: GEARS API
-- **How to obtain**:
-  1. **Using GEARS API** (recommended):
-     ```python
-     from gears import PertData
-     
-     # Initialize GEARS data handler
-     pert_data = PertData("./paper/benchmark/data/gears_pert_data/")
-     
-     # Download Adamson dataset
-     pert_data.download_dataset("adamson")
-     ```
-  
-  2. **Direct download**:
-     - Download from the GEARS repository: https://github.com/snap-stanford/GEARS
-     - Or from the paper's data repository
-     - Place in: `paper/benchmark/data/gears_pert_data/adamson/perturb_processed.h5ad`
-
-- **Used by**:
-  - Goal 1 (Similarity analysis)
-  - Goal 2 (Baseline reproduction)
-  - Goal 3 (LSFT and LOGO predictions)
-  - Tutorial notebooks (if using real data)
-
-#### Replogle K562 Essential Dataset
-- **Path**: External location (configurable in scripts)
-- **Status**: Not in repository (too large)
-- **Source**: GEARS API or paper data repository
-- **How to obtain**:
-  1. **Using GEARS API**:
-     ```python
-     from gears import PertData
-     
-     pert_data = PertData("./paper/benchmark/data/gears_pert_data/")
-     pert_data.download_dataset("replogle_k562_essential")
-     ```
-  
-  2. **Direct download**: Follow instructions from the GEARS repository
-
-- **Used by**:
-  - Goal 2 (Baseline reproduction)
-  - Goal 3 (LSFT and LOGO predictions)
-  - Cross-dataset comparisons
-
-#### Replogle RPE1 Essential Dataset
-- **Path**: External location (configurable in scripts)
-- **Status**: Not in repository (too large)
-- **Source**: GEARS API or paper data repository
-- **How to obtain**:
-  1. **Using GEARS API**:
-     ```python
-     from gears import PertData
-     
-     pert_data = PertData("./paper/benchmark/data/gears_pert_data/")
-     pert_data.download_dataset("replogle_rpe1_essential")
-     ```
-  
-  2. **Direct download**: Follow instructions from the GEARS repository
-
-- **Used by**:
-  - Goal 2 (Baseline reproduction)
-  - Goal 3 (LSFT and LOGO predictions)
-  - Cross-dataset comparisons
-
-### 2. Annotation Files (.tsv) - **IN REPOSITORY** ✓
-
-Functional class annotations that map perturbations (target genes) to functional classes.
-
-- **Location**: `data/annotations/`
-- **Status**: ✅ Already in repository
-- **Files**:
-  - `adamson_functional_classes.tsv`: Original Adamson annotations
-  - `adamson_functional_classes_enriched.tsv`: Enriched Adamson annotations (10 classes, manually curated) ⭐ **Most commonly used**
-  - `replogle_k562_functional_classes.tsv`: Replogle K562 annotations (10 balanced functional groups)
-  - `replogle_k562_functional_classes_go.tsv`: K562 annotations based on GO terms
-
-- **Format**: TSV files with columns:
-  - `target`: Perturbation name (gene symbol)
-  - `class`: Functional class name
-
-- **Used by**:
-  - Goal 3 (LOGO functional class holdout evaluation)
-  - Functional class holdout analysis
-  - Tutorial 3 (LOGO section)
-
-- **Generating new annotations**:
-  ```bash
-  # Generate Replogle K562 annotations
-  PYTHONPATH=src python src/scripts/generate_replogle_annotations.py \
-    --config configs/config_replogle.yaml \
-    --method manual
-  ```
-
-### 3. Split Configuration Files (.json) - **GENERATED BY SCRIPTS** ⚙️
-
-Train/test/validation splits for each dataset. These are generated by the split logic scripts.
-
-- **Location**: `results/goal_2_baselines/splits/`
-- **Status**: ⚙️ Generated by scripts (output of `split_logic.py`)
-- **Files**:
-  - `adamson_split_seed1.json`
-  - `replogle_k562_essential_split_seed1.json`
-  - `replogle_rpe1_essential_split_seed1.json`
-
-- **How to generate**:
-  1. **Using GEARS** (recommended, matches paper):
-     ```python
-     from goal_2_baselines.split_logic import create_split_from_adata
-     import anndata as ad
-     
-     adata = ad.read_h5ad("path/to/perturb_processed.h5ad")
-     split_config = create_split_from_adata(
-         adata, 
-         dataset_name="adamson",
-         seed=1,
-         use_gears=True  # Uses GEARS prepare_split
-     )
-     ```
-
-  2. **Manual creation**: See `src/goal_2_baselines/split_logic.py`
-
-- **Used by**:
-  - Goal 2 (Baseline reproduction - ensures consistent train/test splits)
-  - Goal 1 (Similarity analysis - to split data)
-  - Goal 3 (LSFT - to split data)
-  - Tutorial notebooks (for consistent splits)
-
-### 4. Pretrained Model Checkpoints - **DOWNLOAD REQUIRED**
-
-Large pretrained model checkpoints for gene embeddings (scGPT, scFoundation).
-
-#### scGPT Model
-- **Location**: `data/models/scgpt/scgpt_human/`
-- **Status**: ❌ Not in repository (too large, ~several GB)
-- **Source**: Official scGPT repository
-- **Required files**:
-  - `args.json`
-  - `best_model.pt`
-  - `vocab.json`
-  - Optional: `gene_info.csv`
-
-- **How to obtain**:
-  1. **Direct download**:
-     - Visit: https://github.com/bowang-lab/scGPT
-     - Download the **scgpt_human (whole-human)** checkpoint from the model zoo
-     [https://drive.google.com/drive/folders/1oWh_-ZRdhtoGQ2Fw24HP41FgLoomVo-y]
-     - Extract to: `data/models/scgpt/scgpt_human/`
-
-  2. **Verify integrity** (recommended):
-     ```bash
-     cd data/models/scgpt/scgpt_human/
-     sha256sum best_model.pt > hashes.txt  # Record for reproducibility
-     ```
-
-- **Used by**:
-  - Goal 2 (Baseline: `lpm_scgptGeneEmb`)
-  - Goal 5 (Embedding parity validation)
-  - Cross-dataset embedding comparisons
-
-- **Size**: ~several GB (check current model size on scGPT repository)
-
-#### scFoundation Model
-- **Location**: `data/models/scfoundation/`
-- **Status**: ❌ Not in repository (too large, ~several GB)
-- **Source**: Official scFoundation repository
-- **Required files**:
-  - `models.ckpt` (single-cell MAE weights)
-  - `demo.h5ad` (provides gene name ordering)
-  - Optional: `hashes.json` (for verification)
-
-- **How to obtain**:
-  1. **Direct download**:
-     - Visit: https://github.com/biomap-research/scFoundation
-     - Download the **maeautobin** checkpoint
-     - See repository README for SharePoint download links
-     - Place files in: `data/models/scfoundation/`
-
-  2. **Verify integrity**:
-     ```bash
-     cd data/models/scfoundation/
-     sha256sum models.ckpt > hashes.txt
-     ```
-
-- **Used by**:
-  - Goal 2 (Baseline: `lpm_scFoundationGeneEmb`)
-  - Goal 5 (Embedding parity validation)
-
-- **Size**: ~several GB (check current model size on scFoundation repository)
-
-### 5. Results Files - **GENERATED BY SCRIPTS** ⚙️
-
-Output files generated by the evaluation framework scripts.
-
-- **Location**: `results/` (various subdirectories)
-- **Status**: ⚙️ Generated by scripts
-- **Structure**:
-  ```
-  results/
-  ├── goal_1_similarity/        # Similarity analysis outputs
-  ├── goal_2_baselines/         # Baseline reproduction outputs
-  │   ├── splits/               # Split configurations (see section 3)
-  │   └── {dataset}_reproduced/ # Per-dataset baseline results
-  ├── goal_3_prediction/        # LSFT and LOGO outputs
-  │   ├── lsft/
-  │   └── functional_class_holdout/
-  ├── goal_4_analysis/          # Statistical analysis outputs
-  └── goal_5_validation/        # Parity validation outputs
-  ```
-
-- **How to generate**: Run the respective goal scripts:
-  ```bash
-  # Goal 2: Generate baseline results
-  python -m goal_2_baselines.run_all_datasets \
-    --datasets adamson \
-    --pca_dim 10 \
-    --ridge_penalty 0.1 \
-    --seed 1
-
-  # Goal 3: Generate LSFT results
-  python -m goal_3_prediction.lsft.lsft \
-    --adata_path path/to/adata.h5ad \
-    --split_config results/goal_2_baselines/splits/adamson_split_seed1.json \
-    --baseline_type lpm_selftrained \
-    --output_dir results/goal_3_prediction/lsft/
-
-  # Goal 3: Generate LOGO results
-  python -m goal_3_prediction.functional_class_holdout.logo \
-    --adata_path path/to/adata.h5ad \
-    --annotation_path data/annotations/adamson_functional_classes_enriched.tsv \
-    --dataset_name adamson \
-    --output_dir results/goal_3_prediction/functional_class_holdout/
-  ```
-
-- **Used by**:
-  - Goal 4 (Statistical analysis - loads results from Goals 2 and 3)
-  - Goal 5 (Parity validation - compares with paper results)
-  - Cross-dataset comparisons
-
-### 6. R Output Files (.RDS) - **OPTIONAL** (for validation)
-
-R output files used for parity validation with the paper's R implementation.
-
-- **Location**: `data/paper_results/`
-- **Status**: Optional (only needed for Goal 5 R parity validation)
-- **Files**:
-  - `adamson_filtered.RDS`: R-processed Adamson dataset (for comparison)
-
-- **How to obtain**:
-  - These are outputs from the paper's R scripts
-  - Only needed if validating against R implementation
-  - Can be generated by running the paper's R scripts (see `paper/` directory)
-
-- **Used by**:
-  - Goal 5 (R parity validation scripts)
-  - Comparing Python vs R embeddings and results
-
-## Quick Start: Required Downloads
-
-To run the evaluation framework with **all baselines**, you need:
-
-1. **Dataset files** (via GEARS API):
-   ```python
-   from gears import PertData
-   pert_data = PertData("./paper/benchmark/data/gears_pert_data/")
-   pert_data.download_dataset("adamson")
-   # Repeat for replogle_k562_essential and replogle_rpe1_essential if needed
-   ```
-
-2. **Pretrained models** (direct download):
-   - scGPT: Download from https://github.com/bowang-lab/scGPT
-   - scFoundation: Download from https://github.com/biomap-research/scFoundation
-
-3. **Split files** (auto-generated):
-   - Will be created automatically when running baseline scripts
-   - Or generate manually using `split_logic.py`
-
-To run with **synthetic data** (no downloads):
-- Use the tutorial notebooks with option 2 (synthetic data)
-- All tutorials support synthetic data generation
-
-## File Size Guidelines
-
-| File Type | Typical Size | In Repository? |
-|-----------|--------------|----------------|
-| Dataset (.h5ad) | 100MB - 1GB+ | ❌ Too large |
-| Annotations (.tsv) | <1MB | ✅ Yes |
-| Splits (.json) | <100KB | ⚙️ Generated |
-| Model checkpoints | 1-10GB | ❌ Too large |
-| Results (.csv) | <10MB | ⚙️ Generated |
-| RDS files | <100MB | ⚠️ Optional |
-
-## Relationship to Paper Repository
-
-The `paper/` directory in this repository is a copy of the original Nature Methods 2025 paper repository:
-- **Paper**: [Ahlmann-Eltze et al. (2025)](https://www.nature.com/articles/s41592-025-02772-6)
-- **Original Repository**: https://github.com/const-ae/linear_perturbation_prediction-Paper
-- **Paper Title**: "Deep-learning-based gene perturbation effect prediction does not yet outperform simple linear baselines"
-
-The evaluation framework has **optional dependencies** on the `paper/` directory for:
-1. **GEARS compatibility**: GEARS expects data in `paper/benchmark/data/gears_pert_data/` structure
-2. **Reference implementations**: Paper's R/Python scripts for parity validation (Goal 5)
-3. **Default paths**: Convenience defaults that can be overridden
-
-**You do NOT need the `paper/` directory to use the evaluation framework**. All dependencies can be:
-- Overridden with command-line arguments
-- Replaced with custom paths
-- Skipped (e.g., skip R validation if not needed)
-
-For more details on dependencies, see: `docs/PAPER_DEPENDENCIES.md`
-
-## Data Independence
-
-This directory (`data/`) is designed to be **standalone**. Annotation files in `data/annotations/` are independent copies maintained for reproducibility, separate from `paper/benchmark/data/annotations/`.
-
-## Troubleshooting
-
-### Missing Dataset Files
-- **Error**: `FileNotFoundError: perturb_processed.h5ad not found`
-- **Solution**: Download dataset using GEARS API (see section 1)
-
-### Missing Model Checkpoints
-- **Error**: `FileNotFoundError: scGPT checkpoint not found`
-- **Solution**: Download model from official repository (see section 4)
-- **Workaround**: Skip scGPT/scFoundation baselines if not available
-
-### Missing Split Files
-- **Error**: `FileNotFoundError: split config not found`
-- **Solution**: Generate splits using `split_logic.py` or run baseline scripts (which auto-generate splits)
-
-### Missing Annotations
-- **Error**: `FileNotFoundError: annotation file not found`
-- **Solution**: Annotations are in repository at `data/annotations/`. If missing, check git repository or regenerate using annotation scripts.
-
-## Additional Resources
-
-- **Original Paper**: [Nature Methods 2025](https://www.nature.com/articles/s41592-025-02772-6) - "Deep-learning-based gene perturbation effect prediction does not yet outperform simple linear baselines"
-- **Paper Repository**: https://github.com/const-ae/linear_perturbation_prediction-Paper (source of `paper/` directory)
-- **GEARS Documentation**: https://github.com/snap-stanford/GEARS
-- **scGPT Repository**: https://github.com/bowang-lab/scGPT
-- **scFoundation Repository**: https://github.com/biomap-research/scFoundation
-- **Paper Dependencies**: See `docs/PAPER_DEPENDENCIES.md` for details on optional dependencies on `paper/` directory
-
-## Summary
-
-| Dependency | Location | Status | Source |
-|------------|----------|--------|--------|
-| Dataset files (.h5ad) | `paper/benchmark/data/gears_pert_data/` | ❌ Download | GEARS API |
-| Annotations (.tsv) | `data/annotations/` | ✅ In repo | Repository |
-| Split files (.json) | `results/goal_2_baselines/splits/` | ⚙️ Generated | Scripts |
-| scGPT model | `data/models/scgpt/scgpt_human/` | ❌ Download | scGPT repo |
-| scFoundation model | `data/models/scfoundation/` | ❌ Download | scFoundation repo |
-| Results files | `results/` | ⚙️ Generated | Scripts |
-| R output files (.RDS) | `data/paper_results/` | ⚠️ Optional | Paper R scripts |
+## Raw Dataset Downloads
+
+Use the same public sources referenced by GEARS and the original paper workflow:
+
+- GEARS repository: <https://github.com/snap-stanford/GEARS>
+- Original paper repository: <https://github.com/const-ae/linear_perturbation_prediction-Paper>
+- Adamson: <https://dataverse.harvard.edu/api/access/datafile/6154417>
+- Replogle K562 essential: <https://dataverse.harvard.edu/api/access/datafile/7458695>
+- Replogle RPE1 essential: <https://dataverse.harvard.edu/api/access/datafile/7458694>
+
+Place the extracted dataset files at these exact paths:
+
+```text
+data/gears_pert_data/adamson/perturb_processed.h5ad
+data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad
+data/gears_pert_data/replogle_rpe1_essential/perturb_processed.h5ad
+```
+
+If you use GEARS directly, the same layout can be created with:
+
+```python
+from gears import PertData
+
+pert_data = PertData("data/gears_pert_data")
+pert_data.download_dataset("adamson")
+pert_data.download_dataset("replogle_k562_essential")
+pert_data.download_dataset("replogle_rpe1_essential")
+```
+
+## GO Graph Input
+
+The GEARS perturbation embedding baseline expects the GO similarity CSV:
+
+```text
+data/gears_pert_data/go_essential_all/go_essential_all.csv
+```
+
+Some legacy helpers still reference the paper-style path `paper/benchmark/data/gears_pert_data/...`.
+If you use those helpers unchanged, create the compatibility symlink documented in `docs/data_sources.md`.
+
+## Included In Git
+
+These files are already versioned and do not need to be downloaded:
+
+- `data/annotations/*.tsv`: functional-class annotations used by LOGO workflows.
+- `data/models/README.md` and subdirectory READMEs: checkpoint placement docs.
+- Small validation metadata such as `data/models/scfoundation/hashes.json` when present.
+
+## External Model Checkpoints
+
+### scGPT
+
+Store the whole-human checkpoint under:
+
+```text
+data/models/scgpt/scgpt_human/
+```
+
+Required files:
+
+- `args.json`
+- `best_model.pt`
+- `vocab.json`
+
+Source: <https://github.com/bowang-lab/scGPT>
+
+### scFoundation
+
+Store the scFoundation checkpoint under:
+
+```text
+data/models/scfoundation/
+```
+
+Required files:
+
+- `models.ckpt`
+- `demo.h5ad`
+
+Source: <https://github.com/biomap-research/scFoundation>
+
+## Optional Validation Asset
+
+- `data/paper_results/adamson_filtered.RDS`: optional paper-side artifact used by some validation scripts.
+
+## Framework Outputs
+
+Generated outputs are written under `results/`, not `data/`.
+The split JSON files used for reproducible reruns live under `results/goal_2_baselines/splits/`.

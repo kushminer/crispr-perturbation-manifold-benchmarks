@@ -104,8 +104,13 @@ Steps:
    - Non-covered perturbations are zeros.
 5. Optionally build `B_test` for test perturbations via the same alignment.
 
-Key path:
-- `../linear_perturbation_prediction-Paper/paper/benchmark/data/gears_pert_data/go_essential_all/go_essential_all.csv`
+Canonical local file:
+- `data/gears_pert_data/go_essential_all/go_essential_all.csv`
+
+Legacy default used by some helpers:
+- `paper/benchmark/data/gears_pert_data/go_essential_all/go_essential_all.csv`
+
+Use the compatibility symlink in `docs/data_sources.md` if you rely on helpers that still expect the paper-style path.
 
 #### 2.4 Cross-Dataset PCA (K562_PCA / RPE1_PCA)
 
@@ -177,5 +182,3 @@ To guard against embedding bugs:
 
 See:
 - `validation_and_audits.md` for higher-level audits.
-
-

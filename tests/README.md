@@ -1,112 +1,55 @@
 # Unit Test Suite
 
-Comprehensive unit tests for the linear perturbation evaluation framework.
+This directory contains the maintained unit tests for the reusable framework code under `src/`.
 
-## Test Structure
+## Current Test Files
 
-```
+```text
 tests/
-├── conftest.py              # Shared fixtures and configuration
-├── test_metrics.py          # Metrics computation tests
-├── test_io.py               # I/O function tests
-├── test_linear_model.py     # Linear model fitting tests
-├── test_logo_hardness.py    # LOGO + hardness evaluation tests
-├── test_functional_class.py # Functional-class holdout tests
-├── test_combined_analysis.py # Combined analysis tests
-└── test_validation.py       # Validation function tests
+├── conftest.py
+├── test_bootstrapping.py
+├── test_functional_class.py
+├── test_hardness_api.py
+├── test_io.py
+├── test_linear_model.py
+├── test_metrics.py
+└── test_validation.py
 ```
 
-## Running Tests
+## What The Suite Covers
+
+- `test_bootstrapping.py`: bootstrap confidence intervals and correlation CI helpers.
+- `test_functional_class.py`: functional-class holdout behavior and result formatting.
+- `test_hardness_api.py`: hardness computations over target/train perturbation geometry.
+- `test_io.py`: loading utilities for JSON, CSV/TSV, annotations, and gene metadata.
+- `test_linear_model.py`: linear model fitting, prediction, PCA dimension handling, and reproducibility.
+- `test_metrics.py`: Pearson/L2 metric behavior across normal and edge cases.
+- `test_validation.py`: annotation, LOGO, hardness-bin, and class-holdout validation helpers.
+
+## Run The Tests
 
 ```bash
-# Run all tests
-PYTHONPATH=src pytest tests/
-
-# Run with verbose output
-PYTHONPATH=src pytest tests/ -v
-
-# Run specific test file
-PYTHONPATH=src pytest tests/test_metrics.py
-
-# Run specific test
-PYTHONPATH=src pytest tests/test_metrics.py::test_compute_metrics_perfect_correlation
-
-# Run with coverage
-PYTHONPATH=src pytest tests/ --cov=src/eval_framework --cov-report=html
+PYTHONPATH=src pytest tests -q
 ```
 
-## Test Coverage
+Verbose run:
 
-- **45 tests** covering all major modules
-- **Runtime**: <2 seconds
-- **Coverage**: Tests all evaluation modules, I/O, metrics, and validation
+```bash
+PYTHONPATH=src pytest tests -v
+```
 
-## Test Categories
+Collect-only check:
 
-### Metrics Tests (`test_metrics.py`)
-- Perfect correlation
-- Negative correlation
-- No correlation
-- Constant values
-- Edge cases (NaN, different lengths)
+```bash
+PYTHONPATH=src pytest tests --collect-only -q
+```
 
-### I/O Tests (`test_io.py`)
-- JSON expression loading
-- CSV/TSV loading
-- Annotation loading
-- Gene names handling
-- Error handling
+## Current Suite Size
 
-### Linear Model Tests (`test_linear_model.py`)
-- Basic model fitting
-- PCA dimension capping
-- Prediction functionality
-- Reproducibility
-- Shape validation
+- `52` collected tests
+- fast unit-level coverage of the shared framework utilities
 
-### LOGO Tests (`test_logo_hardness.py`)
-- Similarity matrix computation
-- Hardness bin assignment
-- Full LOGO evaluation
-- Cluster blocking
-- Small dataset handling
+## Notes
 
-### Functional-Class Tests (`test_functional_class.py`)
-- Basic class holdout
-- Min class size filtering
-- Class representation
-- Insufficient training data handling
-
-### Combined Analysis Tests (`test_combined_analysis.py`)
-- Result table loading
-- Summary computation
-- Heatmap generation
-- Empty data handling
-
-### Validation Tests (`test_validation.py`)
-- Annotation quality checks
-- LOGO integrity validation
-- Hardness bin validation
-- Class holdout validation
-- Summary formatting
-
-## Fixtures
-
-Shared fixtures in `conftest.py`:
-- `random_seed`: Fixed random seed for reproducibility
-- `synthetic_expression_matrix`: 50×100 expression matrix
-- `synthetic_annotations`: Balanced class annotations
-- `temp_dir`: Temporary directory for test outputs
-- `sample_predictions_json`: Sample prediction files
-- `sample_logo_results`: Sample LOGO results DataFrame
-- `sample_class_results`: Sample class results DataFrame
-
-## Continuous Integration
-
-Tests are designed to:
-- Run quickly (<30 seconds)
-- Be deterministic (fixed seeds)
-- Cover edge cases
-- Handle empty/missing data gracefully
-- Validate error conditions
-
+- The unit suite is intentionally scoped to reusable code paths, not full raw-data reruns.
+- Full framework reruns depend on the external datasets and model checkpoints documented in `data/README.md` and `docs/data_sources.md`.

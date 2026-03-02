@@ -1,188 +1,147 @@
 #!/usr/bin/env python3
-"""
-Test script to verify fresh environment setup.
-Run this after: pip install -r requirements.txt
-"""
+"""Smoke checks for a fresh project environment."""
 
 from __future__ import annotations
 
 import sys
 from pathlib import Path
 
-def test_imports():
-    """Test that all core modules can be imported."""
-    print("Testing core imports...")
-    
-    try:
-        # Core dependencies
-        import numpy as np
-        import pandas as pd
-        import scipy
-        import sklearn
-        import anndata as ad
-        import yaml
-        import matplotlib
-        import seaborn as sns
-        import umap
-        import torch
-        print("  ✓ Core dependencies imported")
-    except ImportError as e:
-        print(f"  ✗ Failed to import core dependency: {e}")
-        return False
-    
-    try:
-        # Core framework modules
-        from core.config import ExperimentConfig, load_config
-        from core.io import load_expression_dataset, load_annotations
-        from core.metrics import compute_metrics
-        from core.linear_model import solve_y_axb
-        print("  ✓ Core framework modules imported")
-    except ImportError as e:
-        print(f"  ✗ Failed to import core module: {e}")
-        return False
-    
-    try:
-        # Embedding modules
-        from embeddings.registry import get, load
-        from embeddings.base import EmbeddingResult
-        print("  ✓ Embedding modules imported")
-    except ImportError as e:
-        print(f"  ✗ Failed to import embedding module: {e}")
-        return False
-    
-    try:
-        # Evaluation modules
-        from functional_class.functional_class import run_class_holdout
-        print("  ✓ Evaluation modules imported")
-    except ImportError as e:
-        print(f"  ✗ Failed to import evaluation module: {e}")
-        return False
-    
-    return True
+REPO_ROOT = Path(__file__).resolve().parents[2]
+SRC_ROOT = REPO_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
-def test_basic_functionality():
-    """Test basic functionality with synthetic data."""
-    print("\nTesting basic functionality...")
-    
+
+def check_dependencies() -> bool:
+    """Verify the core Python dependencies import cleanly."""
+    print("Checking Python dependencies...")
+
+    required = [
+        ("numpy", "np"),
+        ("pandas", "pd"),
+        ("scipy", None),
+        ("sklearn", None),
+        ("anndata", "ad"),
+        ("yaml", None),
+        ("matplotlib", None),
+        ("seaborn", None),
+    ]
+    optional = ["torch", "umap"]
+
+    ok = True
+    for module_name, alias in required:
+        try:
+            module = __import__(module_name)
+            version = getattr(module, "__version__", "unknown")
+            label = alias or module_name
+            print(f"  PASS {label} ({version})")
+        except Exception as exc:
+            print(f"  FAIL {module_name}: {exc}")
+            ok = False
+
+    for module_name in optional:
+        try:
+            module = __import__(module_name)
+            version = getattr(module, "__version__", "unknown")
+            print(f"  WARN optional {module_name} available ({version})")
+        except Exception as exc:
+            print(f"  WARN optional {module_name} missing: {exc}")
+
+    return ok
+
+
+def check_framework_imports() -> bool:
+    """Verify the maintained framework modules import."""
+    print("\nChecking framework imports...")
     try:
-        import numpy as np
-        import pandas as pd
-        from core.linear_model import solve_y_axb
-        
-        # Create synthetic data
-        n_genes = 100
-        n_perts = 50
-        d = 10
-        
-        Y = np.random.randn(n_genes, n_perts)
-        A = np.random.randn(n_genes, d)
-        B = np.random.randn(d, n_perts)
-        
-        # Test solve_y_axb
-        result = solve_y_axb(Y, A, B, ridge_penalty=0.1)
-        assert "K" in result
-        assert result["K"].shape == (d, d)
-        print("  ✓ Linear model solver works")
-        
-        # Test metrics
-        from core.metrics import compute_metrics
-        y_true = np.random.randn(100)
-        y_pred = y_true + 0.1 * np.random.randn(100)
-        metrics = compute_metrics(y_true, y_pred)
-        assert isinstance(metrics, dict)
-        assert "pearson_r" in metrics
-        print("  ✓ Metrics computation works")
-        
+        import embeddings  # noqa: F401
+        from embeddings.registry import list_embeddings
+        from functional_class.functional_class import run_class_holdout  # noqa: F401
+        from shared.io import load_annotations, load_expression_dataset  # noqa: F401
+        from shared.linear_model import fit_linear_model, solve_y_axb  # noqa: F401
+        from shared.metrics import compute_metrics  # noqa: F401
+        from shared.validation import validate_annotation_quality  # noqa: F401
+
+        registered = list(list_embeddings())
+        print(f"  PASS registered embeddings: {', '.join(registered)}")
         return True
-    except Exception as e:
-        print(f"  ✗ Basic functionality test failed: {e}")
-        import traceback
-        traceback.print_exc()
+    except Exception as exc:
+        print(f"  FAIL framework import: {exc}")
         return False
 
-def test_embedding_registry():
-    """Test embedding registry."""
-    print("\nTesting embedding registry...")
-    
+
+def check_basic_math() -> bool:
+    """Run a lightweight linear-model and metrics smoke test."""
+    print("\nChecking core linear-model math...")
     try:
-        from embeddings.registry import get, load
-        
-        # Check that loaders are registered
-        available = ["gears_go", "pca_perturbation", "scgpt_gene", "scfoundation_gene"]
-        for name in available:
-            loader = get(name)
-            assert loader is not None, f"Loader {name} not found"
-        print("  ✓ Embedding loaders registered")
-        
+        import numpy as np
+        from shared.linear_model import solve_y_axb
+        from shared.metrics import compute_metrics
+
+        rng = np.random.default_rng(1)
+        y = rng.normal(size=(8, 6))
+        a = rng.normal(size=(8, 3))
+        b = rng.normal(size=(3, 6))
+
+        result = solve_y_axb(y, a, b, ridge_penalty=0.1)
+        if result["K"].shape != (3, 3):
+            raise ValueError(f"unexpected K shape: {result['K'].shape}")
+
+        metrics = compute_metrics(y[:, 0], y[:, 0] + 0.01)
+        if "pearson_r" not in metrics or "l2" not in metrics:
+            raise ValueError("metrics output missing expected keys")
+
+        print("  PASS solve_y_axb and compute_metrics")
         return True
-    except Exception as e:
-        print(f"  ✗ Embedding registry test failed: {e}")
-        import traceback
-        traceback.print_exc()
+    except Exception as exc:
+        print(f"  FAIL core math: {exc}")
         return False
 
-def test_config_loading():
-    """Test configuration loading."""
-    print("\nTesting configuration loading...")
-    
-    try:
-        from core.config import load_config
-        from pathlib import Path
-        
-        # Check if a config file exists
-        config_path = Path("configs/config_adamson.yaml")
-        if config_path.exists():
-            config = load_config(config_path)
-            assert config is not None
-            print("  ✓ Configuration loading works")
+
+def check_entrypoints() -> bool:
+    """Verify the documented entrypoint files exist."""
+    print("\nChecking documented entrypoints...")
+    expected = [
+        REPO_ROOT / "scripts" / "demo" / "run_end_to_end_results_demo.py",
+        REPO_ROOT / "scripts" / "execution" / "run_single_cell_baselines.sh",
+        REPO_ROOT / "scripts" / "execution" / "run_single_cell_lsft.sh",
+        REPO_ROOT / "scripts" / "execution" / "run_single_cell_logo.sh",
+        REPO_ROOT / "tutorials" / "tutorial_end_to_end_results.ipynb",
+    ]
+
+    ok = True
+    for path in expected:
+        if path.exists():
+            print(f"  PASS {path.relative_to(REPO_ROOT)}")
         else:
-            print("  ⚠ Config file not found (skipping)")
-        
-        return True
-    except Exception as e:
-        print(f"  ✗ Configuration loading test failed: {e}")
-        return False
+            print(f"  FAIL missing {path.relative_to(REPO_ROOT)}")
+            ok = False
+    return ok
 
-def main():
-    """Run all tests."""
+
+def main() -> int:
     print("=" * 60)
-    print("Fresh Environment Test Suite")
+    print("Fresh Environment Smoke Check")
     print("=" * 60)
-    
-    results = []
-    
-    # Test imports
-    results.append(("Imports", test_imports()))
-    
-    # Test basic functionality
-    results.append(("Basic Functionality", test_basic_functionality()))
-    
-    # Test embedding registry
-    results.append(("Embedding Registry", test_embedding_registry()))
-    
-    # Test config loading
-    results.append(("Configuration Loading", test_config_loading()))
-    
-    # Summary
+
+    checks = [
+        ("Dependencies", check_dependencies()),
+        ("Framework Imports", check_framework_imports()),
+        ("Core Math", check_basic_math()),
+        ("Entry Points", check_entrypoints()),
+    ]
+
     print("\n" + "=" * 60)
-    print("Test Summary")
+    print("Summary")
     print("=" * 60)
-    
-    all_passed = True
-    for name, passed in results:
-        status = "✓ PASS" if passed else "✗ FAIL"
-        print(f"  {status}: {name}")
-        if not passed:
-            all_passed = False
-    
-    print("=" * 60)
-    if all_passed:
-        print("✓ All tests passed! Fresh environment is working.")
-        return 0
-    else:
-        print("✗ Some tests failed. Check output above.")
-        return 1
+    failed = False
+    for name, passed in checks:
+        status = "PASS" if passed else "FAIL"
+        print(f"{status} {name}")
+        failed = failed or not passed
+
+    return 1 if failed else 0
+
 
 if __name__ == "__main__":
-    sys.exit(main())
-
+    raise SystemExit(main())

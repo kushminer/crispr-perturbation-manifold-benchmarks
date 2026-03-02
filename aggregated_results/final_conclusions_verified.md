@@ -1,5 +1,7 @@
 # End-to-End Results Demo Summary
 
+Generated: 2026-03-01 18:40:47 UTC
+
 ## Verified Conclusions
 
 1. LSFT adds little on top of the strongest single-cell baseline.

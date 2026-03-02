@@ -1,4 +1,24 @@
+# Core dependencies for evaluation framework
+# Pinned versions validated 2025-11-23 for code validation sprint
+numpy==1.26.4
 pandas==2.2.2
-jupyter==1.1.1
-nbconvert==7.16.6
-ipykernel>=6.29
+scipy==1.14.1
+scikit-learn==1.5.1
+anndata==0.12.2
+pyyaml==6.0.2
+matplotlib==3.10.1
+seaborn==0.13.2
+umap-learn>=0.5
+
+# PyTorch (required for scGPT/scFoundation embedding loaders)
+torch>=2.0
+
+# Testing
+pytest>=7.0
+pytest-cov>=4.0
+
+# Optional: Annotation generation utilities
+# Only needed if using annotate_classes.py for GO enrichment
+# gseapy>=1.0
+# mygene>=3.2
+# requests>=2.31

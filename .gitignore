@@ -1,12 +1,64 @@
-.DS_Store
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
 .pytest_cache/
-.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Virtual environments
 .venv/
 .venv*/
 venv/
 venv_*/
-data/
-deliverables/
-src/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+
+# Results and outputs
 results/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.tar.gz
+
+# Large data files (>100MB) - see data/README.md for download instructions
+# Model checkpoints
+data/models/scfoundation/models.ckpt
+data/models/scfoundation/*.ckpt
+data/models/scgpt/scgpt_human/best_model.pt
+data/models/scgpt/**/best_model.pt
+
+# Large datasets
+data/gears_pert_data/*/perturb_processed.h5ad
+data/paper_results/*.RDS
+
+# Any file over 100MB
+*.h5ad
+!data/models/scfoundation/demo.h5ad

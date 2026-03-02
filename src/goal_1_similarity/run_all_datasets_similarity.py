@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import logging
 import subprocess
+import sys
 from pathlib import Path
 
 logging.basicConfig(
@@ -16,6 +17,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 LOGGER = logging.getLogger(__name__)
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 # Dataset configurations
 DATASETS = {
@@ -43,9 +45,9 @@ DATASETS = {
 def run_de_matrix_similarity(dataset_name: str, config: dict, k: int = 5, seed: int = 1) -> bool:
     """Run DE matrix similarity analysis."""
     LOGGER.info(f"Running DE matrix similarity for {dataset_name}")
-    
+
     cmd = [
-        "python", "-m", "similarity.de_matrix_similarity",
+        sys.executable, "-m", "goal_1_similarity.de_matrix_similarity",
         "--adata_path", config["adata_path"],
         "--split_config", config["split_config"],
         "--baseline_results", config["baseline_results"],
@@ -55,7 +57,7 @@ def run_de_matrix_similarity(dataset_name: str, config: dict, k: int = 5, seed: 
     ]
     
     try:
-        result = subprocess.run(cmd, cwd=Path(__file__).parent.parent.parent, capture_output=True, text=True)
+        result = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True)
         if result.returncode != 0:
             LOGGER.error(f"DE matrix similarity failed for {dataset_name}: {result.stderr}")
             return False
@@ -69,9 +71,9 @@ def run_de_matrix_similarity(dataset_name: str, config: dict, k: int = 5, seed: 
 def run_embedding_similarity(dataset_name: str, config: dict, k: int = 5, seed: int = 1) -> bool:
     """Run embedding similarity analysis."""
     LOGGER.info(f"Running embedding similarity for {dataset_name}")
-    
+
     cmd = [
-        "python", "-m", "similarity.embedding_similarity",
+        sys.executable, "-m", "goal_1_similarity.embedding_similarity",
         "--adata_path", config["adata_path"],
         "--split_config", config["split_config"],
         "--baselines", "lpm_selftrained", "lpm_k562PertEmb", "lpm_gearsPertEmb", "lpm_rpe1PertEmb",
@@ -83,7 +85,7 @@ def run_embedding_similarity(dataset_name: str, config: dict, k: int = 5, seed: 
     ]
     
     try:
-        result = subprocess.run(cmd, cwd=Path(__file__).parent.parent.parent, capture_output=True, text=True)
+        result = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True)
         if result.returncode != 0:
             LOGGER.error(f"Embedding similarity failed for {dataset_name}: {result.stderr}")
             return False
@@ -97,9 +99,9 @@ def run_embedding_similarity(dataset_name: str, config: dict, k: int = 5, seed: 
 def run_comprehensive_report(dataset_name: str, config: dict) -> bool:
     """Run comprehensive report generation."""
     LOGGER.info(f"Generating comprehensive report for {dataset_name}")
-    
+
     cmd = [
-        "python", "-m", "similarity.create_comprehensive_report",
+        sys.executable, "-m", "goal_1_similarity.create_comprehensive_report",
         "--embedding_similarity", f"{config['output_base']}/embedding_similarity/embedding_similarity_all_baselines.csv",
         "--de_matrix_similarity", f"{config['output_base']}/de_matrix_similarity/de_matrix_similarity_results.csv",
         "--embedding_regression", f"{config['output_base']}/embedding_similarity/embedding_regression_analysis_all_baselines.csv",
@@ -108,7 +110,7 @@ def run_comprehensive_report(dataset_name: str, config: dict) -> bool:
     ]
     
     try:
-        result = subprocess.run(cmd, cwd=Path(__file__).parent.parent.parent, capture_output=True, text=True)
+        result = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True)
         if result.returncode != 0:
             LOGGER.error(f"Comprehensive report failed for {dataset_name}: {result.stderr}")
             return False
@@ -216,5 +218,4 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-
 

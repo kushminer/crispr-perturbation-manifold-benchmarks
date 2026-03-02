@@ -25,6 +25,17 @@ logging.basicConfig(
 LOGGER = logging.getLogger("generate_replogle_annotations")
 
 
+def _load_annotation_mapper(name: str):
+    """Import annotation helpers for both direct-script and PYTHONPATH=src usage."""
+    try:
+        from scripts import annotate_classes as module
+    except ImportError:
+        script_dir = Path(__file__).parent
+        sys.path.insert(0, str(script_dir))
+        import annotate_classes as module  # type: ignore
+    return getattr(module, name)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Generate Replogle K562 functional class annotations"
@@ -109,11 +120,7 @@ def main():
     
     elif args.method == "go":
         LOGGER.info("Using GO term mapping...")
-        # Import from same directory
-        import sys
-        script_dir = Path(__file__).parent
-        sys.path.insert(0, str(script_dir))
-        from annotate_classes import map_genes_to_classes_go
+        map_genes_to_classes_go = _load_annotation_mapper("map_genes_to_classes_go")
         
         # Extract gene symbols from perturbation names
         # Perturbation names might be gene symbols or have suffixes like "+ctrl"
@@ -131,11 +138,7 @@ def main():
     
     elif args.method == "reactome":
         LOGGER.info("Using Reactome pathway mapping...")
-        # Import from same directory
-        import sys
-        script_dir = Path(__file__).parent
-        sys.path.insert(0, str(script_dir))
-        from annotate_classes import map_genes_to_classes_reactome
+        map_genes_to_classes_reactome = _load_annotation_mapper("map_genes_to_classes_reactome")
         
         # Extract gene symbols from perturbation names
         gene_symbols = []
@@ -171,4 +174,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-

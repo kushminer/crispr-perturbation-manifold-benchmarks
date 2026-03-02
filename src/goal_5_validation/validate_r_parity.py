@@ -6,7 +6,7 @@ Runs a random subset of baselines and test perturbations to validate
 that Python and R implementations produce matching results.
 
 Usage:
-    python -m goal_2_baselines.validate_r_parity \
+    PYTHONPATH=src python -m goal_5_validation.validate_r_parity \
         --dataset_name adamson \
         --working_dir ../paper/benchmark \
         --n_baselines 4 \

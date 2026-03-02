@@ -199,7 +199,7 @@ def main():
         
         LOGGER.info("")
         LOGGER.info("Next steps:")
-        LOGGER.info("1. Generate annotations: PYTHONPATH=src python src/generate_replogle_annotations.py")
+        LOGGER.info("1. Generate annotations: PYTHONPATH=src python src/scripts/generate_replogle_annotations.py")
         LOGGER.info("2. Run evaluation: PYTHONPATH=src python src/main.py --config configs/config_replogle.yaml")
     else:
         LOGGER.error("Output files not found. Check script output for errors.")
@@ -210,4 +210,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-

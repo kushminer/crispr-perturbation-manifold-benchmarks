@@ -6,7 +6,7 @@ This script compares precomputed embeddings with original R/Python script output
 to ensure numerical parity, similar to the embedding parity validation.
 
 Usage:
-    python -m goal_2_baselines.validate_cross_dataset_embeddings \
+    PYTHONPATH=src python -m goal_5_validation.validate_cross_dataset_embeddings \
         --dataset replogle_k562_essential \
         --new_embedding results/replogle_k562_pert_emb_pca10_seed1.tsv \
         --legacy_embedding validation/legacy_runs/replogle_k562_pert_emb_pca10_seed1.tsv
@@ -227,4 +227,3 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-

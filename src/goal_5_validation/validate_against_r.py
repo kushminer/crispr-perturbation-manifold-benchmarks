@@ -6,7 +6,7 @@ This script compares Python baseline results with R results to ensure
 numerical agreement and reproducibility.
 
 Usage:
-    python -m goal_2_baselines.validate_against_r \
+    PYTHONPATH=src python -m goal_5_validation.validate_against_r \
         --python_results results/goal_2_baselines/adamson_reproduced/baseline_results_reproduced.csv \
         --r_results path/to/r/results.csv \
         --output_dir validation/baseline_comparison
@@ -224,4 +224,3 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-

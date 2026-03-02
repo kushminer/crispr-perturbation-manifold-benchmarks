@@ -6,7 +6,7 @@ This script generates PCA perturbation embeddings for K562 and RPE1 datasets,
 which are then used in cross-dataset baseline models (lpm_k562PertEmb, lpm_rpe1PertEmb).
 
 Usage:
-    python -m goal_2_baselines.precompute_cross_dataset_embeddings \
+    PYTHONPATH=src python -m goal_5_validation.precompute_cross_dataset_embeddings \
         --dataset replogle_k562_essential \
         --adata_path data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad \
         --output_path results/replogle_k562_pert_emb_pca10_seed1.tsv \
@@ -137,4 +137,3 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-

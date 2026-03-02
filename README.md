@@ -2,12 +2,11 @@
 
 ![Repository social preview](docs/assets/social-preview.png)
 
-## Project Status
-This repository is finalized for presentation and reproducible review.
-It keeps both the full rerun framework and a compact end-to-end walkthrough of the final results.
-Stable release: [`v1.0.0`](https://github.com/kushminer/crispr-perturbation-manifold-benchmarks/releases/tag/v1.0.0)
+> NIH Bridges to Baccalaureate-supported benchmark study of CRISPR perturbation prediction, extending the Nature Methods evaluation setting with LSFT, LOGO, and single-cell transfer analysis.
 
-GitHub social preview asset: `/Users/samuelminer/Projects/nih_research/crispr-perturbation-manifold-benchmarks/docs/assets/social-preview.png`
+- Stable release: [`v1.0.0`](https://github.com/kushminer/crispr-perturbation-manifold-benchmarks/releases/tag/v1.0.0)
+- Scope: full rerun framework plus a compact end-to-end walkthrough of the final results
+- GitHub social preview asset: `docs/assets/social-preview.png`
 
 ## Objective
 Evaluate whether increasingly complex embedding methods improve CRISPR perturbation-response prediction relative to simpler geometric baselines.

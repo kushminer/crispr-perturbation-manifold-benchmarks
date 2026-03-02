@@ -1,5 +1,5 @@
 """
-Loader for scGPT gene embeddings (Issue #18).
+Loader for scGPT gene embeddings.
 """
 
 from __future__ import annotations
@@ -112,4 +112,3 @@ def load_scgpt_gene_embeddings(
             "state_dict_key": weight_key,
         },
     )
-

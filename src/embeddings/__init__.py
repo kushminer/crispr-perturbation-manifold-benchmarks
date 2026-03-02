@@ -1,5 +1,5 @@
 """
-Embedding loaders and utilities for Sprint 5 (Issue #18).
+Embedding loaders and utilities.
 """
 
 from . import registry  # noqa: F401
@@ -12,4 +12,3 @@ from . import scgpt_gene  # noqa: F401
 from . import scfoundation_gene  # noqa: F401
 
 __all__ = ["registry", "EmbeddingResult"]
-

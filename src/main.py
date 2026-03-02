@@ -10,8 +10,6 @@ import sys
 from pathlib import Path
 from typing import Callable, Dict
 
-import pandas as pd
-
 from shared.config import ExperimentConfig, load_config
 from shared.io import (
     load_annotations,
@@ -43,37 +41,30 @@ TaskFn = Callable[[ExperimentConfig], None]
 
 def task_logo(cfg: ExperimentConfig) -> None:
     """
-    LOGO (Leave One Gene Out) evaluation: Functional Class Holdout.
-    
-    This task isolates a specific functional class (e.g., Transcription genes) as
-    the test set and trains on all other classes. Runs all 8 baselines for comparison
-    to evaluate biological extrapolation.
-    
-    This is different from task_class (multi-class holdout), which iterates over
-    all classes one at a time.
+    LOGO (Leave-One-GO-Out) evaluation for a specified functional class.
+
+    This task isolates a single functional class, such as `Transcription`, as the
+    test set and trains on all other classes. It differs from `task_class`, which
+    iterates over every eligible class one at a time.
     """
     from goal_3_prediction.functional_class_holdout.logo import run_logo_evaluation
-    from goal_2_baselines.baseline_types import BaselineType
-    
+
     if cfg.dataset.annotation_path is None:
         LOGGER.error("Annotation path is required for LOGO evaluation.")
         return
-    
+
     if cfg.dataset.adata_path is None:
         LOGGER.error("AnnData path is required for LOGO evaluation.")
         return
-    
-    LOGGER.info("Running LOGO (Functional Class Holdout) evaluation.")
-    
-    # Default to Transcription class if not specified
+
+    LOGGER.info("Running LOGO (functional-class holdout) evaluation.")
+
     class_name = getattr(cfg.dataset, "logo_class_name", "Transcription")
-    
-    # Determine output directory
-    output_dir = Path(cfg.output_dir) / "functional_class_holdout" / cfg.dataset.name
+
+    output_dir = cfg.output_root / "functional_class_holdout" / cfg.dataset.name
     output_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Run LOGO evaluation with all baselines
-    results_df = run_logo_evaluation(
+
+    run_logo_evaluation(
         adata_path=cfg.dataset.adata_path,
         annotation_path=cfg.dataset.annotation_path,
         dataset_name=cfg.dataset.name,
@@ -84,12 +75,11 @@ def task_logo(cfg: ExperimentConfig) -> None:
         ridge_penalty=cfg.model.ridge_penalty,
         seed=cfg.dataset.seed,
     )
-    
+
     LOGGER.info("LOGO evaluation complete. Results saved to %s", output_dir)
-    
-    # Optionally run comparison
+
     from goal_3_prediction.functional_class_holdout.compare_baselines import compare_baselines
-    
+
     results_csv = output_dir / f"logo_{cfg.dataset.name}_{class_name.lower()}_results.csv"
     if results_csv.exists():
         LOGGER.info("Running baseline comparison (scGPT vs Random)...")
@@ -161,28 +151,6 @@ def task_class(cfg: ExperimentConfig) -> None:
     LOGGER.info("Saved functional class results to %s", output_path)
 
 
-def task_combined(cfg: ExperimentConfig) -> None:
-    """Combined analysis has been archived."""
-    LOGGER.warning(
-        "Combined analysis (LOGO + class) has been archived. "
-        "This functionality is no longer available in the core framework."
-    )
-    raise NotImplementedError(
-        "Combined analysis is not part of the maintained public repo."
-    )
-
-
-def task_visualize(cfg: ExperimentConfig) -> None:
-    """Visualization has been archived."""
-    LOGGER.warning(
-        "LOGO-specific visualizations have been archived. "
-        "This functionality is no longer available in the core framework."
-    )
-    raise NotImplementedError(
-        "LOGO visualizations are not part of the maintained public repo."
-    )
-
-
 def task_validate(cfg: ExperimentConfig) -> None:
     """Run comprehensive validation suite and generate report."""
     LOGGER.info("Running comprehensive validation suite...")
@@ -204,10 +172,8 @@ def task_validate_embeddings(cfg: ExperimentConfig) -> None:
 
 
 TASKS: Dict[str, TaskFn] = {
-    "logo": task_logo,  # LOGO: Functional Class Holdout with all baselines
-    "class": task_class,  # Multi-class holdout: iterate over all classes
-    # "combined": task_combined,  # Archived
-    # "visualize": task_visualize,  # Archived
+    "logo": task_logo,
+    "class": task_class,
     "validate": task_validate,
     "validate-embeddings": task_validate_embeddings,
 }

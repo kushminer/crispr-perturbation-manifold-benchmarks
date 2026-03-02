@@ -1,5 +1,5 @@
 """
-Enhanced visualizations with CI overlays for LSFT resampling results (Issue 10).
+Enhanced visualizations with CI overlays for LSFT resampling results.
 
 This module creates:
 1. Beeswarm plots with per-perturbation points + mean + CI bars
@@ -439,4 +439,3 @@ def create_all_lsft_visualizations_with_ci(
             )
     
     LOGGER.info(f"All visualizations saved to {output_dir}")
-

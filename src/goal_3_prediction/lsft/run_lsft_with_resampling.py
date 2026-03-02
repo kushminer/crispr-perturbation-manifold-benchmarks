@@ -4,10 +4,10 @@ Main entry point for running LSFT evaluation with resampling support.
 
 This script:
 1. Runs LSFT evaluation
-2. Standardizes output (Issue 5)
-3. Computes bootstrap CIs for summaries (Issue 6)
-4. Performs paired baseline comparisons (Issue 7)
-5. Computes hardness-performance regressions (Issue 8)
+2. Standardizes output
+3. Computes bootstrap confidence intervals for summaries
+4. Performs paired baseline comparisons
+5. Computes hardness-performance regressions
 """
 
 from __future__ import annotations
@@ -39,7 +39,7 @@ LOGGER = logging.getLogger(__name__)
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run LSFT evaluation with resampling support (Sprint 11)"
+        description="Run LSFT evaluation with resampling support"
     )
     parser.add_argument("--adata_path", type=Path, required=True, help="Path to adata file")
     parser.add_argument("--split_config", type=Path, required=True, help="Path to split config JSON")
@@ -101,13 +101,11 @@ def main():
     )
 
     results_df = results["results_df"]
-    summary = results["summary"]
-
     LOGGER.info(f"\n✓ LSFT evaluation complete")
     LOGGER.info(f"✓ Results saved to: {results['output_paths']}")
     LOGGER.info(f"✓ Summary with CIs saved to: {results['summary_path']}")
 
-    # Baseline comparisons (Issue 7)
+    # Optional baseline comparisons across matching perturbations.
     if not args.skip_comparisons:
         LOGGER.info("\nComputing baseline comparisons...")
         try:
@@ -125,7 +123,7 @@ def main():
         except Exception as e:
             LOGGER.warning(f"Baseline comparisons failed (may need multiple baselines): {e}")
 
-    # Hardness-performance regressions (Issue 8)
+    # Optional hardness-performance regressions for the selected baseline.
     if not args.skip_regressions:
         LOGGER.info("\nComputing hardness-performance regressions...")
         try:
@@ -149,4 +147,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

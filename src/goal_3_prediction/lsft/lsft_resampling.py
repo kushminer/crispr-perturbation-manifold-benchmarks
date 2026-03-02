@@ -1,5 +1,5 @@
 """
-LSFT evaluation with resampling support (v2).
+LSFT evaluation with resampling support.
 
 This module extends the original LSFT evaluation to:
 1. Emit standardized per-perturbation metrics (JSONL/Parquet)
@@ -341,4 +341,3 @@ def compute_lsft_summary_with_cis(
         }
     
     return summary
-

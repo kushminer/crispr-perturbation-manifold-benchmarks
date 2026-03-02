@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Utility script to build lightweight subsets of legacy embedding inputs for parity
-validation (Sprint 5 / Issue #18).
+Utility script to build lightweight subsets of embedding inputs for parity
+validation.
 
 Outputs are written under validation/embedding_subsets/.
 """

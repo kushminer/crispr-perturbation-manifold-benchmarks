@@ -15,6 +15,7 @@ import yaml
 class DatasetConfig:
     name: str
     expression_path: Path
+    adata_path: Optional[Path] = None
     gene_names_path: Optional[Path] = None
     annotation_path: Optional[Path] = None
     results_dir: Path = Path("results")
@@ -94,6 +95,7 @@ def load_config(path: Path | str) -> ExperimentConfig:
     dataset = DatasetConfig(
         name=dataset_cfg["name"],
         expression_path=_expand_path(base_dir, dataset_cfg["expression_path"]),
+        adata_path=_expand_path(base_dir, dataset_cfg.get("adata_path")),
         gene_names_path=_expand_path(base_dir, dataset_cfg.get("gene_names_path")),
         annotation_path=_expand_path(base_dir, dataset_cfg.get("annotation_path")),
         results_dir=_expand_path(base_dir, dataset_cfg.get("results_dir", "results")),
@@ -145,4 +147,3 @@ def load_config(path: Path | str) -> ExperimentConfig:
         embedding_sources=embedding_sources,
         embedding_validation=embedding_validation,
     )
-

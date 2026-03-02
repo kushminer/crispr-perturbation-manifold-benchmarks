@@ -1,5 +1,5 @@
 """
-Hardness-performance regression with bootstrapped slopes (Issue 8).
+Hardness-performance regression with bootstrapped slopes.
 """
 
 from __future__ import annotations
@@ -299,4 +299,3 @@ def save_hardness_regressions(
         with open(json_path, "w") as f:
             json.dump(regression_dict, f, indent=2)
         LOGGER.info(f"Saved hardness regressions to {json_path}")
-

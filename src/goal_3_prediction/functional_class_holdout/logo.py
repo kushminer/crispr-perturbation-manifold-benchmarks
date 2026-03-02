@@ -1,5 +1,5 @@
 """
-LOGO (Leave One Gene Out) evaluation for Functional Class Holdout.
+LOGO (Leave-One-GO-Out) evaluation for functional-class holdout.
 
 This module implements LOGO evaluation that isolates specific functional classes
 (e.g., Transcription genes) as the test set and trains on all other classes.
@@ -389,4 +389,3 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-

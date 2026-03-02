@@ -1,5 +1,5 @@
 """
-LOGO evaluation with resampling support (Sprint 11 - Issue 9).
+LOGO evaluation with resampling support.
 
 Extends LOGO evaluation to include:
 1. Bootstrap confidence intervals for summary metrics
@@ -353,7 +353,7 @@ def main():
     from goal_2_baselines.baseline_types import BaselineType
     
     parser = argparse.ArgumentParser(
-        description="Run LOGO evaluation with resampling support (Sprint 11)"
+        description="Run LOGO evaluation with resampling support"
     )
     parser.add_argument("--adata_path", type=Path, required=True, help="Path to adata file")
     parser.add_argument("--annotation_path", type=Path, required=True, help="Path to annotations TSV")
@@ -409,4 +409,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

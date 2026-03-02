@@ -3,7 +3,7 @@
 Compare our implementation results with paper's published results.
 
 Usage:
-    python -m goal_2_baselines.compare_with_paper_results \
+    PYTHONPATH=src python -m goal_5_validation.compare_with_paper_results \
         --paper_results data/paper_results/single_perturbation_jobs_stats.tsv \
         --our_results results/goal_2_baselines/adamson_reproduced/baseline_results_reproduced.csv \
         --output_dir results/comparison_with_paper
@@ -372,4 +372,3 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
-

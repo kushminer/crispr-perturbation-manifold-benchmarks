@@ -1,5 +1,5 @@
 """
-Paired baseline comparisons with permutation tests and bootstrap CIs (Issue 7).
+Paired baseline comparisons with permutation tests and bootstrap CIs.
 """
 
 from __future__ import annotations
@@ -264,4 +264,3 @@ def save_baseline_comparisons(
         with open(json_path, "w") as f:
             json.dump(comparison_dict, f, indent=2)
         LOGGER.info(f"Saved baseline comparisons to {json_path}")
-

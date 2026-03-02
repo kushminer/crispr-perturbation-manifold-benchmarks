@@ -1,6 +1,7 @@
 dataset:
   name: adamson_2016
   expression_path: ../../../working_dir/results/py_comparison_adamson_seed1/all_predictions.json
+  adata_path: ../data/gears_pert_data/adamson/perturb_processed.h5ad
   gene_names_path: ../../../working_dir/results/py_comparison_adamson_seed1/gene_names.json
   annotation_path: ../data/annotations/adamson_functional_classes_enriched.tsv
   results_dir: ../results/adamson
@@ -18,8 +19,6 @@ model:
 
 tasks:
   - class
-  # Note: logo, combined, and visualize tasks have been archived
-  # See archive/MIGRATION_GUIDE.md for details
+  # Add `logo` to run the AnnData-based leave-one-GO-out workflow from this config.
 
 output_root: ../results/adamson
-

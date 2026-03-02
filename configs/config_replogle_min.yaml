@@ -1,6 +1,7 @@
 dataset:
   name: replogle_k562_essential
   expression_path: ../../../../working_dir/results/py_comparison_replogle_k562_essential_seed1/all_predictions.json
+  adata_path: ../data/gears_pert_data/replogle_k562_essential/perturb_processed.h5ad
   gene_names_path: ../../../../working_dir/results/py_comparison_replogle_k562_essential_seed1/gene_names.json
   annotation_path: data/annotations/replogle_k562_functional_classes_go.tsv
   results_dir: ../results/replogle_min
@@ -20,9 +21,7 @@ model:
 
 tasks:
   - class
-  # Note: logo, combined, and visualize tasks have been archived
-  # See archive/MIGRATION_GUIDE.md for details
+  # Add `logo` to run the AnnData-based leave-one-GO-out workflow from this config.
 
 output_root: ../results/replogle_min
-
 

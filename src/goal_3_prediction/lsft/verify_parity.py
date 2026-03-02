@@ -1,5 +1,5 @@
 """
-Engine parity verification: Compare v1 vs v2 point estimates (Issue 11).
+Engine parity verification for LSFT point estimates.
 
 Ensures that the resampling-enabled v2 engine produces identical point estimates
 to the v1 engine (only adds CIs and resampling features).
@@ -306,4 +306,3 @@ def main():
 if __name__ == "__main__":
     import sys
     sys.exit(main())
-

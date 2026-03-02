@@ -3,7 +3,7 @@ Functional-class holdout evaluation.
 
 This module implements multi-class holdout evaluation, where each functional class
 is held out from training in turn and evaluated separately. This is different from
-LOGO (Leave One Gene Out) evaluation, which isolates a specific functional class
+LOGO (Leave-One-GO-Out) evaluation, which isolates a specific functional class
 (e.g., Transcription) as the test set for all baselines.
 
 Differences:
@@ -159,4 +159,3 @@ def class_results_to_dataframe(results: List[ClassHoldoutResult]) -> pd.DataFram
         row.update(res.metrics)
         rows.append(row)
     return pd.DataFrame(rows)
-
